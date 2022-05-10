@@ -10,6 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Tandur">
         <activity
+            android:name=".dashboard.DashboardActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SplashScreenActivity"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
