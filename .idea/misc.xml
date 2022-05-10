@@ -4,11 +4,14 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/bagas/AndroidStudioProjects/Capstone/tandur-android/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.166" />
+        <entry key="..\:/Users/bagas/AndroidStudioProjects/Capstone/tandur-android/app/src/main/res/drawable/bg_btn_tanam.xml" value="0.2625" />
         <entry key="..\:/Users/bagas/AndroidStudioProjects/Capstone/tandur-android/app/src/main/res/drawable/bg_radius_8dp.xml" value="0.166" />
         <entry key="..\:/Users/bagas/AndroidStudioProjects/Capstone/tandur-android/app/src/main/res/drawable/bg_radius_8dp_bottom_only.xml" value="0.166" />
         <entry key="..\:/Users/bagas/AndroidStudioProjects/Capstone/tandur-android/app/src/main/res/drawable/bg_radius_8dp_gradient.xml" value="0.166" />
         <entry key="..\:/Users/bagas/AndroidStudioProjects/Capstone/tandur-android/app/src/main/res/drawable/ic_launcher_background.xml" value="0.166" />
-        <entry key="..\:/Users/bagas/AndroidStudioProjects/Capstone/tandur-android/app/src/main/res/layout/fragment_home.xml" value="0.5" />
+        <entry key="..\:/Users/bagas/AndroidStudioProjects/Capstone/tandur-android/app/src/main/res/drawable/ic_plant_figma.xml" value="0.2625" />
+        <entry key="..\:/Users/bagas/AndroidStudioProjects/Capstone/tandur-android/app/src/main/res/layout/fragment_home.xml" value="0.33" />
+        <entry key="..\:/Users/bagas/AndroidStudioProjects/Capstone/tandur-android/app/src/main/res/layout/fragment_my_plant.xml" value="0.33" />
       </map>
     </option>
   </component>

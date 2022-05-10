@@ -8,4 +8,7 @@
     <string name="icon_location">icon_location</string>
     <string name="tv_saran_untuk_anda">Saran Untuk Anda</string>
     <string name="hint_search">Cari tanaman di sini ...</string>
+    <string name="tanaman_saya">Tanaman Saya</string>
+    <string name="cari_tanaman_anda_di_sini">Cari tanaman anda di sini ...</string>
+    <string name="menambah_tanaman">Menambah Tanaman</string>
 </resources>
