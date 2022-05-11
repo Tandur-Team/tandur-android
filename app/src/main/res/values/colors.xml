@@ -7,4 +7,5 @@
     <color name="green_accent">#FF8B9A47</color>
     <color name="dark_secondary">#606977</color>
     <color name="red_accent">#FFD65B32</color>
+    <color name="shadow_black">#6F000000</color>
 </resources>
