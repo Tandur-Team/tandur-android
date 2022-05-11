@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/dashboardFragment"
+        android:icon="@drawable/ic_home"
+        android:iconTint="?colorOnPrimary"
+        android:title="Home" />
+
+    <item
+        android:id="@+id/tanamFragment"
+        android:icon="@drawable/ic_tandur_logo"
+        android:iconTint="?colorOnPrimary"
+        android:title="Tanam" />
+
+    <item
+        android:id="@+id/profileFragment"
+        android:icon="@drawable/ic_person"
+        android:iconTint="?colorOnPrimary"
+        android:title="Profile" />
+</menu>
