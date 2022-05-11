@@ -2,14 +2,14 @@
     <string name="app_name">Tandur</string>
     <string name="let_s_join_us">Mari Bertani!</string>
     <string name="register_jargon">Sekarang anda dapat menanam di tempat anda tanpa takut gagal panen lagi</string>
+    <string name="tandur_logo">tandur logo</string>
+    <string name="tandur_app">Tandur App</string>
 
     <!-- Edit Text Place Holder -->
     <string name="input_your_password_here">Masukkan password di sini …</string>
     <string name="input_your_email_here">Masukkan email di sini …</string>
     <string name="input_the_description_here">Masukkan deskripsi di sini …</string>
     <string name="input_your_name_here">Masukkan nama di sini …</string>
-    <string name="story_app_logo">Logo Story Media</string>
-    <string name="story_media">Story Media</string>
 
     <!-- Other -->
     <string name="email">Email</string>
@@ -24,8 +24,7 @@
     <string name="password_invalid">Jumlah karakter password harus >6</string>
     <string name="sign_up">Daftar</string>
     <string name="back">Kembali</string>
-    <string name="pass_the_credentials">Lengkapi Kredensial di Bawah</string>
+    <string name="pass_the_credentials">Masuk dengan Email</string>
     <string name="welcome_user">Hai %1s</string>
     <string name="log_out">Keluar</string>
-    <string name="tandur_logo">tandur logo</string>
 </resources>

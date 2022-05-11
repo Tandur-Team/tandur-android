@@ -1,165 +1,172 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/green_accent">
+    android:background="@color/green_accent"
+    android:fillViewport="true">
 
-    <TextView
-        android:id="@+id/tvJargon"
-        style="@style/SemiBold24Sp"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:layout_marginEnd="18dp"
-        android:text="@string/let_s_complete_the_form"
-        android:textColor="@color/light_primary"
-        app:layout_constraintBottom_toBottomOf="@id/ivHumanSitDown"
-        app:layout_constraintEnd_toStartOf="@id/ivHumanSitDown"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/ivHumanSitDown" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-    <ImageView
-        android:id="@+id/ivHumanSitDown"
-        android:layout_width="91dp"
-        android:layout_height="100dp"
-        android:layout_marginTop="75dp"
-        android:layout_marginEnd="30dp"
-        android:contentDescription="@string/tandur_logo"
-        android:src="@drawable/ic_tandur_logo"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <TextView
+            android:id="@+id/tvJargon"
+            style="@style/SemiBold24Sp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="18dp"
+            android:text="@string/let_s_complete_the_form"
+            android:textColor="@color/light_primary"
+            app:layout_constraintBottom_toBottomOf="@id/ivHumanSitDown"
+            app:layout_constraintEnd_toStartOf="@id/ivHumanSitDown"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/ivHumanSitDown" />
 
-    <androidx.core.widget.NestedScrollView
-        android:id="@+id/nvScrollContent"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="36dp"
-        android:fillViewport="true"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@id/ivHumanSitDown"
-        app:layout_constraintStart_toStartOf="@id/tvJargon"
-        app:layout_constraintTop_toBottomOf="@id/ivHumanSitDown">
+        <ImageView
+            android:id="@+id/ivHumanSitDown"
+            android:layout_width="91dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="75dp"
+            android:layout_marginEnd="30dp"
+            android:contentDescription="@string/tandur_logo"
+            android:src="@drawable/ic_tandur_logo"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:weightSum="3">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="vertical">
-
-                <!-- Email -->
-                <TextView
-                    style="@style/Medium14Sp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:labelFor="@id/etEmail"
-                    android:text="@string/email"
-                    android:textColor="@color/light_primary" />
-
-                <com.tandurteam.tandur.core.customview.MyEditText
-                    android:id="@+id/etEmail"
-                    style="@style/Medium14Sp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="7dp"
-                    android:hint="@string/input_your_email_here"
-                    android:inputType="textEmailAddress"
-                    android:paddingHorizontal="20dp"
-                    android:paddingVertical="16dp" />
-
-                <!-- Full Name -->
-                <TextView
-                    style="@style/Medium14Sp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="24dp"
-                    android:labelFor="@id/etFullName"
-                    android:text="@string/full_name"
-                    android:textColor="@color/light_primary" />
-
-                <com.tandurteam.tandur.core.customview.MyEditText
-                    android:id="@+id/etFullName"
-                    style="@style/Medium14Sp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="7dp"
-                    android:hint="@string/input_your_name_here"
-                    android:inputType="textPersonName"
-                    android:paddingHorizontal="20dp"
-                    android:paddingVertical="16dp" />
-
-                <!-- Password -->
-                <TextView
-                    style="@style/Medium14Sp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="24dp"
-                    android:labelFor="@id/etPassword"
-                    android:text="@string/password"
-                    android:textColor="@color/light_primary" />
-
-                <com.tandurteam.tandur.core.customview.MyEditText
-                    android:id="@+id/etPassword"
-                    style="@style/Medium14Sp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="7dp"
-                    android:hint="@string/input_your_password_here"
-                    android:inputType="textPassword"
-                    android:paddingHorizontal="20dp"
-                    android:paddingVertical="16dp" />
-
-            </LinearLayout>
-
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1" />
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/nvScrollContent"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="36dp"
+            android:fillViewport="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/ivHumanSitDown"
+            app:layout_constraintStart_toStartOf="@id/tvJargon"
+            app:layout_constraintTop_toBottomOf="@id/ivHumanSitDown">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:weightSum="3">
 
-                <ProgressBar
-                    android:id="@+id/progressLoading"
-                    android:layout_width="52dp"
-                    android:layout_height="52dp"
-                    android:layout_gravity="center_horizontal"
-                    android:backgroundTint="@color/light_primary"
-                    android:visibility="gone" />
-
-                <Button
-                    android:id="@+id/btnSignUp"
-                    style="@style/SemiBold18Sp"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/bg_radius_8dp_stroke"
-                    android:text="@string/sign_up"
-                    android:textAllCaps="false"
-                    android:textColor="@color/light_primary" />
+                    android:layout_weight="1"
+                    android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/tvBack"
-                    style="@style/SemiBold18Sp"
+                    <!-- Email -->
+                    <TextView
+                        style="@style/Medium14Sp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:labelFor="@id/etEmail"
+                        android:text="@string/email"
+                        android:textColor="@color/light_primary" />
+
+                    <com.tandurteam.tandur.core.customview.MyEditText
+                        android:id="@+id/etEmail"
+                        style="@style/Medium14Sp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="7dp"
+                        android:hint="@string/input_your_email_here"
+                        android:inputType="textEmailAddress"
+                        android:paddingHorizontal="20dp"
+                        android:paddingVertical="16dp" />
+
+                    <!-- Full Name -->
+                    <TextView
+                        style="@style/Medium14Sp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="24dp"
+                        android:labelFor="@id/etFullName"
+                        android:text="@string/full_name"
+                        android:textColor="@color/light_primary" />
+
+                    <com.tandurteam.tandur.core.customview.MyEditText
+                        android:id="@+id/etFullName"
+                        style="@style/Medium14Sp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="7dp"
+                        android:hint="@string/input_your_name_here"
+                        android:inputType="textPersonName"
+                        android:paddingHorizontal="20dp"
+                        android:paddingVertical="16dp" />
+
+                    <!-- Password -->
+                    <TextView
+                        style="@style/Medium14Sp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="24dp"
+                        android:labelFor="@id/etPassword"
+                        android:text="@string/password"
+                        android:textColor="@color/light_primary" />
+
+                    <com.tandurteam.tandur.core.customview.MyEditText
+                        android:id="@+id/etPassword"
+                        style="@style/Medium14Sp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="7dp"
+                        android:hint="@string/input_your_password_here"
+                        android:inputType="textPassword"
+                        android:paddingHorizontal="20dp"
+                        android:paddingVertical="16dp" />
+
+                </LinearLayout>
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1" />
+
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
-                    android:gravity="center"
-                    android:paddingVertical="12dp"
-                    android:text="@string/back"
-                    android:textColor="@color/light_primary" />
+                    android:orientation="vertical">
+
+                    <ProgressBar
+                        android:id="@+id/progressLoading"
+                        android:layout_width="52dp"
+                        android:layout_height="52dp"
+                        android:layout_gravity="center_horizontal"
+                        android:backgroundTint="@color/light_primary"
+                        android:visibility="gone" />
+
+                    <Button
+                        android:id="@+id/btnSignUp"
+                        style="@style/SemiBold18Sp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bg_radius_8dp_stroke"
+                        android:text="@string/sign_up"
+                        android:textAllCaps="false"
+                        android:textColor="@color/light_primary" />
+
+                    <TextView
+                        android:id="@+id/tvBack"
+                        style="@style/SemiBold18Sp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:gravity="center"
+                        android:paddingVertical="12dp"
+                        android:text="@string/back"
+                        android:textColor="@color/light_primary" />
+
+                </LinearLayout>
 
             </LinearLayout>
 
-        </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
 
-    </androidx.core.widget.NestedScrollView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>

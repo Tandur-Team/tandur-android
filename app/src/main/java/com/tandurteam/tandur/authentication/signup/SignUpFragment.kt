@@ -23,5 +23,10 @@ class SignUpFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        with(binding) {
+            // on back pressed
+            tvBack.setOnClickListener { requireActivity().onBackPressed() }
+        }
     }
 }

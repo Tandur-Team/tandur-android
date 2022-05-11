@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.Navigation
 import com.tandurteam.tandur.databinding.FragmentInputEmailBinding
 
 class InputEmailFragment : Fragment() {
@@ -23,5 +24,25 @@ class InputEmailFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        with(binding) {
+            // Join button validation
+            btnJoinNow.setOnClickListener {
+                if (etEmail.isNotEmpty) {
+                    if (etEmail.isEmailValid) {
+                        val action = InputEmailFragmentDirections.navigateToSignUpFragment(
+                            etEmail.text.toString()
+                        )
+                        Navigation.findNavController(binding.root).navigate(action)
+                    } else etEmail.onEmailInvalid()
+                } else etEmail.onFormEmpty()
+            }
+
+            // Sign in on click
+            tvSignIn.setOnClickListener {
+                val action = InputEmailFragmentDirections.navigateToLoginFragment()
+                Navigation.findNavController(binding.root).navigate(action)
+            }
+        }
     }
 }
