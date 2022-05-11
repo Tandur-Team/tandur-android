@@ -27,9 +27,9 @@
         android:layout_marginTop="8dp"
         android:contentDescription="@string/icon_location"
         android:src="@drawable/ic_location"
-        app:tint="@color/green_accent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_welcome" />
+        app:layout_constraintTop_toBottomOf="@id/tv_welcome"
+        app:tint="@color/green_accent" />
 
     <TextView
         android:id="@+id/tv_location"
@@ -39,7 +39,7 @@
         android:layout_marginEnd="30dp"
         android:text="@string/tvLocation"
         android:textColor="@color/green_accent"
-        android:theme="@style/Medium14Sp"
+        style="@style/Medium14Sp"
         app:layout_constraintBottom_toBottomOf="@id/iv_location"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/iv_location"
@@ -109,9 +109,9 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginTop="16dp"
-        tools:listitem="@layout/item_home_suggestion"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/et_search" />
+        app:layout_constraintTop_toBottomOf="@id/et_search"
+        tools:listitem="@layout/item_home_suggestion" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

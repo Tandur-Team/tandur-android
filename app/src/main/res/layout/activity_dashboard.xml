@@ -13,13 +13,25 @@
         android:background="@drawable/bg_radius_8dp_top_only"
         android:backgroundTint="?colorSecondary"
         android:paddingVertical="10dp"
-        app:itemIconTint="?colorOnPrimary"
+        app:itemIconTint="@color/bottom_nav_color"
         app:itemRippleColor="@color/green_accent"
-        app:itemTextColor="?colorOnPrimary"
+        app:itemTextColor="@color/bottom_nav_color"
         app:labelVisibilityMode="labeled"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:menu="@menu/app_menu" />
+
+    <fragment
+        android:id="@+id/fragmentContainerView2"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:defaultNavHost="true"
+        app:layout_constraintBottom_toTopOf="@id/bottomNavigationView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:navGraph="@navigation/dashboard_nav" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,10 +1,12 @@
 package com.tandurteam.tandur.authentication.login
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.tandurteam.tandur.dashboard.DashboardActivity
 import com.tandurteam.tandur.databinding.FragmentLoginBinding
 
 class LoginFragment : Fragment() {
@@ -27,6 +29,13 @@ class LoginFragment : Fragment() {
         with(binding) {
             // on back pressed
             tvBack.setOnClickListener { requireActivity().onBackPressed() }
+
+            // on login clicked
+            btnSignIn.setOnClickListener {
+                Intent(requireActivity(), DashboardActivity::class.java).apply {
+                    requireActivity().startActivity(this)
+                }
+            }
         }
     }
 }
