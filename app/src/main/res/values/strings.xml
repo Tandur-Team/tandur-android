@@ -23,4 +23,6 @@
     <string name="jumlah_tanaman_aktif">Jumlah Tanaman Aktif</string>
     <string name="dummy_jumlah_tanaman">20</string>
     <string name="tingkat_kepuasan_hasil_panen">Tingkat Kepuasan Hasil Panen</string>
+    <string name="dummy_photos">Dummy Photos</string>
+    <string name="padi">Padi</string>
 </resources>

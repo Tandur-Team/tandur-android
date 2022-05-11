@@ -15,9 +15,11 @@
         <entry key="..\:/Users/bagas/AndroidStudioProjects/Capstone/tandur-android/app/src/main/res/drawable/ic_person.xml" value="0.192" />
         <entry key="..\:/Users/bagas/AndroidStudioProjects/Capstone/tandur-android/app/src/main/res/drawable/ic_plant_figma.xml" value="0.2625" />
         <entry key="..\:/Users/bagas/AndroidStudioProjects/Capstone/tandur-android/app/src/main/res/drawable/ic_tanam.xml" value="0.262" />
+        <entry key="..\:/Users/bagas/AndroidStudioProjects/Capstone/tandur-android/app/src/main/res/layout/activity_main.xml" value="0.3625" />
         <entry key="..\:/Users/bagas/AndroidStudioProjects/Capstone/tandur-android/app/src/main/res/layout/fragment_home.xml" value="0.33" />
         <entry key="..\:/Users/bagas/AndroidStudioProjects/Capstone/tandur-android/app/src/main/res/layout/fragment_my_plant.xml" value="0.33" />
         <entry key="..\:/Users/bagas/AndroidStudioProjects/Capstone/tandur-android/app/src/main/res/layout/fragment_profile.xml" value="0.33" />
+        <entry key="..\:/Users/bagas/AndroidStudioProjects/Capstone/tandur-android/app/src/main/res/layout/item_mereka_tanam.xml" value="1.0" />
       </map>
     </option>
   </component>
