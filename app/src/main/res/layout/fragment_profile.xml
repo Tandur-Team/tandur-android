@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".dashboard.profile.ProfileFragment">
+
+    <TextView
+        android:id="@+id/tv_profilku"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/profil_saya"
+        style="@style/SemiBold24Sp"
+        android:layout_marginTop="32dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <ImageView
+        android:id="@+id/iv_ic_email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_at"
+        android:layout_marginTop="28dp"
+        android:layout_marginStart="30dp"
+        app:layout_constraintTop_toBottomOf="@+id/tv_profilku"
+        app:layout_constraintStart_toStartOf="parent"
+        android:contentDescription="@string/icon_email_di_profile" />
+
+    <TextView
+        android:id="@+id/tv_email_constant"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/email"
+        style="@style/Regular14Sp"
+        android:layout_marginStart="12dp"
+        android:layout_marginEnd="30dp"
+        app:layout_constraintTop_toTopOf="@id/iv_ic_email"
+        app:layout_constraintStart_toEndOf="@id/iv_ic_email"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/tv_email_user"/>
+
+    <TextView
+        android:id="@+id/tv_email_user"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/user_email_dummy"
+        style="@style/Regular12Sp"
+        android:layout_marginStart="12dp"
+        android:layout_marginEnd="30dp"
+        app:layout_constraintTop_toBottomOf="@+id/tv_email_constant"
+        app:layout_constraintStart_toEndOf="@id/iv_ic_email"
+        app:layout_constraintBottom_toBottomOf="@id/iv_ic_email"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <View
+        android:id="@+id/v_line1"
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:background="@drawable/bg_radius_8dp"
+        android:backgroundTint="@color/light_secondary"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        app:layout_constraintTop_toBottomOf="@+id/tv_email_user"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <ImageView
+        android:id="@+id/iv_ic_person"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_person"
+        app:tint="?colorOnPrimary"
+        android:layout_marginTop="28dp"
+        android:layout_marginStart="30dp"
+        app:layout_constraintTop_toBottomOf="@id/v_line1"
+        app:layout_constraintStart_toStartOf="parent"
+        android:contentDescription="@string/icon_person_di_profile" />
+
+    <TextView
+        android:id="@+id/tv_nama_constant"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/nama_lengkap"
+        style="@style/Regular14Sp"
+        android:layout_marginStart="12dp"
+        android:layout_marginEnd="30dp"
+        app:layout_constraintTop_toTopOf="@id/iv_ic_person"
+        app:layout_constraintStart_toEndOf="@+id/iv_ic_person"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/tv_nama_user"/>
+
+    <TextView
+        android:id="@+id/tv_nama_user"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/mr_ryan"
+        style="@style/Regular12Sp"
+        android:layout_marginStart="12dp"
+        android:layout_marginEnd="30dp"
+        app:layout_constraintTop_toBottomOf="@id/tv_nama_constant"
+        app:layout_constraintStart_toEndOf="@id/iv_ic_person"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/iv_ic_person"/>
+
+    <View
+        android:id="@+id/v_line2"
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:background="@drawable/bg_radius_8dp"
+        android:backgroundTint="@color/light_secondary"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        app:layout_constraintTop_toBottomOf="@+id/tv_nama_user"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <ImageView
+        android:id="@+id/iv_ic_tanaman"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_tanam"
+        app:tint="@color/dark_accent"
+        android:layout_marginTop="28dp"
+        android:layout_marginStart="30dp"
+        app:layout_constraintTop_toBottomOf="@id/v_line2"
+        app:layout_constraintStart_toStartOf="parent"
+        android:contentDescription="@string/icon_person_di_profile"
+        />
+
+    <TextView
+        android:id="@+id/tv_jumlah_tanaman_constant"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/jumlah_tanaman_aktif"
+        style="@style/Regular14Sp"
+        android:layout_marginStart="12dp"
+        android:layout_marginEnd="30dp"
+        app:layout_constraintTop_toTopOf="@id/iv_ic_tanaman"
+        app:layout_constraintStart_toEndOf="@+id/iv_ic_tanaman"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/tv_jumlah_tanaman_user"/>
+
+    <TextView
+        android:id="@+id/tv_jumlah_tanaman_user"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/dummy_jumlah_tanaman"
+        style="@style/Regular12Sp"
+        android:layout_marginStart="12dp"
+        android:layout_marginEnd="30dp"
+        app:layout_constraintTop_toBottomOf="@id/tv_jumlah_tanaman_constant"
+        app:layout_constraintStart_toEndOf="@id/iv_ic_tanaman"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/iv_ic_tanaman"/>
+
+    <View
+        android:id="@+id/v_line3"
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:background="@drawable/bg_radius_8dp"
+        android:backgroundTint="@color/light_secondary"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        app:layout_constraintTop_toBottomOf="@+id/tv_jumlah_tanaman_user"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <ImageView
+        android:id="@+id/iv_ic_happy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_happy"
+        app:tint="@color/dark_accent"
+        android:layout_marginTop="28dp"
+        android:layout_marginStart="30dp"
+        app:layout_constraintTop_toBottomOf="@id/v_line3"
+        app:layout_constraintStart_toStartOf="parent"
+        android:contentDescription="@string/icon_person_di_profile"
+        />
+
+    <TextView
+        android:id="@+id/tv_tingkat_kepuasan_constant"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/tingkat_kepuasan_hasil_panen"
+        style="@style/Regular14Sp"
+        android:layout_marginStart="12dp"
+        android:layout_marginEnd="30dp"
+        app:layout_constraintTop_toTopOf="@id/iv_ic_happy"
+        app:layout_constraintStart_toEndOf="@+id/iv_ic_happy"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/tv_tingkat_kepuasan_user"/>
+
+    <TextView
+        android:id="@+id/tv_tingkat_kepuasan_user"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/dummy_jumlah_tanaman"
+        style="@style/Regular12Sp"
+        android:layout_marginStart="12dp"
+        android:layout_marginEnd="30dp"
+        app:layout_constraintTop_toBottomOf="@id/tv_tingkat_kepuasan_constant"
+        app:layout_constraintStart_toEndOf="@id/iv_ic_happy"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/iv_ic_happy"/>
+
+    <View
+        android:id="@+id/v_line4"
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:background="@drawable/bg_radius_8dp"
+        android:backgroundTint="@color/light_secondary"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        app:layout_constraintTop_toBottomOf="@+id/tv_tingkat_kepuasan_user"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

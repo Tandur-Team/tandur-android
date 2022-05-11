@@ -31,10 +31,13 @@
         <entry key="..\:/Users/ACER/AndroidStudioProjects/Tandur/app/src/main/res/layout/activity_authentication.xml" value="0.25" />
         <entry key="..\:/Users/ACER/AndroidStudioProjects/Tandur/app/src/main/res/layout/activity_dashboard.xml" value="0.264" />
         <entry key="..\:/Users/ACER/AndroidStudioProjects/Tandur/app/src/main/res/layout/activity_main.xml" value="0.25" />
-        <entry key="..\:/Users/ACER/AndroidStudioProjects/Tandur/app/src/main/res/layout/fragment_home.xml" value="0.25" />
+        <entry key="..\:/Users/ACER/AndroidStudioProjects/Tandur/app/src/main/res/layout/fragment_home.xml" value="0.33539412673879443" />
         <entry key="..\:/Users/ACER/AndroidStudioProjects/Tandur/app/src/main/res/layout/fragment_input_email.xml" value="0.136" />
         <entry key="..\:/Users/ACER/AndroidStudioProjects/Tandur/app/src/main/res/layout/fragment_login.xml" value="0.2" />
+        <entry key="..\:/Users/ACER/AndroidStudioProjects/Tandur/app/src/main/res/layout/fragment_my_plant.xml" value="0.264" />
+        <entry key="..\:/Users/ACER/AndroidStudioProjects/Tandur/app/src/main/res/layout/fragment_profile.xml" value="0.25" />
         <entry key="..\:/Users/ACER/AndroidStudioProjects/Tandur/app/src/main/res/layout/fragment_sign_up.xml" value="0.2" />
+        <entry key="..\:/Users/ACER/AndroidStudioProjects/Tandur/app/src/main/res/layout/item_home_suggestion.xml" value="0.176" />
         <entry key="..\:/Users/ACER/AndroidStudioProjects/Tandur/app/src/main/res/layout/item_mereka_tanam.xml" value="0.25" />
         <entry key="..\:/Users/ACER/AndroidStudioProjects/Tandur/app/src/main/res/menu/app_menu.xml" value="0.25" />
         <entry key="..\:/Users/ACER/AndroidStudioProjects/Tandur/app/src/main/res/xml/fragment_input_email_scene.xml" value="0.24895833333333334" />
