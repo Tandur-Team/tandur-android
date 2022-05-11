@@ -64,4 +64,10 @@
         <item name="android:fontFamily">@font/poppins</item>
         <item name="android:textSize">14sp</item>
     </style>
+
+    <style name="Regular12Sp" parent="TextAppearance.AppCompat">
+        <item name="android:textColor">@color/dark_accent</item>
+        <item name="android:fontFamily">@font/poppins</item>
+        <item name="android:textSize">12sp</item>
+    </style>
 </resources>

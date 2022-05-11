@@ -11,4 +11,16 @@
     <string name="tanaman_saya">Tanaman Saya</string>
     <string name="cari_tanaman_anda_di_sini">Cari tanaman anda di sini ...</string>
     <string name="menambah_tanaman">Menambah Tanaman</string>
+    <string name="profil_saya">Profil Saya</string>
+    <string name="email_in_profile">Email</string>
+    <string name="btn_tanam">Tanam</string>
+    <string name="icon_email_di_profile">icon email di profile</string>
+    <string name="email">Email</string>
+    <string name="user_email_dummy">Ryan@gmail.com</string>
+    <string name="icon_person_di_profile">icon person di profile</string>
+    <string name="nama_lengkap">Nama Lengkap</string>
+    <string name="mr_ryan">Mr.Ryan</string>
+    <string name="jumlah_tanaman_aktif">Jumlah Tanaman Aktif</string>
+    <string name="dummy_jumlah_tanaman">20</string>
+    <string name="tingkat_kepuasan_hasil_panen">Tingkat Kepuasan Hasil Panen</string>
 </resources>
