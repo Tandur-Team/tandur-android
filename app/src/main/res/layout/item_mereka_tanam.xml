@@ -24,7 +24,6 @@
             android:background="@drawable/bg_radius_8dp"
             android:scaleType="centerCrop"
             android:src="@drawable/padi_dummy"
-            android:tint="@color/shadow_black"
             android:layout_margin="4dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
