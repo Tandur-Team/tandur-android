@@ -5,6 +5,10 @@
       <map>
         <entry key="..\:/Users/ACER/AndroidStudioProjects/Tandur/app/src/main/res/drawable/bg_radius_8dp.xml" value="0.1315" />
         <entry key="..\:/Users/ACER/AndroidStudioProjects/Tandur/app/src/main/res/drawable/bg_radius_8dp_gradient.xml" value="0.1315" />
+        <entry key="..\:/Users/ACER/AndroidStudioProjects/Tandur/app/src/main/res/layout/fragment_home.xml" value="0.25" />
+        <entry key="..\:/Users/ACER/AndroidStudioProjects/Tandur/app/src/main/res/layout/fragment_login.xml" value="0.25" />
+        <entry key="..\:/Users/ACER/AndroidStudioProjects/Tandur/app/src/main/res/layout/fragment_sign_up.xml" value="0.25" />
+        <entry key="..\:/Users/ACER/AndroidStudioProjects/Tandur/app/src/main/res/layout/item_mereka_tanam.xml" value="0.25" />
       </map>
     </option>
   </component>
