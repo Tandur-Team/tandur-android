@@ -25,4 +25,10 @@
     <string name="tingkat_kepuasan_hasil_panen">Tingkat Kepuasan Hasil Panen</string>
     <string name="dummy_photos">Dummy Photos</string>
     <string name="padi">Padi</string>
+    <string name="gambar_tanaman">Gambar Tanaman</string>
+    <string name="icon_tanaman">icon Tanaman</string>
+    <string name="icon_status">Icon Status</string>
+    <string name="status_tanaman">Tanaman Sehat</string>
+    <string name="icon_waktu">Icon Waktu</string>
+    <string name="dummy_waktu">2 Bulan Menuju Panen</string>
 </resources>
