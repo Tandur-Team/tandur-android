@@ -21,12 +21,13 @@
 
     <ImageView
         android:id="@+id/iv_location"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="11dp"
+        android:layout_height="14dp"
         android:layout_marginStart="30dp"
         android:layout_marginTop="8dp"
         android:contentDescription="@string/icon_location"
-        android:src="@drawable/ic_baseline_location_on_24"
+        android:src="@drawable/ic_location"
+        app:tint="@color/green_accent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_welcome" />
 
@@ -34,7 +35,7 @@
         android:id="@+id/tv_location"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
+        android:layout_marginStart="12dp"
         android:layout_marginEnd="30dp"
         android:text="@string/tvLocation"
         android:textColor="@color/green_accent"
@@ -61,7 +62,7 @@
         android:id="@+id/rv_apa_yang_mereka_tanam"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="25dp"
+        android:layout_marginStart="30dp"
         android:layout_marginTop="8dp"
         android:orientation="horizontal"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
