@@ -3,12 +3,34 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/ACER/AndroidStudioProjects/Tandur/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.121" />
         <entry key="..\:/Users/ACER/AndroidStudioProjects/Tandur/app/src/main/res/drawable/bg_radius_8dp.xml" value="0.1315" />
         <entry key="..\:/Users/ACER/AndroidStudioProjects/Tandur/app/src/main/res/drawable/bg_radius_8dp_gradient.xml" value="0.1315" />
+        <entry key="..\:/Users/ACER/AndroidStudioProjects/Tandur/app/src/main/res/drawable/bg_radius_8dp_stroke.xml" value="0.1315" />
+        <entry key="..\:/Users/ACER/AndroidStudioProjects/Tandur/app/src/main/res/drawable/ic_check.xml" value="0.121" />
+        <entry key="..\:/Users/ACER/AndroidStudioProjects/Tandur/app/src/main/res/drawable/ic_cross.xml" value="0.121" />
+        <entry key="..\:/Users/ACER/AndroidStudioProjects/Tandur/app/src/main/res/drawable/ic_date.xml" value="0.121" />
+        <entry key="..\:/Users/ACER/AndroidStudioProjects/Tandur/app/src/main/res/drawable/ic_email.xml" value="0.121" />
+        <entry key="..\:/Users/ACER/AndroidStudioProjects/Tandur/app/src/main/res/drawable/ic_happy.xml" value="0.121" />
+        <entry key="..\:/Users/ACER/AndroidStudioProjects/Tandur/app/src/main/res/drawable/ic_launcher_background.xml" value="0.121" />
+        <entry key="..\:/Users/ACER/AndroidStudioProjects/Tandur/app/src/main/res/drawable/ic_location.xml" value="0.121" />
+        <entry key="..\:/Users/ACER/AndroidStudioProjects/Tandur/app/src/main/res/drawable/ic_logout.xml" value="0.121" />
+        <entry key="..\:/Users/ACER/AndroidStudioProjects/Tandur/app/src/main/res/drawable/ic_password.xml" value="0.121" />
+        <entry key="..\:/Users/ACER/AndroidStudioProjects/Tandur/app/src/main/res/drawable/ic_password_check.xml" value="0.121" />
+        <entry key="..\:/Users/ACER/AndroidStudioProjects/Tandur/app/src/main/res/drawable/ic_password_wrong.xml" value="0.121" />
+        <entry key="..\:/Users/ACER/AndroidStudioProjects/Tandur/app/src/main/res/drawable/ic_person.xml" value="0.121" />
+        <entry key="..\:/Users/ACER/AndroidStudioProjects/Tandur/app/src/main/res/drawable/ic_rain.xml" value="0.121" />
+        <entry key="..\:/Users/ACER/AndroidStudioProjects/Tandur/app/src/main/res/drawable/ic_search.xml" value="0.121" />
+        <entry key="..\:/Users/ACER/AndroidStudioProjects/Tandur/app/src/main/res/drawable/ic_soil.xml" value="0.121" />
+        <entry key="..\:/Users/ACER/AndroidStudioProjects/Tandur/app/src/main/res/drawable/ic_tandur_logo.xml" value="0.121" />
+        <entry key="..\:/Users/ACER/AndroidStudioProjects/Tandur/app/src/main/res/drawable/ic_temperature.xml" value="0.121" />
+        <entry key="..\:/Users/ACER/AndroidStudioProjects/Tandur/app/src/main/res/drawable/ic_time.xml" value="0.121" />
         <entry key="..\:/Users/ACER/AndroidStudioProjects/Tandur/app/src/main/res/layout/fragment_home.xml" value="0.25" />
+        <entry key="..\:/Users/ACER/AndroidStudioProjects/Tandur/app/src/main/res/layout/fragment_input_email.xml" value="0.136" />
         <entry key="..\:/Users/ACER/AndroidStudioProjects/Tandur/app/src/main/res/layout/fragment_login.xml" value="0.25" />
         <entry key="..\:/Users/ACER/AndroidStudioProjects/Tandur/app/src/main/res/layout/fragment_sign_up.xml" value="0.25" />
         <entry key="..\:/Users/ACER/AndroidStudioProjects/Tandur/app/src/main/res/layout/item_mereka_tanam.xml" value="0.25" />
+        <entry key="..\:/Users/ACER/AndroidStudioProjects/Tandur/app/src/main/res/xml/fragment_input_email_scene.xml" value="0.24895833333333334" />
       </map>
     </option>
   </component>

@@ -1,5 +1,31 @@
 <resources>
     <string name="app_name">Tandur</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="let_s_join_us">Mari Bertani!</string>
+    <string name="register_jargon">Sekarang anda dapat menanam di tempat anda tanpa takut gagal panen lagi</string>
+
+    <!-- Edit Text Place Holder -->
+    <string name="input_your_password_here">Masukkan password di sini …</string>
+    <string name="input_your_email_here">Masukkan email di sini …</string>
+    <string name="input_the_description_here">Masukkan deskripsi di sini …</string>
+    <string name="input_your_name_here">Masukkan nama di sini …</string>
+    <string name="story_app_logo">Logo Story Media</string>
+    <string name="story_media">Story Media</string>
+
+    <!-- Other -->
+    <string name="email">Email</string>
+    <string name="join_now">Bergabung Sekarang</string>
+    <string name="sign_in">Masuk</string>
+    <string name="form_could_not_be_empty">%1s form tidak boleh kosong</string>
+    <string name="email_not_valid">Email tidak valid</string>
+    <string name="email_duplicate">Tolong gunakan email lain</string>
+    <string name="let_s_complete_the_form">Mari Lengkapi form di bawah!</string>
+    <string name="full_name">Nama Lengkap</string>
+    <string name="password">Password</string>
+    <string name="password_invalid">Jumlah karakter password harus >6</string>
+    <string name="sign_up">Daftar</string>
+    <string name="back">Kembali</string>
+    <string name="pass_the_credentials">Lengkapi Kredensial di Bawah</string>
+    <string name="welcome_user">Hai %1s</string>
+    <string name="log_out">Keluar</string>
+    <string name="tandur_logo">tandur logo</string>
 </resources>
