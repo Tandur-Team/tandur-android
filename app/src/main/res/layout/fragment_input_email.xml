@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/green_accent"
+    android:fillViewport="true">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/green_accent">
+
+        <ImageView
+            android:id="@+id/ivHumanWalk"
+            android:layout_width="180dp"
+            android:layout_height="199dp"
+            android:layout_marginTop="55dp"
+            android:contentDescription="@string/tandur_logo"
+            android:src="@drawable/ic_tandur_logo"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvJoinUs"
+            style="@style/SemiBold36Sp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="48dp"
+            android:gravity="center"
+            android:text="@string/let_s_join_us"
+            android:textColor="@color/light_primary"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ivHumanWalk" />
+
+        <TextView
+            android:id="@+id/tvDescJoin"
+            style="@style/Medium18Sp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="30dp"
+            android:layout_marginTop="24dp"
+            android:gravity="center"
+            android:text="@string/register_jargon"
+            android:textColor="@color/light_primary"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvJoinUs" />
+
+        <TextView
+            android:id="@+id/tvLabelEmail"
+            style="@style/Medium14Sp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="30dp"
+            android:layout_marginTop="24dp"
+            android:labelFor="@id/etEmail"
+            android:text="@string/email"
+            android:textColor="@color/light_primary"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvDescJoin" />
+
+        <com.tandurteam.tandur.core.customview.MyEditText
+            android:id="@+id/etEmail"
+            style="@style/Medium14Sp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="30dp"
+            android:layout_marginTop="7dp"
+            android:hint="@string/input_your_email_here"
+            android:inputType="textEmailAddress"
+            android:paddingHorizontal="20dp"
+            android:paddingVertical="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvLabelEmail" />
+
+        <Button
+            android:id="@+id/btnJoinNow"
+            style="@style/SemiBold18Sp"
+            android:layout_width="0dp"
+            android:layout_height="52dp"
+            android:layout_marginTop="24dp"
+            android:background="@drawable/bg_radius_8dp_stroke"
+            android:text="@string/join_now"
+            android:textAllCaps="false"
+            android:textColor="@color/light_primary"
+            app:layout_constraintEnd_toEndOf="@id/etEmail"
+            app:layout_constraintStart_toStartOf="@id/etEmail"
+            app:layout_constraintTop_toBottomOf="@id/etEmail" />
+
+        <TextView
+            android:id="@+id/tvSignIn"
+            style="@style/SemiBold18Sp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:gravity="center"
+            android:paddingVertical="12dp"
+            android:text="@string/sign_in"
+            android:textColor="@color/light_primary"
+            app:layout_constraintEnd_toEndOf="@id/btnJoinNow"
+            app:layout_constraintStart_toStartOf="@id/btnJoinNow"
+            app:layout_constraintTop_toBottomOf="@id/btnJoinNow" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.core.widget.NestedScrollView>

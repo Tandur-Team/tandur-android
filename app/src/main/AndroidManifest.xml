@@ -10,10 +10,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Tandur">
         <activity
-            android:name=".dashboard.DashboardActivity"
+            android:name=".authentication.AuthenticationActivity"
             android:exported="false" />
         <activity
-            android:name=".SplashScreenActivity"
+            android:name=".dashboard.DashboardActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
