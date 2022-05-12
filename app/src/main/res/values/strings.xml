@@ -80,4 +80,12 @@
     <string name="rendah">Rendah</string>
     <string name="icon_soil">Icon Soil</string>
     <string name="ph_tanah">PH Tanah</string>
+    <string name="status_peringatan">Status (1 Peringatan)</string>
+    <string name="icon_date">Icon Date</string>
+    <string name="waktu_menanam">Waktu Menanam</string>
+    <string name="tv_date">02 April 2022</string>
+    <string name="perkiraan_waktu_panen">Perkiraan Waktu Panen</string>
+    <string name="estimasi_panen">02 Juli 2022</string>
+    <string name="lokasi_penanaman">Lokasi Penanaman</string>
+    <string name="dummy_location">Semampir, Kota Kediri, Indonesia</string>
 </resources>

@@ -38,10 +38,13 @@
         <entry key="..\:/Users/bagas/AndroidStudioProjects/Capstone/tandur-android/app/src/main/res/drawable/ic_tandur_logo.xml" value="0.3315" />
         <entry key="..\:/Users/bagas/AndroidStudioProjects/Capstone/tandur-android/app/src/main/res/drawable/ic_temperature.xml" value="0.3315" />
         <entry key="..\:/Users/bagas/AndroidStudioProjects/Capstone/tandur-android/app/src/main/res/drawable/ic_time.xml" value="0.3315" />
+        <entry key="..\:/Users/bagas/AndroidStudioProjects/Capstone/tandur-android/app/src/main/res/layout/activity_authentication.xml" value="0.3625" />
         <entry key="..\:/Users/bagas/AndroidStudioProjects/Capstone/tandur-android/app/src/main/res/layout/activity_main.xml" value="0.3625" />
         <entry key="..\:/Users/bagas/AndroidStudioProjects/Capstone/tandur-android/app/src/main/res/layout/fragment_detail.xml" value="0.25" />
         <entry key="..\:/Users/bagas/AndroidStudioProjects/Capstone/tandur-android/app/src/main/res/layout/fragment_home.xml" value="0.33" />
+        <entry key="..\:/Users/bagas/AndroidStudioProjects/Capstone/tandur-android/app/src/main/res/layout/fragment_input_email.xml" value="0.3625" />
         <entry key="..\:/Users/bagas/AndroidStudioProjects/Capstone/tandur-android/app/src/main/res/layout/fragment_my_plant.xml" value="0.33" />
+        <entry key="..\:/Users/bagas/AndroidStudioProjects/Capstone/tandur-android/app/src/main/res/layout/fragment_my_plant_detail.xml" value="0.2738001573564123" />
         <entry key="..\:/Users/bagas/AndroidStudioProjects/Capstone/tandur-android/app/src/main/res/layout/fragment_profile.xml" value="0.33" />
         <entry key="..\:/Users/bagas/AndroidStudioProjects/Capstone/tandur-android/app/src/main/res/layout/item_home_first.xml" value="0.3625" />
         <entry key="..\:/Users/bagas/AndroidStudioProjects/Capstone/tandur-android/app/src/main/res/layout/item_home_suggestion.xml" value="0.5" />
