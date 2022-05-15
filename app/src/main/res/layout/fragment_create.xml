@@ -1,14 +1,318 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:paddingTop="55dp"
     tools:context=".plant.create.CreateFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+    <ImageView
+        android:id="@+id/ivBack"
+        android:layout_width="21dp"
+        android:layout_height="18dp"
+        android:layout_marginStart="30dp"
+        android:contentDescription="@string/back_icon"
+        android:src="@drawable/ic_back"
+        app:layout_constraintBottom_toBottomOf="@id/tvPlantName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/tvPlantName"
+        app:tint="?colorOnPrimary" />
 
-</FrameLayout>
+    <TextView
+        android:id="@+id/tvPlantName"
+        style="@style/SemiBold24Sp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="18dp"
+        android:layout_marginEnd="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/ivBack"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Cabai" />
+
+    <TextView
+        android:id="@+id/tvStatus"
+        style="@style/Medium16Sp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="30dp"
+        android:layout_marginTop="24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvPlantName"
+        tools:text="Status (1 Peringatan)" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginHorizontal="30dp"
+        android:layout_marginTop="16dp"
+        android:fillViewport="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvStatus">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
+            android:orientation="vertical"
+            android:paddingBottom="124dp">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp">
+
+                <ImageView
+                    android:id="@+id/ivRain"
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:contentDescription="@string/condition_icon"
+                    android:src="@drawable/ic_rain"
+                    app:layout_constraintBottom_toBottomOf="@+id/tvRainStatus"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/tvLabelRain"
+                    app:tint="@color/green_accent" />
+
+                <TextView
+                    android:id="@+id/tvLabelRain"
+                    style="@style/Regular14Sp"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="18dp"
+                    android:text="@string/curah_hujan"
+                    android:textColor="@color/green_accent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/ivRain"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tvRainStatus"
+                    style="@style/Regular12Sp"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="18dp"
+                    android:layout_marginTop="4dp"
+                    android:textColor="@color/green_accent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/ivRain"
+                    app:layout_constraintTop_toBottomOf="@id/tvLabelRain"
+                    tools:text="Tinggi" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="2dp"
+                    android:layout_marginVertical="8dp"
+                    android:background="@drawable/bg_radius_8dp"
+                    android:backgroundTint="?colorSecondary"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tvRainStatus" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp">
+
+                <ImageView
+                    android:id="@+id/ivTemperature"
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:contentDescription="@string/condition_icon"
+                    android:src="@drawable/ic_temperature"
+                    app:layout_constraintBottom_toBottomOf="@+id/tvTemperatureStatus"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/tvLabelTemperature"
+                    app:tint="@color/green_accent" />
+
+                <TextView
+                    android:id="@+id/tvLabelTemperature"
+                    style="@style/Regular14Sp"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="18dp"
+                    android:text="@string/temperatur_suhu"
+                    android:textColor="@color/green_accent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/ivTemperature"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tvTemperatureStatus"
+                    style="@style/Regular12Sp"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="18dp"
+                    android:layout_marginTop="4dp"
+                    android:textColor="@color/green_accent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/ivTemperature"
+                    app:layout_constraintTop_toBottomOf="@id/tvLabelTemperature"
+                    tools:text="Tinggi" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="2dp"
+                    android:layout_marginVertical="8dp"
+                    android:background="@drawable/bg_radius_8dp"
+                    android:backgroundTint="?colorSecondary"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tvTemperatureStatus" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/ivSoil"
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:contentDescription="@string/condition_icon"
+                    android:src="@drawable/ic_soil"
+                    app:layout_constraintBottom_toBottomOf="@+id/tvSoilStatus"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/tvLabelSoil"
+                    app:tint="@color/green_accent" />
+
+                <TextView
+                    android:id="@+id/tvLabelSoil"
+                    style="@style/Regular14Sp"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="18dp"
+                    android:text="@string/ph_tanah"
+                    android:textColor="@color/green_accent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/ivSoil"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tvSoilStatus"
+                    style="@style/Regular12Sp"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="18dp"
+                    android:layout_marginTop="4dp"
+                    android:textColor="@color/green_accent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/ivSoil"
+                    app:layout_constraintTop_toBottomOf="@id/tvLabelSoil"
+                    tools:text="Tinggi" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="2dp"
+                    android:layout_marginVertical="8dp"
+                    android:background="@drawable/bg_radius_8dp"
+                    android:backgroundTint="?colorSecondary"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tvSoilStatus" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <!--Plant Time (Waktu Tanam) Form-->
+
+            <TextView
+                style="@style/Medium14Sp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/waktu_tanam" />
+
+            <EditText
+                android:id="@+id/etPlantDate"
+                style="@style/Regular14Sp"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/bg_radius_8dp"
+                android:drawableStart="@drawable/ic_date"
+                android:drawablePadding="18dp"
+                android:drawableTint="?colorOnPrimary"
+                android:hint="@string/klik_untuk_memilih_waktu_tanam"
+                android:importantForAutofill="no"
+                android:inputType="date"
+                android:paddingHorizontal="20dp"
+                tools:targetApi="m" />
+
+            <!--Estimated Harvest Time (Perkiraan Waktu Panen) Form-->
+
+            <TextView
+                style="@style/Medium14Sp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/perkiraan_waktu_panen" />
+
+            <EditText
+                android:id="@+id/etEstimatedHarvestTime"
+                style="@style/Regular14Sp"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/bg_radius_8dp"
+                android:drawableStart="@drawable/ic_time"
+                android:drawablePadding="18dp"
+                android:drawableTint="?colorOnPrimary"
+                android:hint="@string/klik_untuk_mengganti_estimasi_panen"
+                android:importantForAutofill="no"
+                android:inputType="date"
+                android:paddingHorizontal="20dp"
+                tools:targetApi="m" />
+
+            <!--Planting Location (Lokasi Penanaman) Form-->
+
+            <TextView
+                style="@style/Medium14Sp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/lokasi_penanaman" />
+
+            <EditText
+                android:id="@+id/etPlantingLocation"
+                style="@style/Regular14Sp"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/bg_radius_8dp"
+                android:drawableStart="@drawable/ic_location"
+                android:drawablePadding="18dp"
+                android:drawableTint="?colorOnPrimary"
+                android:hint="@string/klik_untuk_memilih_lokasi"
+                android:importantForAutofill="no"
+                android:inputType="text"
+                android:paddingHorizontal="20dp"
+                tools:targetApi="m" />
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+    <Button
+        style="@style/Medium16Sp"
+        android:layout_width="wrap_content"
+        android:layout_height="52dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="45dp"
+        android:background="@drawable/bg_radius_8dp"
+        android:backgroundTint="@color/green_accent"
+        android:drawableStart="@drawable/ic_tandur_logo"
+        android:drawablePadding="8dp"
+        android:paddingHorizontal="16dp"
+        android:text="@string/btn_tanam"
+        android:textAllCaps="false"
+        android:textColor="@color/light_primary"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
