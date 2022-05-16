@@ -61,4 +61,5 @@
     <string name="pass_the_credentials">Masuk dengan Email</string>
     <string name="welcome_user">Hai %1s</string>
     <string name="log_out">Keluar</string>
+    <string name="logout">Logout</string>
 </resources>

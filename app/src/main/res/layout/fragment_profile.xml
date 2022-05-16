@@ -224,6 +224,26 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
+    <Button
+        android:id="@+id/btn_logout"
+        android:layout_width="0dp"
+        android:layout_height="52dp"
+        android:background="@drawable/bg_radius_8dp"
+        android:backgroundTint="@color/red_accent"
+        android:text="@string/logout"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        style="@style/Medium16Sp"
+        android:drawableStart="@drawable/ic_logout"
+        android:paddingStart="132dp"
+        android:paddingEnd="132dp"
+        android:gravity="center"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="36dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
