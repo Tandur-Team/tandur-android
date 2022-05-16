@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/dashboard_nav"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.tandurteam.tandur.dashboard.home.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/navigateToDetailFragment"
+            app:destination="@id/detailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.tandurteam.tandur.dashboard.profile.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/myPlantFragment"
+        android:name="com.tandurteam.tandur.dashboard.myplantlist.MyPlantFragment"
+        android:label="fragment_my_plant"
+        tools:layout="@layout/fragment_my_plant">
+        <action
+            android:id="@+id/navigateToMyDetailPlantFragment"
+            app:destination="@id/myPlantDetailFragment" />
+        <action
+            android:id="@+id/navigateToChooseFragment"
+            app:destination="@id/choosePlantFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/myPlantDetailFragment"
+        android:name="com.tandurteam.tandur.dashboard.myplantlist.detail.MyPlantDetailFragment"
+        android:label="MyPlantDetailFragment" />
+    <fragment
+        android:id="@+id/createFragment"
+        android:name="com.tandurteam.tandur.plant.create.CreateFragment"
+        android:label="fragment_create"
+        tools:layout="@layout/fragment_create" />
+    <fragment
+        android:id="@+id/detailFragment"
+        android:name="com.tandurteam.tandur.plant.detail.DetailFragment"
+        android:label="fragment_detail"
+        tools:layout="@layout/fragment_detail">
+        <action
+            android:id="@+id/navigateToCreateFragmentFromDetailFragment"
+            app:destination="@id/createFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/choosePlantFragment"
+        android:name="com.tandurteam.tandur.plant.choose.ChoosePlantFragment"
+        android:label="fragment_choose_plant"
+        tools:layout="@layout/fragment_choose_plant">
+        <action
+            android:id="@+id/navigateToCreateFragmentFromChooseFragment"
+            app:destination="@id/createFragment" />
+    </fragment>
+</navigation>
