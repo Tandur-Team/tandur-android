@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/planting_nav"
+    app:startDestination="@id/choosePlantFragment">
+
+    <fragment
+        android:id="@+id/detailFragment"
+        android:name="com.tandurteam.tandur.plant.detail.DetailFragment"
+        android:label="fragment_my_plant_detail"
+        tools:layout="@layout/fragment_my_plant_detail">
+        <action
+            android:id="@+id/navigateToCreateFragmentFromDetailFragment"
+            app:destination="@id/createFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/createFragment"
+        android:name="com.tandurteam.tandur.plant.create.CreateFragment"
+        android:label="fragment_create"
+        tools:layout="@layout/fragment_create">
+        <argument
+            android:name="plantName"
+            android:defaultValue="Plant Name"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/choosePlantFragment"
+        android:name="com.tandurteam.tandur.plant.choose.ChoosePlantFragment"
+        android:label="fragment_choose_plant"
+        tools:layout="@layout/fragment_choose_plant">
+        <action
+            android:id="@+id/navigateToCreateFragmentFromChoosePlant"
+            app:destination="@id/createFragment" />
+    </fragment>
+</navigation>
