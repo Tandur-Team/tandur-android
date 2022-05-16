@@ -6,7 +6,7 @@
     android:layout_gravity="center"
     android:background="@drawable/bg_radius_8dp"
     app:cardCornerRadius="8dp"
-    android:layout_marginEnd="18dp"
+    android:layout_marginStart="30dp"
     android:backgroundTint="@color/green_accent">
 
     <androidx.constraintlayout.widget.ConstraintLayout
