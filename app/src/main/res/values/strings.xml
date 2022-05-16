@@ -62,4 +62,16 @@
     <string name="welcome_user">Hai %1s</string>
     <string name="log_out">Keluar</string>
     <string name="logout">Logout</string>
+    <string name="pilih_tanaman">Pilih Tanaman</string>
+    <string name="back_icon">back icon</string>
+    <string name="curah_hujan">Curah Hujan</string>
+    <string name="condition_icon">condition icon</string>
+    <string name="temperatur_suhu">Temperatur Suhu</string>
+    <string name="ph_tanah">PH Tanah</string>
+    <string name="klik_untuk_memilih_waktu_tanam">Klik untuk memilih waktu tanam</string>
+    <string name="waktu_tanam">Waktu Tanam</string>
+    <string name="klik_untuk_mengganti_estimasi_panen">Klik untuk mengganti estimasi panen</string>
+    <string name="perkiraan_waktu_panen">Perkiraan Waktu Panen</string>
+    <string name="lokasi_penanaman">Lokasi Penanaman</string>
+    <string name="klik_untuk_memilih_lokasi">Klik untuk memilih lokasi</string>
 </resources>
