@@ -24,8 +24,8 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
-
+            android:contentDescription="@string/gambar_tanaman"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <View
             android:layout_width="0dp"
@@ -47,7 +47,7 @@
             android:layout_marginEnd="10dp"
             android:text="@string/padi"
             android:textAlignment="center"
-            android:textColor="@color/white"
+            android:textColor="@color/light_primary"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>

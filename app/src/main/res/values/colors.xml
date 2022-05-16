@@ -9,4 +9,6 @@
     <color name="dark_secondary">#606977</color>
     <color name="red_accent">#FFD65B32</color>
     <color name="shadow_black">#6F000000</color>
+    <color name="light_green_accent">#638787</color>
+    <color name="brown_accent">#936E4C</color>
 </resources>
