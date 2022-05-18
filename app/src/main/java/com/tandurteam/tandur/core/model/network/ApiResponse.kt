@@ -2,6 +2,7 @@ package com.tandurteam.tandur.core.model.network
 
 sealed class ApiResponse<out R> {
     data class Success<out T>(val data: T) : ApiResponse<T>()
+    data class Loading<out T>(val data: T? = null) : ApiResponse<T>()
     data class Error(val errorMessage: String) : ApiResponse<Nothing>()
     object Empty : ApiResponse<Nothing>()
 }
