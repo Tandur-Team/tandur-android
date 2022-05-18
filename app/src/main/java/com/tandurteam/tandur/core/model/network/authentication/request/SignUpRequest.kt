@@ -1,4 +1,4 @@
-package com.tandurteam.tandur.core.model.authentication.request
+package com.tandurteam.tandur.core.model.network.authentication.request
 
 data class SignUpRequest(
     val name: String,

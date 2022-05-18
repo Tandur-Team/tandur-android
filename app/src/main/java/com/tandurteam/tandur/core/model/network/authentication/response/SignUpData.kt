@@ -1,4 +1,4 @@
-package com.tandurteam.tandur.core.model.authentication.response
+package com.tandurteam.tandur.core.model.network.authentication.response
 
 data class SignUpData(
     val _id: String?,
