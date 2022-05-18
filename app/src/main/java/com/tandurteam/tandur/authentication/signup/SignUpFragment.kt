@@ -49,46 +49,72 @@ class SignUpFragment : Fragment() {
                     etPassword.text.toString()
                 )
 
-                viewModel.signUpUser(signUpRequest).observe(viewLifecycleOwner) {
-                    it?.let { response ->
-                        when (response) {
-                            is ApiResponse.Loading -> {
-                                progressLoading.visibility = View.VISIBLE
-                                btnSignUp.visibility = View.GONE
-                                tvBack.visibility = View.GONE
-                            }
-
-                            is ApiResponse.Success -> {
-                                // show success message
-                                Toast.makeText(
-                                    requireContext(),
-                                    "${response.data.data?.name} Berhasil didaftarkan",
-                                    Toast.LENGTH_SHORT
-                                ).show()
-
-                                // go to dashboard
-                                Intent(requireContext(), DashboardActivity::class.java).apply {
-                                    requireContext().startActivity(this)
+                // sign up user if all form are not empty
+                if (validateForm()) {
+                    viewModel.signUpUser(signUpRequest).observe(viewLifecycleOwner) {
+                        it?.let { response ->
+                            when (response) {
+                                is ApiResponse.Loading -> {
+                                    progressLoading.visibility = View.VISIBLE
+                                    btnSignUp.visibility = View.GONE
+                                    tvBack.visibility = View.GONE
                                 }
-                            }
 
-                            else -> {
-                                // show error message
-                                Toast.makeText(
-                                    requireContext(),
-                                    "Gagal melakukan registrasi, silakan ulangi lagi",
-                                    Toast.LENGTH_SHORT
-                                ).show()
+                                is ApiResponse.Success -> {
+                                    // show success message
+                                    Toast.makeText(
+                                        requireContext(),
+                                        "${response.data.data?.name} Berhasil didaftarkan",
+                                        Toast.LENGTH_SHORT
+                                    ).show()
 
-                                // hide loading and show buttons
-                                progressLoading.visibility = View.GONE
-                                btnSignUp.visibility = View.VISIBLE
-                                tvBack.visibility = View.VISIBLE
+                                    // go to dashboard
+                                    Intent(requireContext(), DashboardActivity::class.java).apply {
+                                        requireContext().startActivity(this)
+                                    }
+                                }
+
+                                else -> {
+                                    // show error message
+                                    Toast.makeText(
+                                        requireContext(),
+                                        "Gagal melakukan registrasi, silakan ulangi lagi",
+                                        Toast.LENGTH_SHORT
+                                    ).show()
+
+                                    // hide loading and show buttons
+                                    progressLoading.visibility = View.GONE
+                                    btnSignUp.visibility = View.VISIBLE
+                                    tvBack.visibility = View.VISIBLE
+                                }
                             }
                         }
                     }
                 }
             }
         }
+    }
+
+    private fun validateForm(): Boolean {
+        with(binding) {
+            if (!etEmail.isNotEmpty) {
+                etEmail.onFormEmpty()
+                return false
+            } else if (!etFullName.isNotEmpty) {
+                etFullName.onFormEmpty()
+                return false
+            } else if (!etPassword.isNotEmpty) {
+                etPassword.onFormEmpty()
+                return false
+            } else if (!etEmail.isEmailValid) {
+                etEmail.onEmailInvalid()
+                return false
+            } else if (!etPassword.isPasswordValid) {
+                etPassword.onPasswordInvalid()
+                return false
+            }
+        }
+
+        return true
     }
 }

@@ -55,7 +55,7 @@
     <string name="let_s_complete_the_form">Mari Lengkapi form di bawah!</string>
     <string name="full_name">Nama Lengkap</string>
     <string name="password">Password</string>
-    <string name="password_invalid">Jumlah karakter password harus >6</string>
+    <string name="password_invalid">Minimal karakter pada password harus 6</string>
     <string name="sign_up">Daftar</string>
     <string name="back">Kembali</string>
     <string name="pass_the_credentials">Masuk dengan Email</string>
