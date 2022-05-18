@@ -22,9 +22,11 @@ class AuthRepository(private val apiService: ApiService) {
 
                 when (response.message) {
                     USER_CREATED -> {
+                        Log.d(TAG, "signUpUser: Success")
                         emit(ApiResponse.Success(response))
                     }
                     else -> {
+                        Log.d(TAG, "signUpUser: Fail ${response.message}")
                         response.message?.let {
                             emit(ApiResponse.Error(it))
                         }
@@ -63,7 +65,7 @@ class AuthRepository(private val apiService: ApiService) {
 
     companion object {
         private val TAG = AuthRepository::class.java.simpleName
-        private const val USER_CREATED = "User Created"
+        private const val USER_CREATED = "User created"
         private const val AUTH_SUCCESS = "Auth Success"
     }
 }
