@@ -3,8 +3,6 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/ACER/AndroidStudioProjects/tandur-android/app/src/main/res/layout/fragment_detail.xml" value="0.2037037037037037" />
-        <entry key="..\:/Users/ACER/AndroidStudioProjects/tandur-android/app/src/main/res/layout/fragment_sign_up.xml" value="0.10989583333333333" />
         <entry key="..\:/Users/bagas/AndroidStudioProjects/Capstone/tandur-android/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.166" />
         <entry key="..\:/Users/bagas/AndroidStudioProjects/Capstone/tandur-android/app/src/main/res/drawable/bg_btn_tanam.xml" value="0.2625" />
         <entry key="..\:/Users/bagas/AndroidStudioProjects/Capstone/tandur-android/app/src/main/res/drawable/bg_circle.xml" value="0.3315" />
@@ -46,6 +44,7 @@
         <entry key="..\:/Users/bagas/AndroidStudioProjects/Capstone/tandur-android/app/src/main/res/layout/fragment_detail.xml" value="0.48434237995824636" />
         <entry key="..\:/Users/bagas/AndroidStudioProjects/Capstone/tandur-android/app/src/main/res/layout/fragment_home.xml" value="0.33" />
         <entry key="..\:/Users/bagas/AndroidStudioProjects/Capstone/tandur-android/app/src/main/res/layout/fragment_input_email.xml" value="0.3625" />
+        <entry key="..\:/Users/bagas/AndroidStudioProjects/Capstone/tandur-android/app/src/main/res/layout/fragment_login.xml" value="0.3625" />
         <entry key="..\:/Users/bagas/AndroidStudioProjects/Capstone/tandur-android/app/src/main/res/layout/fragment_my_plant.xml" value="0.33" />
         <entry key="..\:/Users/bagas/AndroidStudioProjects/Capstone/tandur-android/app/src/main/res/layout/fragment_my_plant_detail.xml" value="0.5" />
         <entry key="..\:/Users/bagas/AndroidStudioProjects/Capstone/tandur-android/app/src/main/res/layout/fragment_profile.xml" value="0.33" />

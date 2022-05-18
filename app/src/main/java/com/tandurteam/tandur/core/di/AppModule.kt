@@ -1,5 +1,6 @@
 package com.tandurteam.tandur.core.di
 
+import com.tandurteam.tandur.authentication.login.LoginViewModel
 import com.tandurteam.tandur.authentication.signup.SignUpViewModel
 import com.tandurteam.tandur.core.model.network.ApiService
 import com.tandurteam.tandur.core.model.network.authentication.AuthRepository
@@ -35,4 +36,5 @@ val repositoryModule = module {
 
 val viewModelModule = module {
     viewModel { SignUpViewModel(get()) }
+    viewModel { LoginViewModel(get()) }
 }

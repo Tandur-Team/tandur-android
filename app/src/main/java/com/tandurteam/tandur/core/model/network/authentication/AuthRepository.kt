@@ -39,7 +39,7 @@ class AuthRepository(private val apiService: ApiService) {
         }.flowOn(Dispatchers.IO)
     }
 
-    suspend fun loginUser(loginRequest: LoginRequest): Flow<ApiResponse<LoginResponse>> {
+    fun loginUser(loginRequest: LoginRequest): Flow<ApiResponse<LoginResponse>> {
         return flow {
             try {
                 emit(ApiResponse.Loading())
