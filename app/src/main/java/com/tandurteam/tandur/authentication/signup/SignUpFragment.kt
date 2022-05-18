@@ -1,16 +1,15 @@
 package com.tandurteam.tandur.authentication.signup
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.navigation.Navigation
 import androidx.navigation.fragment.navArgs
 import com.tandurteam.tandur.core.model.network.ApiResponse
 import com.tandurteam.tandur.core.model.network.authentication.request.SignUpRequest
-import com.tandurteam.tandur.dashboard.DashboardActivity
 import com.tandurteam.tandur.databinding.FragmentSignUpBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -68,10 +67,12 @@ class SignUpFragment : Fragment() {
                                         Toast.LENGTH_SHORT
                                     ).show()
 
-                                    // go to dashboard
-                                    Intent(requireContext(), DashboardActivity::class.java).apply {
-                                        requireContext().startActivity(this)
-                                    }
+                                    // go to login
+                                    val action =
+                                        SignUpFragmentDirections.navigateSignUpFragmentToLoginFragment(
+                                            etEmail.text.toString()
+                                        )
+                                    Navigation.findNavController(binding.root).navigate(action)
                                 }
 
                                 else -> {

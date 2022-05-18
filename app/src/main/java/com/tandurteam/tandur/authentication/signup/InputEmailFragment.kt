@@ -40,7 +40,7 @@ class InputEmailFragment : Fragment() {
 
             // Sign in on click
             tvSignIn.setOnClickListener {
-                val action = InputEmailFragmentDirections.navigateToLoginFragment()
+                val action = InputEmailFragmentDirections.navigateToLoginFragment(null)
                 Navigation.findNavController(binding.root).navigate(action)
             }
         }

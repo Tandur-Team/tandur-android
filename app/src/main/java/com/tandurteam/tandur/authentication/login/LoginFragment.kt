@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.navArgs
 import com.tandurteam.tandur.core.model.network.ApiResponse
 import com.tandurteam.tandur.core.model.network.authentication.request.LoginRequest
 import com.tandurteam.tandur.dashboard.DashboardActivity
@@ -16,6 +17,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 class LoginFragment : Fragment() {
 
     private val viewModel: LoginViewModel by viewModel()
+    private val navArgs: LoginFragmentArgs by navArgs()
     private var _binding: FragmentLoginBinding? = null
     private val binding get() = _binding!!
 
@@ -34,6 +36,9 @@ class LoginFragment : Fragment() {
         with(binding) {
             // On back pressed
             tvBack.setOnClickListener { requireActivity().onBackPressed() }
+
+            // Set email from nav args
+            etEmail.setText(navArgs.email)
 
             // On login clicked
             btnSignIn.setOnClickListener {
