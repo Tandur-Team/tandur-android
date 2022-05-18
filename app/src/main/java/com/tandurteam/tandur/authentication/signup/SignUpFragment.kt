@@ -6,9 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.tandurteam.tandur.databinding.FragmentSignUpBinding
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class SignUpFragment : Fragment() {
 
+    private val viewModel: SignUpViewModel by viewModel()
     private var _binding: FragmentSignUpBinding? = null
     private val binding get() = _binding!!
 
