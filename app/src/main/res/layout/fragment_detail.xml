@@ -249,212 +249,26 @@
             app:layout_constraintTop_toBottomOf="@+id/tv_user_durasi" />
 
         <TextView
-            android:id="@+id/tv_saya_ingin_menanam"
+            android:id="@+id/tv_kondisi_lingkungan"
             style="@style/Medium16Sp"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
             android:layout_marginTop="24dp"
             android:layout_marginEnd="30dp"
-            android:text="@string/saya_ingin_menanam_dummy"
+            android:text="@string/kondisi_lingkungan_anda"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/v_line3" />
 
-        <ImageView
-            android:id="@+id/ic_rain"
-            android:layout_width="18dp"
-            android:layout_height="18dp"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="20dp"
-            android:contentDescription="@string/icon_hujan"
-            android:src="@drawable/ic_rain"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_saya_ingin_menanam"
-            app:tint="@color/green_accent" />
-
-        <TextView
-            android:id="@+id/tv_curah_hujan"
-            style="@style/Medium14Sp"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="20dp"
-            android:text="@string/curah_hujan"
-            android:textColor="@color/green_accent"
-            app:layout_constraintBottom_toTopOf="@id/tv_user_curah_hujan"
-            app:layout_constraintEnd_toStartOf="@id/iv_status_curah_hujan"
-            app:layout_constraintStart_toEndOf="@id/ic_rain"
-            app:layout_constraintTop_toTopOf="@id/ic_rain" />
-
-        <TextView
-            android:id="@+id/tv_user_curah_hujan"
-            style="@style/Regular12Sp"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="20dp"
-            android:text="@string/tinggi"
-            android:textColor="@color/green_accent"
-            app:layout_constraintBottom_toBottomOf="@id/ic_rain"
-            app:layout_constraintEnd_toStartOf="@id/iv_status_curah_hujan"
-            app:layout_constraintStart_toEndOf="@id/ic_rain"
-            app:layout_constraintTop_toBottomOf="@id/tv_curah_hujan" />
-
-        <ImageView
-            android:id="@+id/iv_status_curah_hujan"
-            android:layout_width="18dp"
-            android:layout_height="18dp"
-            android:layout_marginEnd="30dp"
-            android:contentDescription="@string/icon_status"
-            android:src="@drawable/ic_check"
-            app:layout_constraintBottom_toBottomOf="@id/tv_user_curah_hujan"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@id/tv_curah_hujan"
-            app:tint="@color/green_accent" />
-
-        <View
-            android:id="@+id/v_line4"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_kondisi_lingkungan"
             android:layout_width="match_parent"
-            android:layout_height="3dp"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="30dp"
-            android:background="@drawable/bg_radius_8dp"
-            android:backgroundTint="@color/light_secondary"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_user_curah_hujan" />
-
-        <ImageView
-            android:id="@+id/ic_tempratur"
-            android:layout_width="18dp"
-            android:layout_height="18dp"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="20dp"
-            android:contentDescription="@string/icon_tempratu"
-            android:src="@drawable/ic_temperature"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/v_line4"
-            app:tint="@color/green_accent" />
-
-        <TextView
-            android:id="@+id/tv_temp"
-            style="@style/Medium14Sp"
-            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="20dp"
-            android:text="@string/tempratur_suhu"
-            android:textColor="@color/green_accent"
-            app:layout_constraintBottom_toTopOf="@id/tv_user_temp"
-            app:layout_constraintEnd_toStartOf="@id/iv_status_temp"
-            app:layout_constraintStart_toEndOf="@id/ic_tempratur"
-            app:layout_constraintTop_toTopOf="@id/ic_tempratur" />
-
-        <TextView
-            android:id="@+id/tv_user_temp"
-            style="@style/Regular12Sp"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="20dp"
-            android:text="@string/rendah"
-            android:textColor="@color/green_accent"
-            app:layout_constraintBottom_toBottomOf="@id/ic_tempratur"
-            app:layout_constraintEnd_toStartOf="@id/iv_status_temp"
-            app:layout_constraintStart_toEndOf="@id/ic_tempratur"
-            app:layout_constraintTop_toBottomOf="@id/tv_temp" />
-
-        <ImageView
-            android:id="@+id/iv_status_temp"
-            android:layout_width="18dp"
-            android:layout_height="18dp"
-            android:layout_marginEnd="30dp"
-            android:contentDescription="@string/icon_status"
-            android:src="@drawable/ic_check"
-            app:layout_constraintBottom_toBottomOf="@id/tv_user_temp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@id/tv_temp"
-            app:tint="@color/green_accent" />
-
-        <View
-            android:id="@+id/v_line5"
-            android:layout_width="match_parent"
-            android:layout_height="3dp"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="30dp"
-            android:background="@drawable/bg_radius_8dp"
-            android:backgroundTint="@color/light_secondary"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="16dp"
+            tools:listitem="@layout/item_condition_detail"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_user_temp" />
-
-        <ImageView
-            android:id="@+id/ic_ph"
-            android:layout_width="18dp"
-            android:layout_height="18dp"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="20dp"
-            android:contentDescription="@string/icon_soil"
-            android:src="@drawable/ic_soil"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/v_line5"
-            app:tint="@color/green_accent" />
-
-        <TextView
-            android:id="@+id/tv_ph"
-            style="@style/Medium14Sp"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="20dp"
-            android:text="@string/ph_tanah"
-            android:textColor="@color/green_accent"
-            app:layout_constraintBottom_toTopOf="@id/tv_user_ph"
-            app:layout_constraintEnd_toStartOf="@id/iv_status_ph"
-            app:layout_constraintStart_toEndOf="@id/ic_ph"
-            app:layout_constraintTop_toTopOf="@id/ic_ph" />
-
-        <TextView
-            android:id="@+id/tv_user_ph"
-            style="@style/Regular12Sp"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="20dp"
-            android:text="@string/rendah"
-            android:textColor="@color/green_accent"
-            app:layout_constraintBottom_toBottomOf="@id/ic_ph"
-            app:layout_constraintEnd_toStartOf="@id/iv_status_ph"
-            app:layout_constraintStart_toEndOf="@id/ic_ph"
-            app:layout_constraintTop_toBottomOf="@id/tv_ph" />
-
-        <ImageView
-            android:id="@+id/iv_status_ph"
-            android:layout_width="18dp"
-            android:layout_height="18dp"
-            android:layout_marginEnd="30dp"
-            android:contentDescription="@string/icon_status"
-            android:src="@drawable/ic_check"
-            app:layout_constraintBottom_toBottomOf="@id/tv_user_ph"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@id/tv_ph"
-            app:tint="@color/green_accent" />
-
-        <View
-            android:id="@+id/v_line6"
-            android:layout_width="match_parent"
-            android:layout_height="3dp"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="30dp"
-            android:background="@drawable/bg_radius_8dp"
-            android:backgroundTint="@color/light_secondary"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_user_ph" />
+            app:layout_constraintTop_toBottomOf="@id/tv_kondisi_lingkungan"/>
 
         <Button
             android:id="@+id/btn_tanam_baru"
@@ -474,7 +288,7 @@
             android:textAllCaps="false"
             android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@id/v_line6" />
+            app:layout_constraintTop_toBottomOf="@id/rv_kondisi_lingkungan" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

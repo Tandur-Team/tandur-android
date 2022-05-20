@@ -6,13 +6,16 @@ import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import com.tandurteam.tandur.authentication.AuthenticationActivity
+import com.tandurteam.tandur.dashboard.DashboardActivity
 import com.tandurteam.tandur.databinding.ActivityMainBinding
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainActivity : AppCompatActivity() {
 
+    private val viewModel: MainViewModel by viewModel()
     private var _binding: ActivityMainBinding? = null
     private val binding get() = _binding!!
 
@@ -28,12 +31,26 @@ class MainActivity : AppCompatActivity() {
 
         runBlocking {
             lifecycleScope.launch {
-                delay(2000)
+                delay(1000)
+                checkUserToken()
+            }
+        }
+    }
 
-                // go to authentication
-                Intent(this@MainActivity, AuthenticationActivity::class.java).apply {
-                    startActivity(this)
-                }.also { finish() }
+    private fun checkUserToken() {
+        viewModel.getUserToken().observe(this) {
+            it?.let { token ->
+                if (token.isNotEmpty()) {
+                    // go to dashboard
+                    Intent(this@MainActivity, DashboardActivity::class.java).apply {
+                        startActivity(this)
+                    }.also { finish() }
+                } else {
+                    // go to authentication
+                    Intent(this@MainActivity, AuthenticationActivity::class.java).apply {
+                        startActivity(this)
+                    }.also { finish() }
+                }
             }
         }
     }

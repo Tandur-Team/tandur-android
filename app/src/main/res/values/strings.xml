@@ -96,9 +96,16 @@
     <string name="perkiraan_waktu_panen">Perkiraan Waktu Panen</string>
     <string name="lokasi_penanaman">Lokasi Penanaman</string>
     <string name="klik_untuk_memilih_lokasi">Klik untuk memilih lokasi</string>
-    <string name="tingkat_keberhasilan_detail">40</string>
+    <string name="tingkat_keberhasilan_detail">90</string>
     <string name="tingkat_keberhasilan_detail_myplant">40</string>
     <string name="logout">Logout</string>
+    <string name="kondisi_lingkungan_anda">Kondisi Lingkungan Anda</string>
+    <string name="detail_bulan">Bulan 1</string>
+    <string name="terdapat_peringatan">Terdapat Peringatan</string>
+    <string name="icon_humidity">Icon Humidity</string>
+    <string name="tingkat_hujan_detail">202</string>
+    <string name="tingkat_humidity_detail">80</string>
+    <string name="tingkat_tempratur_detail">28°C</string>
     <string name="title_activity_maps">MapsActivity</string>
     <string name="simpan_lokasi">Simpan Lokasi</string>
     <string name="lokasi_saya">Lokasi Saya</string>
