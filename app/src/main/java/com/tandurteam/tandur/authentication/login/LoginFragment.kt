@@ -38,7 +38,9 @@ class LoginFragment : Fragment() {
             tvBack.setOnClickListener { requireActivity().onBackPressed() }
 
             // Set email from nav args
-            etEmail.setText(navArgs.email)
+            navArgs.email?.let {
+                etEmail.setText(it)
+            }
 
             // On login clicked
             btnSignIn.setOnClickListener {
