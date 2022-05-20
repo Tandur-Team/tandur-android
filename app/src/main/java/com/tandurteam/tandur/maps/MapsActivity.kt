@@ -5,6 +5,7 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.content.res.Resources
+import android.location.Geocoder
 import android.location.Location
 import android.os.Bundle
 import android.util.Log
@@ -26,6 +27,7 @@ import com.google.android.gms.maps.model.MarkerOptions
 import com.tandurteam.tandur.R
 import com.tandurteam.tandur.dashboard.DashboardActivity
 import com.tandurteam.tandur.databinding.ActivityMapsBinding
+import java.util.*
 
 class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
@@ -88,7 +90,8 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         // Add a marker in Sydney and move the camera
         mMap.uiSettings.isIndoorLevelPickerEnabled = true
         mMap.uiSettings.isCompassEnabled = true
-        mMap.uiSettings.isMapToolbarEnabled = true
+        mMap.uiSettings.isMapToolbarEnabled = false
+        mMap.uiSettings.isMyLocationButtonEnabled = false
 
         getMyLocation()
         setMapStyle()
@@ -106,6 +109,8 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     }
 
     private fun setMarkerLocation(location: LatLng) {
+        val geocoder = Geocoder(this, Locale.getDefault())
+
         marker = if (marker != null) {
             marker?.remove()
             mMap.addMarker(MarkerOptions().position(location))
@@ -115,6 +120,16 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                     .position(location)
                     .title("Marked")
             )
+        }
+
+        // Get location info
+        val address = geocoder.getFromLocation(
+            location.latitude,
+            location.longitude,
+            1
+        ).firstOrNull()?.getAddressLine(0)
+        address?.let {
+            binding.tvLocationInfo.text = it
         }
 
         selectedLocation = location

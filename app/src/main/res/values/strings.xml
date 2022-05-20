@@ -103,4 +103,5 @@
     <string name="simpan_lokasi">Simpan Lokasi</string>
     <string name="lokasi_saya">Lokasi Saya</string>
     <string name="pilih_lokasi_anda">Pilih Lokasi Anda</string>
+    <string name="block_loading_background">block loading background</string>
 </resources>
