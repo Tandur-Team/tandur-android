@@ -99,4 +99,5 @@
     <string name="tingkat_keberhasilan_detail">40</string>
     <string name="tingkat_keberhasilan_detail_myplant">40</string>
     <string name="logout">Logout</string>
+    <string name="title_activity_maps">MapsActivity</string>
 </resources>
