@@ -1,6 +1,5 @@
 package com.tandurteam.tandur.core.di
 
-import androidx.datastore.preferences.preferencesDataStore
 import com.tandurteam.tandur.authentication.login.LoginViewModel
 import com.tandurteam.tandur.authentication.signup.SignUpViewModel
 import com.tandurteam.tandur.core.helper.SharedPreferences
@@ -8,6 +7,7 @@ import com.tandurteam.tandur.core.model.network.ApiService
 import com.tandurteam.tandur.core.model.network.authentication.AuthRepository
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
+import org.koin.android.ext.koin.androidContext
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 import retrofit2.Retrofit
@@ -34,11 +34,7 @@ val networkModule = module {
 
 val dataStoreModule = module {
     single {
-        preferencesDataStore(name = "settings")
-    }
-
-    single {
-        SharedPreferences(get())
+        SharedPreferences(androidContext())
     }
 }
 

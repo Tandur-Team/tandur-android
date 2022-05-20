@@ -1,8 +1,8 @@
 package com.tandurteam.tandur.core.model.network.authentication
 
 import android.util.Log
-import androidx.datastore.core.DataStore
-import androidx.datastore.preferences.core.Preferences
+import androidx.lifecycle.asLiveData
+import com.tandurteam.tandur.core.helper.SharedPreferences
 import com.tandurteam.tandur.core.model.network.ApiResponse
 import com.tandurteam.tandur.core.model.network.ApiService
 import com.tandurteam.tandur.core.model.network.authentication.request.LoginRequest
@@ -16,7 +16,7 @@ import kotlinx.coroutines.flow.flowOn
 
 class AuthRepository(
     private val apiService: ApiService,
-    private val dataStore: DataStore<Preferences>
+    private val dataStore: SharedPreferences
 ) {
     fun signUpUser(signUpRequest: SignUpRequest): Flow<ApiResponse<SignUpResponse>> {
         return flow {
@@ -53,6 +53,13 @@ class AuthRepository(
 
                 when (response.message) {
                     AUTH_SUCCESS -> {
+                        // save token to datastore
+                        response.token?.let {
+                            dataStore.saveUserToken(it)
+                        }
+                        Log.d(TAG, "loginUser: ${dataStore.getUserToken().asLiveData().value}")
+
+                        // emit success
                         emit(ApiResponse.Success(response))
                     }
                     else -> {
