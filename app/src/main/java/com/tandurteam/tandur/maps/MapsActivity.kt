@@ -9,7 +9,6 @@ import android.location.Geocoder
 import android.location.Location
 import android.os.Bundle
 import android.util.Log
-import android.view.View
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
@@ -60,25 +59,18 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
             // on back pressed
             btnBack.setOnClickListener { onBackPressed() }
 
-            // action when intentData is exist
-            intentData?.let {
-                // set visibility
-                btnMyLocation.visibility = View.VISIBLE
-                btnAdd.visibility = View.VISIBLE
+            // set my location button on click listener
+            btnMyLocation.setOnClickListener { getMyLastLocation() }
 
-                // set my location button on click listener
-                btnMyLocation.setOnClickListener { getMyLastLocation() }
-
-                // set add button on click listener
-                btnAdd.setOnClickListener {
-                    selectedLocation?.let { latLng ->
-                        Log.d(TAG, "onCreate: $latLng")
-                        Intent(this@MapsActivity, DashboardActivity::class.java).apply {
-                            putExtra(SET_LOCATION_DATA, latLng)
-                            setResult(resultCode, this)
-                        }
-                        finish()
+            // set add button on click listener
+            btnAdd.setOnClickListener {
+                selectedLocation?.let { latLng ->
+                    Log.d(TAG, "onCreate: $latLng")
+                    Intent(this@MapsActivity, DashboardActivity::class.java).apply {
+                        putExtra(SET_LOCATION_DATA, latLng)
+                        setResult(resultCode, this)
                     }
+                    finish()
                 }
             }
         }
@@ -93,7 +85,10 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         mMap.uiSettings.isMapToolbarEnabled = false
         mMap.uiSettings.isMyLocationButtonEnabled = false
 
+        // get my location
         getMyLocation()
+
+        // set map style
         setMapStyle()
 
         // mark clicked map
@@ -105,7 +100,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         locationFromIntent?.let { latLng ->
             moveAndAnimateCamera(latLng)
             intentData?.let { setMarkerLocation(latLng) }
-        }
+        } ?: run { getMyLastLocation() }
     }
 
     private fun setMarkerLocation(location: LatLng) {
