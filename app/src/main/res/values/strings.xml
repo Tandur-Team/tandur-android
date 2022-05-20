@@ -100,4 +100,7 @@
     <string name="tingkat_keberhasilan_detail_myplant">40</string>
     <string name="logout">Logout</string>
     <string name="title_activity_maps">MapsActivity</string>
+    <string name="simpan_lokasi">Simpan Lokasi</string>
+    <string name="lokasi_saya">Lokasi Saya</string>
+    <string name="pilih_lokasi_anda">Pilih Lokasi Anda</string>
 </resources>
