@@ -39,16 +39,18 @@ class MainActivity : AppCompatActivity() {
 
     private fun checkUserToken() {
         viewModel.getUserToken().observe(this) {
-            it?.let {
-                // go to dashboard
-                Intent(this@MainActivity, DashboardActivity::class.java).apply {
-                    startActivity(this)
-                }.also { finish() }
-            } ?: run {
-                // go to authentication
-                Intent(this@MainActivity, AuthenticationActivity::class.java).apply {
-                    startActivity(this)
-                }.also { finish() }
+            it?.let { token ->
+                if (token.isNotEmpty()) {
+                    // go to dashboard
+                    Intent(this@MainActivity, DashboardActivity::class.java).apply {
+                        startActivity(this)
+                    }.also { finish() }
+                } else {
+                    // go to authentication
+                    Intent(this@MainActivity, AuthenticationActivity::class.java).apply {
+                        startActivity(this)
+                    }.also { finish() }
+                }
             }
         }
     }

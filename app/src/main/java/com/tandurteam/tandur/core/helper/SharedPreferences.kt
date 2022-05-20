@@ -26,4 +26,10 @@ class SharedPreferences(private val context: Context) {
             preferences[token] = userToken
         }
     }
+
+    suspend fun clearUserToken() {
+        context.dataStore.edit { preferences ->
+            preferences[token] = ""
+        }
+    }
 }
