@@ -1,6 +1,8 @@
 package com.tandurteam.tandur.core.model.network.authentication
 
 import android.util.Log
+import androidx.datastore.core.DataStore
+import androidx.datastore.preferences.core.Preferences
 import com.tandurteam.tandur.core.model.network.ApiResponse
 import com.tandurteam.tandur.core.model.network.ApiService
 import com.tandurteam.tandur.core.model.network.authentication.request.LoginRequest
@@ -12,7 +14,10 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 
-class AuthRepository(private val apiService: ApiService) {
+class AuthRepository(
+    private val apiService: ApiService,
+    private val dataStore: DataStore<Preferences>
+) {
     fun signUpUser(signUpRequest: SignUpRequest): Flow<ApiResponse<SignUpResponse>> {
         return flow {
             try {

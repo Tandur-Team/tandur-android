@@ -1,7 +1,9 @@
 package com.tandurteam.tandur.core.di
 
+import androidx.datastore.preferences.preferencesDataStore
 import com.tandurteam.tandur.authentication.login.LoginViewModel
 import com.tandurteam.tandur.authentication.signup.SignUpViewModel
+import com.tandurteam.tandur.core.helper.SharedPreferences
 import com.tandurteam.tandur.core.model.network.ApiService
 import com.tandurteam.tandur.core.model.network.authentication.AuthRepository
 import okhttp3.OkHttpClient
@@ -30,8 +32,18 @@ val networkModule = module {
     }
 }
 
+val dataStoreModule = module {
+    single {
+        preferencesDataStore(name = "settings")
+    }
+
+    single {
+        SharedPreferences(get())
+    }
+}
+
 val repositoryModule = module {
-    factory { AuthRepository(get()) }
+    factory { AuthRepository(get(), get()) }
 }
 
 val viewModelModule = module {
