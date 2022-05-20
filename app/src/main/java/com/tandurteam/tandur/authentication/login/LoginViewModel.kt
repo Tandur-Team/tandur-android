@@ -8,7 +8,7 @@ import com.tandurteam.tandur.core.model.network.authentication.AuthRepository
 import com.tandurteam.tandur.core.model.network.authentication.request.LoginRequest
 import com.tandurteam.tandur.core.model.network.authentication.response.LoginResponse
 
-class LoginViewModel(private val authRepository: AuthRepository): ViewModel() {
+class LoginViewModel(private val authRepository: AuthRepository) : ViewModel() {
     fun loginUser(loginRequest: LoginRequest): LiveData<ApiResponse<LoginResponse>> =
         authRepository.loginUser(loginRequest).asLiveData()
 }

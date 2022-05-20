@@ -1,11 +1,15 @@
 package com.tandurteam.tandur.core.di
 
+import com.tandurteam.tandur.MainViewModel
 import com.tandurteam.tandur.authentication.login.LoginViewModel
 import com.tandurteam.tandur.authentication.signup.SignUpViewModel
+import com.tandurteam.tandur.core.helper.SharedPreferences
 import com.tandurteam.tandur.core.model.network.ApiService
 import com.tandurteam.tandur.core.model.network.authentication.AuthRepository
+import com.tandurteam.tandur.dashboard.profile.ProfileViewModel
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
+import org.koin.android.ext.koin.androidContext
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 import retrofit2.Retrofit
@@ -30,11 +34,19 @@ val networkModule = module {
     }
 }
 
+val dataStoreModule = module {
+    single {
+        SharedPreferences(androidContext())
+    }
+}
+
 val repositoryModule = module {
-    factory { AuthRepository(get()) }
+    factory { AuthRepository(get(), get()) }
 }
 
 val viewModelModule = module {
+    viewModel { MainViewModel(get()) }
     viewModel { SignUpViewModel(get()) }
     viewModel { LoginViewModel(get()) }
+    viewModel { ProfileViewModel(get()) }
 }

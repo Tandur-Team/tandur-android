@@ -1,6 +1,7 @@
 package com.tandurteam.tandur
 
 import android.app.Application
+import com.tandurteam.tandur.core.di.dataStoreModule
 import com.tandurteam.tandur.core.di.networkModule
 import com.tandurteam.tandur.core.di.repositoryModule
 import com.tandurteam.tandur.core.di.viewModelModule
@@ -18,6 +19,7 @@ class MyApplication : Application() {
             modules(
                 listOf(
                     networkModule,
+                    dataStoreModule,
                     repositoryModule,
                     viewModelModule
                 )
