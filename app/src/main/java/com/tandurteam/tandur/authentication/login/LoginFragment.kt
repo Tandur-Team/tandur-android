@@ -68,6 +68,7 @@ class LoginFragment : Fragment() {
                                     // Move to dashboard
                                     Intent(requireActivity(), DashboardActivity::class.java).apply {
                                         requireActivity().startActivity(this)
+                                        requireActivity().finish()
                                     }
                                 }
 

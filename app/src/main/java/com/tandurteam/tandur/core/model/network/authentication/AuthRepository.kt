@@ -57,7 +57,7 @@ class AuthRepository(
                         response.token?.let {
                             dataStore.saveUserToken(it)
                         }
-                        Log.d(TAG, "loginUser: ${dataStore.getUserToken().asLiveData().value}")
+                        Log.d(TAG, "loginUser: ${dataStore.getUserToken().asLiveData()}")
 
                         // emit success
                         emit(ApiResponse.Success(response))
