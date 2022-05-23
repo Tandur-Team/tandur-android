@@ -122,9 +122,10 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
             location.latitude,
             location.longitude,
             1
-        ).firstOrNull()?.getAddressLine(0)
+        ).firstOrNull()
         address?.let {
-            binding.tvLocationInfo.text = it
+            binding.tvLocationInfo.text =
+                getString(R.string.location_info, it.locality, it.subAdminArea)
         }
 
         selectedLocation = location

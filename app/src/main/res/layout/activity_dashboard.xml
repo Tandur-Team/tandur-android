@@ -11,7 +11,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="@drawable/bg_radius_8dp_top_only"
-        android:backgroundTint="?colorSecondary"
+        android:backgroundTint="?colorPrimary"
         android:paddingVertical="10dp"
         app:itemIconTint="@color/bottom_nav_color"
         app:itemRippleColor="@color/green_accent"

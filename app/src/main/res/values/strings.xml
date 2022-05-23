@@ -111,4 +111,5 @@
     <string name="lokasi_saya">Lokasi Saya</string>
     <string name="pilih_lokasi_anda">Pilih Lokasi Anda</string>
     <string name="block_loading_background">block loading background</string>
+    <string name="location_info">%1s, %2s</string>
 </resources>
