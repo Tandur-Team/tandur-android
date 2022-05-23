@@ -6,6 +6,8 @@ import com.tandurteam.tandur.authentication.signup.SignUpViewModel
 import com.tandurteam.tandur.core.helper.SharedPreferences
 import com.tandurteam.tandur.core.model.network.ApiService
 import com.tandurteam.tandur.core.model.network.authentication.AuthRepository
+import com.tandurteam.tandur.core.model.network.myplant.MyPlantRepository
+import com.tandurteam.tandur.dashboard.myplantlist.MyPlantViewModel
 import com.tandurteam.tandur.dashboard.profile.ProfileViewModel
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -42,6 +44,7 @@ val dataStoreModule = module {
 
 val repositoryModule = module {
     factory { AuthRepository(get(), get()) }
+    factory { MyPlantRepository(get(), get()) }
 }
 
 val viewModelModule = module {
@@ -49,4 +52,5 @@ val viewModelModule = module {
     viewModel { SignUpViewModel(get()) }
     viewModel { LoginViewModel(get()) }
     viewModel { ProfileViewModel(get()) }
+    viewModel { MyPlantViewModel(get()) }
 }

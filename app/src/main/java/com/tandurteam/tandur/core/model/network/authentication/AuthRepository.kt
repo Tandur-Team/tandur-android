@@ -3,6 +3,7 @@ package com.tandurteam.tandur.core.model.network.authentication
 import android.util.Log
 import androidx.lifecycle.asLiveData
 import com.tandurteam.tandur.core.constant.DataStoreConstant
+import com.tandurteam.tandur.core.constant.HttpConstant
 import com.tandurteam.tandur.core.helper.SharedPreferences
 import com.tandurteam.tandur.core.model.network.ApiResponse
 import com.tandurteam.tandur.core.model.network.ApiService
@@ -26,8 +27,8 @@ class AuthRepository(
 
                 val response = apiService.signUpUser(signUpRequest)
 
-                when (response.message) {
-                    USER_CREATED -> {
+                when (response.status) {
+                    HttpConstant.STATUS_CREATED -> {
                         Log.d(TAG, "signUpUser: Success")
                         emit(ApiResponse.Success(response))
                     }
@@ -52,16 +53,28 @@ class AuthRepository(
 
                 val response = apiService.loginUser(loginRequest)
 
-                when (response.message) {
-                    AUTH_SUCCESS -> {
+                when (response.status) {
+                    HttpConstant.STATUS_OK -> {
                         // save token to datastore
                         response.token?.let {
                             dataStore.saveStringData(it, DataStoreConstant.TOKEN)
                         }
+
+                        // save userId to datastore
+                        response.userId?.let {
+                            dataStore.saveStringData(it, DataStoreConstant.USER_ID)
+                        }
+
                         Log.d(
                             TAG,
                             "loginUser: ${
                                 dataStore.getStringData(DataStoreConstant.TOKEN).asLiveData()
+                            }"
+                        )
+                        Log.d(
+                            TAG,
+                            "loginUser: ${
+                                dataStore.getStringData(DataStoreConstant.USER_ID).asLiveData()
                             }"
                         )
 
@@ -83,7 +96,5 @@ class AuthRepository(
 
     companion object {
         private val TAG = AuthRepository::class.java.simpleName
-        private const val USER_CREATED = "User created"
-        private const val AUTH_SUCCESS = "Auth Success"
     }
 }
