@@ -224,46 +224,36 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:id="@+id/btn_logout"
         android:layout_width="0dp"
         android:layout_height="52dp"
+        android:layout_marginHorizontal="30dp"
+        android:layout_marginBottom="36dp"
         android:background="@drawable/bg_radius_8dp"
         android:backgroundTint="@color/red_accent"
+        android:contentDescription="@string/log_out"
         android:gravity="center"
-        android:layout_marginStart="30dp"
-        android:layout_marginEnd="30dp"
-        android:layout_marginBottom="36dp"
-        app:layout_constraintStart_toStartOf="parent"
+        android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
 
         <ImageView
-            android:id="@+id/ic_logout"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_logout"
-            android:layout_marginStart="135dp"
-            android:layout_marginTop="17dp"
-            android:layout_marginBottom="17dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            android:contentDescription="@string/logout" />
-
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:contentDescription="@string/logout"
+            android:src="@drawable/ic_logout" />
 
         <TextView
-            android:id="@+id/tv_logout"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="@string/logout"
             style="@style/Medium16Sp"
-            android:textColor="@color/light_primary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            app:layout_constraintStart_toEndOf="@id/ic_logout"
-            app:layout_constraintTop_toTopOf="@id/ic_logout"
-            app:layout_constraintBottom_toBottomOf="@id/ic_logout"/>
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            android:text="@string/logout"
+            android:textColor="@color/light_primary" />
+
+    </LinearLayout>
 
 
 
