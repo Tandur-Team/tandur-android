@@ -23,14 +23,20 @@ class MyPlantRepository(
             try {
                 emit(ApiResponse.Loading())
 
-                Log.d(TAG, "getAllMyPlant: Before get userId")
+                // get userId
                 val userId = withContext(Dispatchers.IO) {
                     dataStore.getStringData(DataStoreConstant.USER_ID).firstOrNull()
                 }
                 Log.d(TAG, "getAllMyPlant: $userId")
 
+                // get token
+                val token = withContext(Dispatchers.IO) {
+                    dataStore.getStringData(DataStoreConstant.TOKEN).firstOrNull()
+                }
+                Log.d(TAG, "getAllMyPlant: $token")
+
                 userId?.let { id ->
-                    val response = apiService.getAllMyPlant(id)
+                    val response = apiService.getAllMyPlant("Bearer $token", id)
                     when (response.status) {
                         HttpConstant.STATUS_OK -> {
                             Log.d(TAG, "getAllMyPlant: ${response.data}")

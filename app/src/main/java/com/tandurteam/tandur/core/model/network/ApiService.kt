@@ -5,10 +5,7 @@ import com.tandurteam.tandur.core.model.network.authentication.request.SignUpReq
 import com.tandurteam.tandur.core.model.network.authentication.response.LoginResponse
 import com.tandurteam.tandur.core.model.network.authentication.response.SignUpResponse
 import com.tandurteam.tandur.core.model.network.myplant.response.myplantlist.MyPlantListResponse
-import retrofit2.http.Body
-import retrofit2.http.GET
-import retrofit2.http.POST
-import retrofit2.http.Path
+import retrofit2.http.*
 
 interface ApiService {
     @POST("user/signup")
@@ -23,6 +20,7 @@ interface ApiService {
 
     @GET("user/{userId}/plant")
     suspend fun getAllMyPlant(
+        @Header("Authorization") bearerToken: String,
         @Path("userId") userId: String
     ): MyPlantListResponse
 }
