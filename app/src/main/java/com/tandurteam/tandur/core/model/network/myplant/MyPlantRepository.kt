@@ -1,7 +1,6 @@
 package com.tandurteam.tandur.core.model.network.myplant
 
 import android.util.Log
-import androidx.lifecycle.asLiveData
 import com.tandurteam.tandur.core.constant.DataStoreConstant
 import com.tandurteam.tandur.core.constant.HttpConstant
 import com.tandurteam.tandur.core.helper.SharedPreferences
@@ -10,8 +9,10 @@ import com.tandurteam.tandur.core.model.network.ApiService
 import com.tandurteam.tandur.core.model.network.myplant.response.myplantlist.MyPlantListResponse
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.firstOrNull
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
+import kotlinx.coroutines.withContext
 
 class MyPlantRepository(
     private val apiService: ApiService,
@@ -22,7 +23,11 @@ class MyPlantRepository(
             try {
                 emit(ApiResponse.Loading())
 
-                val userId = dataStore.getStringData(DataStoreConstant.USER_ID).asLiveData().value
+                Log.d(TAG, "getAllMyPlant: Before get userId")
+                val userId = withContext(Dispatchers.IO) {
+                    dataStore.getStringData(DataStoreConstant.USER_ID).firstOrNull()
+                }
+                Log.d(TAG, "getAllMyPlant: $userId")
 
                 userId?.let { id ->
                     val response = apiService.getAllMyPlant(id)
