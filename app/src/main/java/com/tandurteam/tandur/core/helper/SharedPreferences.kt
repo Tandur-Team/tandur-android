@@ -13,23 +13,24 @@ val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "se
 
 class SharedPreferences(private val context: Context) {
 
-    private val token = stringPreferencesKey("token")
-
-    fun getUserToken(): Flow<String> {
+    fun getStringData(key: String): Flow<String> {
+        val prefKey = stringPreferencesKey(key)
         return context.dataStore.data.map { preferences ->
-            preferences[token] ?: ""
+            preferences[prefKey] ?: ""
         }
     }
 
-    suspend fun saveUserToken(userToken: String) {
+    suspend fun saveStringData(userToken: String, key: String) {
+        val prefKey = stringPreferencesKey(key)
         context.dataStore.edit { preferences ->
-            preferences[token] = userToken
+            preferences[prefKey] = userToken
         }
     }
 
-    suspend fun clearUserToken() {
+    suspend fun clearStringData(key: String) {
+        val prefKey = stringPreferencesKey(key)
         context.dataStore.edit { preferences ->
-            preferences[token] = ""
+            preferences[prefKey] = ""
         }
     }
 }
