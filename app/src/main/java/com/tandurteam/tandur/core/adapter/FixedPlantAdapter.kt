@@ -37,7 +37,7 @@ class FixedPlantAdapter : RecyclerView.Adapter<FixedPlantAdapter.ViewHolder>() {
                 Glide.with(itemView.context)
                     .asBitmap()
                     .load(data.imageUrl)
-                    .transform(CenterCrop(), RoundedCorners(16))
+                    .transform(CenterCrop(), RoundedCorners(24))
                     .into(ivTanaman)
 
                 tvNamaTanaman.text = data.plantName

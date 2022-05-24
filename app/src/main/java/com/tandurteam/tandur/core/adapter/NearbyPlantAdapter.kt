@@ -36,7 +36,7 @@ class NearbyPlantAdapter : RecyclerView.Adapter<NearbyPlantAdapter.ViewHolder>()
                 Glide.with(itemView.context)
                     .asBitmap()
                     .load(DUMMY_IMAGE_URL) // TODO
-                    .transform(CenterCrop(), RoundedCorners(16))
+                    .transform(CenterCrop(), RoundedCorners(24))
                     .into(ivTanaman)
 
                 tvNamaTanaman.text = data.plantName
