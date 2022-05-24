@@ -1,119 +1,127 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".dashboard.home.HomeFragment">
+    android:fillViewport="true"
+    tools:context="dashboard.home.HomeFragment">
 
-    <TextView
-        android:id="@+id/tv_welcome"
-        style="@style/SemiBold24Sp"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="55dp"
-        android:layout_marginEnd="30dp"
-        android:text="@string/welcome"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageView
-        android:id="@+id/iv_location"
-        android:layout_width="11dp"
-        android:layout_height="14dp"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="12dp"
-        android:contentDescription="@string/icon_location"
-        android:src="@drawable/ic_location"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_welcome"
-        app:tint="@color/green_accent" />
-
-    <TextView
-        android:id="@+id/tv_location"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
-        android:layout_marginEnd="30dp"
-        android:text="@string/tvLocation"
-        android:textColor="@color/green_accent"
-        style="@style/Medium14Sp"
-        app:layout_constraintBottom_toBottomOf="@id/iv_location"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/iv_location"
-        app:layout_constraintTop_toTopOf="@+id/iv_location" />
-
-    <TextView
-        android:id="@+id/tv_apa_yang_mereka_tanam"
-        style="@style/Medium16Sp"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="30dp"
-        android:text="@string/apa_yang_mereka_tanam"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/iv_location" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_apa_yang_mereka_tanam"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:paddingStart="30dp"
-        android:clipToPadding="false"
-        android:orientation="horizontal"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_apa_yang_mereka_tanam"
-        tools:listitem="@layout/item_home_first" />
+        android:layout_height="match_parent"
+        >
 
-    <TextView
-        android:id="@+id/tv_saran_untuk_anda"
-        style="@style/Medium16Sp"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="30dp"
-        android:text="@string/tv_saran_untuk_anda"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rv_apa_yang_mereka_tanam" />
+        <TextView
+            android:id="@+id/tv_welcome"
+            style="@style/SemiBold24Sp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="55dp"
+            android:layout_marginEnd="30dp"
+            android:text="@string/welcome"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/et_search"
-        style="@style/Regular14Sp"
-        android:layout_width="0dp"
-        android:layout_height="52dp"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="30dp"
-        android:autofillHints="Nama Tanaman"
-        android:background="@drawable/bg_radius_8dp"
-        android:drawableStart="@drawable/ic_baseline_search_24"
-        android:drawablePadding="8dp"
-        android:hint="@string/hint_search"
-        android:inputType="text"
-        android:paddingStart="8dp"
-        android:paddingEnd="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_saran_untuk_anda" />
+        <ImageView
+            android:id="@+id/iv_location"
+            android:layout_width="11dp"
+            android:layout_height="14dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="12dp"
+            android:contentDescription="@string/icon_location"
+            android:src="@drawable/ic_location"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_welcome"
+            app:tint="@color/green_accent" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_saran"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginTop="16dp"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/et_search"
-        tools:listitem="@layout/item_home_suggestion" />
+        <TextView
+            android:id="@+id/tv_location"
+            style="@style/Medium14Sp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="30dp"
+            android:text="@string/tvLocation"
+            android:textColor="@color/green_accent"
+            app:layout_constraintBottom_toBottomOf="@id/iv_location"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/iv_location"
+            app:layout_constraintTop_toTopOf="@+id/iv_location" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/tv_apa_yang_mereka_tanam"
+            style="@style/Medium16Sp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="30dp"
+            android:text="@string/apa_yang_mereka_tanam"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/iv_location" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_apa_yang_mereka_tanam"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:clipToPadding="false"
+            android:orientation="horizontal"
+            android:paddingStart="30dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_apa_yang_mereka_tanam"
+            tools:listitem="@layout/item_home_first" />
+
+        <TextView
+            android:id="@+id/tv_saran_untuk_anda"
+            style="@style/Medium16Sp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="30dp"
+            android:text="@string/tv_saran_untuk_anda"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/rv_apa_yang_mereka_tanam" />
+
+        <EditText
+            android:id="@+id/et_search"
+            style="@style/Regular14Sp"
+            android:layout_width="0dp"
+            android:layout_height="52dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="30dp"
+            android:autofillHints="Nama Tanaman"
+            android:background="@drawable/bg_radius_8dp"
+            android:drawableStart="@drawable/ic_baseline_search_24"
+            android:drawablePadding="8dp"
+            android:hint="@string/hint_search"
+            android:inputType="text"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_saran_untuk_anda" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_saran"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/et_search"
+            tools:listitem="@layout/item_home_suggestion" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.core.widget.NestedScrollView>
