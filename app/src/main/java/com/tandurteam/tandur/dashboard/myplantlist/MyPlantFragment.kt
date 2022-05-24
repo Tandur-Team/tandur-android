@@ -4,8 +4,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
+import com.tandurteam.tandur.R
 import com.tandurteam.tandur.core.adapter.MyPlantListAdapter
 import com.tandurteam.tandur.core.model.network.ApiResponse
 import com.tandurteam.tandur.databinding.FragmentMyPlantBinding
@@ -48,13 +48,15 @@ class MyPlantFragment : Fragment() {
                 when (myPlantList) {
                     is ApiResponse.Loading -> {
                         binding.swipeRefresh.isRefreshing = true
+                        binding.tvError.visibility = View.GONE
                     }
 
                     is ApiResponse.Success -> {
                         binding.swipeRefresh.isRefreshing = false
-                        adapter.setData(myPlantList.data.data)
+                        binding.tvError.visibility = View.GONE
 
                         // set adapter of rvListMovie
+                        adapter.setData(myPlantList.data.data)
                         binding.rvTanamanku.apply {
                             setHasFixedSize(true)
                             adapter = this@MyPlantFragment.adapter
@@ -63,17 +65,25 @@ class MyPlantFragment : Fragment() {
 
                     is ApiResponse.Error -> {
                         binding.swipeRefresh.isRefreshing = false
-                        Toast.makeText(
-                            requireContext(),
-                            myPlantList.errorMessage,
-                            Toast.LENGTH_SHORT
-                        ).show()
+
+                        // set visibility
+                        binding.tvError.visibility = View.VISIBLE
+                        binding.rvTanamanku.visibility = View.GONE
+
+                        // set message
+                        binding.tvError.text =
+                            requireContext().getString(R.string.error_connecting_to_api)
                     }
 
                     is ApiResponse.Empty -> {
                         binding.swipeRefresh.isRefreshing = false
-                        Toast.makeText(requireContext(), "Your plant is empty", Toast.LENGTH_SHORT)
-                            .show()
+
+                        // set visibility
+                        binding.tvError.visibility = View.VISIBLE
+                        binding.rvTanamanku.visibility = View.GONE
+
+                        // set message
+                        binding.tvError.text = requireContext().getString(R.string.empty_my_plant)
                     }
                 }
             }

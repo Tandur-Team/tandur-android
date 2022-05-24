@@ -44,15 +44,28 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_tanamanku" />
 
+        <TextView
+            android:id="@+id/tvError"
+            style="@style/Medium14Sp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:textColor="@color/red_accent"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="@id/et_search_tanamanku"
+            app:layout_constraintStart_toStartOf="@id/et_search_tanamanku"
+            app:layout_constraintTop_toBottomOf="@id/et_search_tanamanku"
+            tools:text="Terdapat Kesalahan saat menghubungkan ke server" />
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_tanamanku"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginTop="24dp"
-            android:paddingBottom="76dp"
             android:clipToPadding="false"
-            android:paddingHorizontal="30dp"
             android:orientation="vertical"
+            android:paddingHorizontal="30dp"
+            android:paddingBottom="76dp"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"

@@ -112,4 +112,6 @@
     <string name="pilih_lokasi_anda">Pilih Lokasi Anda</string>
     <string name="block_loading_background">block loading background</string>
     <string name="location_info">%1s, %2s</string>
+    <string name="error_connecting_to_api">Terdapat kesalahan saat menghubungkan ke server</string>
+    <string name="empty_my_plant">Daftar tanaman anda masih kosong</string>
 </resources>
