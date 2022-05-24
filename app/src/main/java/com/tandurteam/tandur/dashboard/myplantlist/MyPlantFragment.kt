@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.Navigation
 import com.tandurteam.tandur.R
 import com.tandurteam.tandur.core.adapter.MyPlantListAdapter
 import com.tandurteam.tandur.core.model.network.ApiResponse
@@ -32,7 +33,8 @@ class MyPlantFragment : Fragment() {
         // init adapter
         adapter = MyPlantListAdapter()
         adapter.onItemClick = { myPlant ->
-            // TODO: On item clicked should be go to detail
+            val action = MyPlantFragmentDirections.navigateToMyDetailPlantFragment()
+            Navigation.findNavController(binding.root).navigate(action)
         }
 
         // on swipe refresh
