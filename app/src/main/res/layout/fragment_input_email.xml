@@ -6,26 +6,25 @@
     android:background="@color/green_accent"
     android:fillViewport="true">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/green_accent">
+        android:background="@color/green_accent"
+        android:orientation="vertical"
+        android:paddingVertical="55dp">
 
         <ImageView
             android:id="@+id/ivHumanWalk"
             android:layout_width="180dp"
             android:layout_height="199dp"
-            android:layout_marginTop="55dp"
+            android:layout_gravity="center_horizontal"
             android:contentDescription="@string/tandur_logo"
-            android:src="@drawable/ic_tandur_logo"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:src="@drawable/ic_tandur_logo" />
 
         <TextView
             android:id="@+id/tvJoinUs"
             style="@style/SemiBold36Sp"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="48dp"
             android:gravity="center"
@@ -38,7 +37,7 @@
         <TextView
             android:id="@+id/tvDescJoin"
             style="@style/Medium18Sp"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="30dp"
             android:layout_marginTop="24dp"
@@ -52,7 +51,7 @@
         <TextView
             android:id="@+id/tvLabelEmail"
             style="@style/Medium14Sp"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="30dp"
             android:layout_marginTop="24dp"
@@ -66,7 +65,7 @@
         <com.tandurteam.tandur.core.customview.MyEditText
             android:id="@+id/etEmail"
             style="@style/Medium14Sp"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="30dp"
             android:layout_marginTop="7dp"
@@ -78,11 +77,17 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tvLabelEmail" />
 
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
         <Button
             android:id="@+id/btnJoinNow"
             style="@style/SemiBold18Sp"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="52dp"
+            android:layout_marginHorizontal="30dp"
             android:layout_marginTop="24dp"
             android:background="@drawable/bg_radius_8dp_stroke"
             android:text="@string/join_now"
@@ -95,8 +100,9 @@
         <TextView
             android:id="@+id/tvSignIn"
             style="@style/SemiBold18Sp"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="30dp"
             android:layout_marginTop="12dp"
             android:gravity="center"
             android:paddingVertical="12dp"
@@ -106,6 +112,6 @@
             app:layout_constraintStart_toStartOf="@id/btnJoinNow"
             app:layout_constraintTop_toBottomOf="@id/btnJoinNow" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
 
 </androidx.core.widget.NestedScrollView>

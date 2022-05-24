@@ -56,6 +56,7 @@ class LoginFragment : Fragment() {
                             when (response) {
                                 is ApiResponse.Loading -> {
                                     progressLoading.visibility = View.VISIBLE
+                                    btnSignIn.visibility = View.GONE
                                     tvBack.visibility = View.GONE
                                 }
 
@@ -84,6 +85,7 @@ class LoginFragment : Fragment() {
 
                                     // Hide loading and show button
                                     progressLoading.visibility = View.GONE
+                                    btnSignIn.visibility = View.VISIBLE
                                     tvBack.visibility = View.VISIBLE
                                 }
 

@@ -1,142 +1,116 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/green_accent"
     android:fillViewport="true">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingVertical="55dp">
 
         <ImageView
             android:id="@+id/ivHumanWalk"
             android:layout_width="180dp"
             android:layout_height="199dp"
-            android:layout_marginTop="55dp"
+            android:layout_gravity="center_horizontal"
             android:contentDescription="@string/tandur_logo"
-            android:src="@drawable/ic_tandur_logo"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:src="@drawable/ic_tandur_logo" />
 
         <TextView
             android:id="@+id/tvPassCredential"
             style="@style/SemiBold24Sp"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="30dp"
             android:layout_marginTop="48dp"
             android:gravity="start"
             android:text="@string/pass_the_credentials"
-            android:textColor="@color/light_primary"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/ivHumanWalk" />
+            android:textColor="@color/light_primary" />
 
         <TextView
             android:id="@+id/tvLabelEmail"
             style="@style/Medium14Sp"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="30dp"
             android:layout_marginTop="24dp"
             android:labelFor="@id/etEmail"
             android:text="@string/email"
-            android:textColor="@color/light_primary"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvPassCredential" />
+            android:textColor="@color/light_primary" />
 
         <com.tandurteam.tandur.core.customview.MyEditText
             android:id="@+id/etEmail"
             style="@style/Medium14Sp"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="30dp"
             android:layout_marginTop="7dp"
             android:hint="@string/input_your_email_here"
             android:inputType="textEmailAddress"
             android:paddingHorizontal="20dp"
-            android:paddingVertical="16dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvLabelEmail" />
+            android:paddingVertical="16dp" />
 
         <TextView
             android:id="@+id/tvLabelPassword"
             style="@style/Medium14Sp"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="30dp"
             android:layout_marginTop="16dp"
             android:labelFor="@id/etPassword"
             android:text="@string/password"
-            android:textColor="@color/light_primary"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/etEmail" />
+            android:textColor="@color/light_primary" />
 
         <com.tandurteam.tandur.core.customview.MyEditText
             android:id="@+id/etPassword"
             style="@style/Medium14Sp"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="30dp"
             android:layout_marginTop="7dp"
             android:hint="@string/input_your_password_here"
             android:inputType="textPassword"
             android:paddingHorizontal="20dp"
-            android:paddingVertical="16dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvLabelPassword" />
+            android:paddingVertical="16dp" />
 
-        <LinearLayout
-            android:id="@+id/llContainer"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
+        <ProgressBar
+            android:id="@+id/progressLoading"
+            android:layout_width="52dp"
+            android:layout_height="52dp"
+            android:layout_gravity="center_horizontal"
             android:layout_marginHorizontal="30dp"
             android:layout_marginTop="52dp"
-            android:orientation="vertical"
-            app:layout_constraintEnd_toEndOf="@id/etPassword"
-            app:layout_constraintStart_toStartOf="@id/etPassword"
-            app:layout_constraintTop_toBottomOf="@id/etPassword">
+            android:backgroundTint="@color/light_primary"
+            android:progressTint="@color/light_primary"
+            android:visibility="gone" />
 
-            <ProgressBar
-                android:id="@+id/progressLoading"
-                android:layout_width="52dp"
-                android:layout_height="52dp"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginBottom="52dp"
-                android:backgroundTint="@color/light_primary"
-                android:visibility="gone" />
+        <Button
+            android:id="@+id/btnSignIn"
+            style="@style/SemiBold18Sp"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:layout_marginHorizontal="30dp"
+            android:layout_marginTop="52dp"
+            android:background="@drawable/bg_radius_8dp_stroke"
+            android:text="@string/sign_in"
+            android:textAllCaps="false"
+            android:textColor="@color/light_primary" />
 
-            <Button
-                android:id="@+id/btnSignIn"
-                style="@style/SemiBold18Sp"
-                android:layout_width="match_parent"
-                android:layout_height="52dp"
-                android:background="@drawable/bg_radius_8dp_stroke"
-                android:text="@string/sign_in"
-                android:textAllCaps="false"
-                android:textColor="@color/light_primary" />
+        <TextView
+            android:id="@+id/tvBack"
+            style="@style/SemiBold18Sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="30dp"
+            android:layout_marginTop="12dp"
+            android:gravity="center"
+            android:paddingVertical="12dp"
+            android:text="@string/back"
+            android:textColor="@color/light_primary" />
 
-            <TextView
-                android:id="@+id/tvBack"
-                style="@style/SemiBold18Sp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                android:layout_marginBottom="56dp"
-                android:gravity="center"
-                android:paddingVertical="12dp"
-                android:text="@string/back"
-                android:textColor="@color/light_primary" />
-
-        </LinearLayout>
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
 
 </androidx.core.widget.NestedScrollView>
