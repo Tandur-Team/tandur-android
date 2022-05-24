@@ -20,14 +20,15 @@ class FixedPlantRepository(
                 emit(ApiResponse.Loading())
 
                 val response = apiService.getAllFixedPlant()
+
                 when (response.status) {
                     HttpConstant.STATUS_OK -> {
-                        Log.d(TAG, "getAllFixedPlants: ${response.data}")
+                        Log.d(TAG, "getAllFixedPlants: Success")
 
                         emit(ApiResponse.Success(response))
                     }
                     else -> {
-                        Log.d(TAG, response.message)
+                        Log.d(TAG, "Fixed Plant: ${response.message}")
                         emit(ApiResponse.Error(response.message))
                     }
                 }
