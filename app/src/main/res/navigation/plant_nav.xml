@@ -7,11 +7,14 @@
 
     <fragment
         android:id="@+id/myPlantDetailFragment2"
-        android:name="com.tandurteam.tandur.dashboard.myplantlist.detail.MyPlantDetailFragment"
+        android:name="com.tandurteam.tandur.plant.myplantdetail.MyPlantDetailFragment"
         android:label="MyPlantDetailFragment">
         <action
             android:id="@+id/action_myPlantDetailFragment2_to_choosePlantFragment2"
             app:destination="@id/choosePlantFragment2" />
+        <action
+            android:id="@+id/action_myPlantDetailFragment2_to_detailFragment2"
+            app:destination="@id/detailFragment2" />
     </fragment>
     <fragment
         android:id="@+id/detailFragment2"

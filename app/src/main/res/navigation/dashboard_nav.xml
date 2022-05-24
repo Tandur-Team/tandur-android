@@ -26,14 +26,18 @@
         tools:layout="@layout/fragment_my_plant">
         <action
             android:id="@+id/navigateToMyDetailPlantFragment"
-            app:destination="@id/myPlantDetailFragment" />
+            app:destination="@id/myPlantDetailFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
         <action
             android:id="@+id/navigateToChooseFragment"
             app:destination="@id/choosePlantFragment" />
     </fragment>
     <fragment
         android:id="@+id/myPlantDetailFragment"
-        android:name="com.tandurteam.tandur.dashboard.myplantlist.detail.MyPlantDetailFragment"
+        android:name="com.tandurteam.tandur.plant.myplantdetail.MyPlantDetailFragment"
         android:label="MyPlantDetailFragment" />
     <fragment
         android:id="@+id/createFragment"

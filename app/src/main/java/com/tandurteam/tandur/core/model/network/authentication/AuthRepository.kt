@@ -1,7 +1,6 @@
 package com.tandurteam.tandur.core.model.network.authentication
 
 import android.util.Log
-import androidx.lifecycle.asLiveData
 import com.tandurteam.tandur.core.constant.DataStoreConstant
 import com.tandurteam.tandur.core.constant.HttpConstant
 import com.tandurteam.tandur.core.helper.SharedPreferences
@@ -64,19 +63,6 @@ class AuthRepository(
                         response.userId?.let {
                             dataStore.saveStringData(it, DataStoreConstant.USER_ID)
                         }
-
-                        Log.d(
-                            TAG,
-                            "loginUser: ${
-                                dataStore.getStringData(DataStoreConstant.TOKEN).asLiveData()
-                            }"
-                        )
-                        Log.d(
-                            TAG,
-                            "loginUser: ${
-                                dataStore.getStringData(DataStoreConstant.USER_ID).asLiveData()
-                            }"
-                        )
 
                         // emit success
                         emit(ApiResponse.Success(response))

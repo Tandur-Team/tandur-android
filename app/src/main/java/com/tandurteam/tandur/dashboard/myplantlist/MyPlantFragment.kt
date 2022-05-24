@@ -9,6 +9,7 @@ import androidx.navigation.Navigation
 import com.tandurteam.tandur.R
 import com.tandurteam.tandur.core.adapter.MyPlantListAdapter
 import com.tandurteam.tandur.core.model.network.ApiResponse
+import com.tandurteam.tandur.dashboard.DashboardActivity
 import com.tandurteam.tandur.databinding.FragmentMyPlantBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -39,6 +40,12 @@ class MyPlantFragment : Fragment() {
 
         // on swipe refresh
         binding.swipeRefresh.setOnRefreshListener { observeLiveData() }
+
+        // on create plant clicked
+        binding.btnTanamBaru.setOnClickListener {
+            val action = MyPlantFragmentDirections.navigateToChooseFragment()
+            Navigation.findNavController(binding.root).navigate(action)
+        }
 
         // observe live data
         observeLiveData()
@@ -90,5 +97,12 @@ class MyPlantFragment : Fragment() {
                 }
             }
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+        // show bottom nav
+        (requireActivity() as DashboardActivity).setBottomNavVisibility(true)
     }
 }
