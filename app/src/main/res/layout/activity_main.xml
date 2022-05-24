@@ -1,22 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/green_accent"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/green_accent"
     android:fitsSystemWindows="false"
-    android:gravity="center">
+    android:gravity="center"
+    android:orientation="vertical">
 
     <ImageView
         android:id="@+id/ivLogo"
         android:layout_width="108dp"
         android:layout_height="100dp"
-        android:layout_marginTop="300dp"
         android:contentDescription="@string/tandur_logo"
-        android:src="@drawable/ic_tandur_logo"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:src="@drawable/ic_tandur_logo" />
 
     <TextView
         android:id="@+id/tvAppName"
@@ -26,9 +22,6 @@
         android:layout_marginTop="24dp"
         android:gravity="center"
         android:text="@string/tandur_app"
-        android:textColor="@color/light_primary"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/ivLogo" />
+        android:textColor="@color/light_primary" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>
