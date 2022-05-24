@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cardNearbyPlant"
     android:layout_width="match_parent"
     android:layout_height="177dp"
     android:layout_gravity="center"
@@ -97,7 +98,7 @@
             android:id="@+id/ic_status"
             android:layout_width="12dp"
             android:layout_height="12dp"
-            android:src="@drawable/ic_checklist"
+            android:src="@drawable/ic_happy"
             android:layout_marginStart="18dp"
             app:layout_constraintStart_toEndOf="@id/tv_jumlah_user"
             app:layout_constraintTop_toTopOf="@id/tv_jumlah_user"
