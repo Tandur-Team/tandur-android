@@ -6,6 +6,7 @@ import com.tandurteam.tandur.core.model.network.authentication.response.LoginRes
 import com.tandurteam.tandur.core.model.network.authentication.response.SignUpResponse
 import com.tandurteam.tandur.core.model.network.fixedplant.response.fixed.FixedPlantResponse
 import com.tandurteam.tandur.core.model.network.myplant.response.myplantlist.MyPlantListResponse
+import com.tandurteam.tandur.core.model.network.nearbyplant.response.nearby.NearbyPlantResponse
 import retrofit2.http.*
 
 interface ApiService {
@@ -27,4 +28,11 @@ interface ApiService {
 
     @GET("fixedplant")
     suspend fun getAllFixedPlant(): FixedPlantResponse
+
+    @GET("plant/")
+    suspend fun getNearbyPlant(
+        @Header("Authorization") bearerToken: String,
+        @Query("zone_local") zoneLocal: String,
+        @Query("zone_city") zoneCity: String
+    ): NearbyPlantResponse
 }
