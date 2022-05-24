@@ -4,6 +4,7 @@ import com.tandurteam.tandur.core.model.network.authentication.request.LoginRequ
 import com.tandurteam.tandur.core.model.network.authentication.request.SignUpRequest
 import com.tandurteam.tandur.core.model.network.authentication.response.LoginResponse
 import com.tandurteam.tandur.core.model.network.authentication.response.SignUpResponse
+import com.tandurteam.tandur.core.model.network.fixedplant.response.fixed.FixedPlantResponse
 import com.tandurteam.tandur.core.model.network.myplant.response.myplantlist.MyPlantListResponse
 import retrofit2.http.*
 
@@ -23,4 +24,7 @@ interface ApiService {
         @Header("Authorization") bearerToken: String,
         @Path("userId") userId: String
     ): MyPlantListResponse
+
+    @GET("fixedplant")
+    suspend fun getAllFixedPlant(): FixedPlantResponse
 }
