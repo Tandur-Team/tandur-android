@@ -261,7 +261,7 @@
     </androidx.core.widget.NestedScrollView>
 
     <Button
-        android:id="@+id/btn_tanam_baru"
+        android:id="@+id/btnHarvest"
         style="@style/Medium16Sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -271,10 +271,10 @@
         android:background="@drawable/bg_radius_8dp"
         android:backgroundTint="@color/brown_accent"
         android:drawableStart="@drawable/ic_tanam"
-        android:drawablePadding="6dp"
+        android:drawablePadding="8dp"
         android:paddingStart="12dp"
         android:paddingEnd="12dp"
-        android:text="@string/btn_tanam"
+        android:text="@string/panen"
         android:textAllCaps="false"
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"

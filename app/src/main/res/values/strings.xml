@@ -114,4 +114,13 @@
     <string name="location_info">%1s, %2s</string>
     <string name="error_connecting_to_api">Terdapat kesalahan saat menghubungkan ke server</string>
     <string name="empty_my_plant">Daftar tanaman anda masih kosong</string>
+    <string name="bagaimana_hasil_panen_kali_ini">Bagaimana Hasil Panen Kali ini?</string>
+    <string name="sad_face_icon">sad face icon</string>
+    <string name="kurang">Kurang</string>
+    <string name="neutral_face_icon">neutral face icon</string>
+    <string name="happy_face_icon">happy face icon</string>
+    <string name="panen">Panen</string>
+    <string name="puas">Puas</string>
+    <string name="biasa">Biasa</string>
+    <string name="pilih_salah_satu_dari_tiga_pilihan_di_atas">Pilih salah satu dari tiga pilihan di atas</string>
 </resources>

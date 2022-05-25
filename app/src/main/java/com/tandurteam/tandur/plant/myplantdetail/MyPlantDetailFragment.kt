@@ -25,6 +25,11 @@ class MyPlantDetailFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        // on harvest clicked
+        binding.btnHarvest.setOnClickListener {
+
+        }
+
         // hide bottom nav
         (requireActivity() as DashboardActivity).setBottomNavVisibility(false)
     }

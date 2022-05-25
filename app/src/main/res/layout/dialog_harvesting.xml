@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="8dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="24dp"
+        android:paddingVertical="32dp">
+
+        <TextView
+            android:id="@+id/tvQuestion"
+            style="@style/Medium16Sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:text="@string/bagaimana_hasil_panen_kali_ini"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/ivSadFace"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="24dp"
+            android:contentDescription="@string/sad_face_icon"
+            android:src="@drawable/ic_sad"
+            app:layout_constraintStart_toStartOf="@id/tvQuestion"
+            app:layout_constraintTop_toBottomOf="@id/tvQuestion" />
+
+        <TextView
+            android:id="@+id/tvSad"
+            style="@style/Regular14Sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/kurang"
+            app:layout_constraintEnd_toEndOf="@id/ivSadFace"
+            app:layout_constraintStart_toStartOf="@id/ivSadFace"
+            app:layout_constraintTop_toBottomOf="@id/ivSadFace" />
+
+        <ImageView
+            android:id="@+id/ivNeutralFace"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_marginTop="24dp"
+            android:contentDescription="@string/neutral_face_icon"
+            android:src="@drawable/ic_neutral"
+            app:layout_constraintEnd_toStartOf="@id/ivHappyFace"
+            app:layout_constraintStart_toEndOf="@id/ivSadFace"
+            app:layout_constraintTop_toBottomOf="@id/tvQuestion" />
+
+        <TextView
+            android:id="@+id/tvNeutral"
+            style="@style/Regular14Sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/biasa"
+            app:layout_constraintEnd_toEndOf="@id/ivNeutralFace"
+            app:layout_constraintStart_toStartOf="@id/ivNeutralFace"
+            app:layout_constraintTop_toBottomOf="@id/ivNeutralFace" />
+
+        <ImageView
+            android:id="@+id/ivHappyFace"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="24dp"
+            android:contentDescription="@string/happy_face_icon"
+            android:src="@drawable/ic_happy"
+            app:layout_constraintEnd_toEndOf="@id/tvQuestion"
+            app:layout_constraintTop_toBottomOf="@id/tvQuestion"
+            app:tint="@color/green_accent" />
+
+        <TextView
+            android:id="@+id/tvHappy"
+            style="@style/Medium14Sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/puas"
+            android:textColor="@color/green_accent"
+            app:layout_constraintEnd_toEndOf="@id/ivHappyFace"
+            app:layout_constraintStart_toStartOf="@id/ivHappyFace"
+            app:layout_constraintTop_toBottomOf="@id/ivHappyFace" />
+
+        <TextView
+            android:id="@+id/tvMessage"
+            style="@style/Regular12Sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/pilih_salah_satu_dari_tiga_pilihan_di_atas"
+            android:textColor="@color/light_disabled"
+            app:layout_constraintEnd_toEndOf="@id/tvQuestion"
+            app:layout_constraintStart_toStartOf="@id/tvQuestion"
+            app:layout_constraintTop_toBottomOf="@id/tvHappy" />
+
+        <Button
+            style="@style/Medium16Sp"
+            android:layout_width="0dp"
+            android:layout_height="52dp"
+            android:layout_marginTop="24dp"
+            android:background="@drawable/bg_radius_8dp"
+            android:backgroundTint="@color/green_accent"
+            android:paddingHorizontal="28dp"
+            android:text="@string/panen"
+            android:textAllCaps="false"
+            android:textColor="@color/light_primary"
+            app:layout_constraintEnd_toEndOf="@id/tvQuestion"
+            app:layout_constraintStart_toStartOf="@id/tvQuestion"
+            app:layout_constraintTop_toBottomOf="@id/tvMessage" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>
