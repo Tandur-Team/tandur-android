@@ -11,6 +11,7 @@ import android.view.ViewGroup
 import android.view.Window
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.tandurteam.tandur.R
@@ -70,6 +71,12 @@ class MyPlantDetailFragment : Fragment() {
                 ivHappyFace.setOnClickListener {
                     setEmotionColor(ivHappyFace, ivSadFace, ivNeutralFace)
                     setTextEmotionColor(tvHappy, tvSad, tvNeutral)
+                }
+
+                tvBack.setOnClickListener { dismiss() }
+
+                btnConfirmHarvest.setOnClickListener {
+                    Toast.makeText(requireContext(), "Coming Soon!", Toast.LENGTH_SHORT).show()
                 }
             }
 
