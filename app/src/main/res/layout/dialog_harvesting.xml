@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    app:cardCornerRadius="8dp">
+    app:cardCornerRadius="16dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -103,6 +103,7 @@
             app:layout_constraintTop_toBottomOf="@id/tvHappy" />
 
         <Button
+            android:id="@+id/btnConfirmHarvest"
             style="@style/Medium16Sp"
             android:layout_width="0dp"
             android:layout_height="52dp"
@@ -116,6 +117,19 @@
             app:layout_constraintEnd_toEndOf="@id/tvQuestion"
             app:layout_constraintStart_toStartOf="@id/tvQuestion"
             app:layout_constraintTop_toBottomOf="@id/tvMessage" />
+
+        <TextView
+            android:id="@+id/tvBack"
+            style="@style/Regular14Sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:gravity="center_horizontal"
+            android:text="@string/back"
+            android:textColor="@color/dark_accent"
+            app:layout_constraintEnd_toEndOf="@id/tvQuestion"
+            app:layout_constraintStart_toStartOf="@id/tvQuestion"
+            app:layout_constraintTop_toBottomOf="@id/btnConfirmHarvest" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
