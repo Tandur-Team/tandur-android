@@ -75,6 +75,7 @@ class MyPlantDetailFragment : Fragment() {
 
                 tvBack.setOnClickListener { dismiss() }
 
+                // TODO: Should be connect to Patch Harvest Plant API
                 btnConfirmHarvest.setOnClickListener {
                     Toast.makeText(requireContext(), "Coming Soon!", Toast.LENGTH_SHORT).show()
                 }
