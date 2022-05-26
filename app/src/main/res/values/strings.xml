@@ -101,6 +101,7 @@
     <string name="logout">Logout</string>
     <string name="kondisi_lingkungan_anda">Kondisi Lingkungan Anda</string>
     <string name="detail_bulan">Bulan 1</string>
+    <string name="month">Bulan %1s</string>
     <string name="terdapat_peringatan">Terdapat Peringatan</string>
     <string name="icon_humidity">Icon Humidity</string>
     <string name="tingkat_hujan_detail">202</string>

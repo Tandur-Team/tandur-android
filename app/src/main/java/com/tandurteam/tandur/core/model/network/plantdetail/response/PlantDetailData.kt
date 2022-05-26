@@ -8,7 +8,7 @@ data class PlantDetailData(
     val imageUrl: String?,
     val location: String?,
     @SerializedName("monthly_data")
-    val monthlyData: MonthlyData?,
+    val monthlyData: List<MonthlyData>?,
     val nearby: Int?,
     @SerializedName("plant_name")
     val plantName: String?,

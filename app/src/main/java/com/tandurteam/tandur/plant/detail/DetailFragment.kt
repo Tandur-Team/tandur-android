@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
+import com.tandurteam.tandur.core.adapter.MonthlyLocationConditionAdapter
 import com.tandurteam.tandur.core.model.network.ApiResponse
 import com.tandurteam.tandur.dashboard.DashboardActivity
 import com.tandurteam.tandur.databinding.FragmentDetailBinding
@@ -20,6 +21,7 @@ class DetailFragment : Fragment() {
     private val navArgs: DetailFragmentArgs by navArgs()
     private var _binding: FragmentDetailBinding? = null
     private val binding get() = _binding!!
+    private lateinit var adapter: MonthlyLocationConditionAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -35,6 +37,9 @@ class DetailFragment : Fragment() {
 
         // hide bottom nav
         (requireActivity() as DashboardActivity).setBottomNavVisibility(false)
+
+        // init adapter
+        adapter = MonthlyLocationConditionAdapter()
 
         // set plant name by nav args
         binding.tvNamaTanamanDetail.text = navArgs.plantName
@@ -94,11 +99,16 @@ class DetailFragment : Fragment() {
                         with(binding) {
                             val resultData = result.data.data
                             setLoadingState(false)
+
+                            // set views
                             tvProbability.text = resultData?.probability.toString()
                             Glide.with(requireContext())
                                 .asBitmap()
                                 .load(resultData?.imageUrl)
                                 .into(ivTanamanDetail)
+
+                            // set adapter data
+                            adapter.setData(resultData?.monthlyData)
                         }
                     }
 

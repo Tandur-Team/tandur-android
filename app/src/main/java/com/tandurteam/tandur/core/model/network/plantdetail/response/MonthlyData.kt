@@ -4,9 +4,9 @@ import com.google.gson.annotations.SerializedName
 
 data class MonthlyData(
     @SerializedName("average_humidity")
-    val averageHumidity: List<Double>?,
+    val averageHumidity: Double?,
     @SerializedName("average_rain")
-    val averageRain: List<Double>?,
+    val averageRain: Double?,
     @SerializedName("average_temp")
-    val averageTemp: List<Double>?
+    val averageTemp: Double?
 )
