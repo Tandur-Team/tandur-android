@@ -35,4 +35,12 @@ interface ApiService {
         @Query("zone_local") zoneLocal: String,
         @Query("zone_city") zoneCity: String
     ): NearbyPlantResponse
+
+    @GET("plant/{plantName}")
+    suspend fun getPlantDetail(
+        @Query("zone_local") zoneLocal: String,
+        @Query("zone_city") zoneCity: String,
+        @Query("lat") lat: String,
+        @Query("long") lng: String,
+    ): NearbyPlantResponse
 }
