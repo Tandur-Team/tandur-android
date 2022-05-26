@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.Navigation
 import com.tandurteam.tandur.core.adapter.FixedPlantAdapter
 import com.tandurteam.tandur.core.adapter.NearbyPlantAdapter
 import com.tandurteam.tandur.core.model.network.ApiResponse
@@ -43,17 +44,22 @@ class HomeFragment : Fragment() {
         // init adapter for fixed plant
         fixPlantAdapter = FixedPlantAdapter()
         fixPlantAdapter.onItemClick = { fixedPlant ->
-            // TODO: On item clicked should be go to detail
+            navigateToDetail(fixedPlant.plantName)
         }
 
         // init adapter for nearby plant
         nearbyPlantAdapter = NearbyPlantAdapter()
         nearbyPlantAdapter.onItemClick = { nearbyPlant ->
-            // TODO: On item clicked should be go to detail
+            navigateToDetail(nearbyPlant.plantName)
         }
 
         // observe live data
         observeLiveData()
+    }
+
+    private fun navigateToDetail(plantName: String) {
+        val action = HomeFragmentDirections.navigateToDetailFragment(plantName)
+        Navigation.findNavController(binding.root).navigate(action)
     }
 
     private fun observeLiveData() {

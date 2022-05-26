@@ -66,7 +66,7 @@
     <string name="icon_status_tanamannya">Icon Status Tanamannya</string>
     <string name="informasi_terkait">Informasi Terkait</string>
     <string name="lokasi_anda">Lokasi Anda</string>
-    <string name="klick_untuk_pindah_lokasi">(Klick untuk pindah lokasi)</string>
+    <string name="click_untuk_pindah_lokasi">(Click untuk pindah lokasi)</string>
     <string name="dummy_location_detail">Semampir, Kota Kediri, Indonesia</string>
     <string name="penanam_di_sekitar_anda">Penanam Di Sekitar Anda</string>
     <string name="jumlah_penanam_dummy">21</string>

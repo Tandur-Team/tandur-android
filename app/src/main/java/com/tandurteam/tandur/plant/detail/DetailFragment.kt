@@ -8,7 +8,9 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.navArgs
+import com.bumptech.glide.Glide
 import com.tandurteam.tandur.core.model.network.ApiResponse
+import com.tandurteam.tandur.dashboard.DashboardActivity
 import com.tandurteam.tandur.databinding.FragmentDetailBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -30,11 +32,53 @@ class DetailFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        // hide bottom nav
+        (requireActivity() as DashboardActivity).setBottomNavVisibility(false)
+
+        // set plant name by nav args
+        binding.tvNamaTanamanDetail.text = navArgs.plantName
+
+        // get plant detail
         getPlantDetail()
 
+        // on refresh swiped
+        binding.swipeRefresh.setOnRefreshListener {
+            getPlantDetail()
+        }
+
+        // on create plant clicked
         binding.btnTanamBaru.setOnClickListener {
             val action = DetailFragmentDirections.navigateToCreateFragmentFromDetailFragment()
             Navigation.findNavController(binding.root).navigate(action)
+        }
+
+        // on back pressed
+        binding.ivBack.setOnClickListener { requireActivity().onBackPressed() }
+    }
+
+    private fun setLoadingState(isLoading: Boolean) {
+        with(binding) {
+            swipeRefresh.isRefreshing = isLoading
+
+            val visibility = if (isLoading) View.GONE else View.VISIBLE
+            tvProbability.visibility = visibility
+            tvInformasiTerkait.visibility = visibility
+            tvUserLocation.visibility = visibility
+            tvUserPerson.visibility = visibility
+            tvUserDurasi.visibility = visibility
+            tvLocation.visibility = visibility
+            tvPerson.visibility = visibility
+            tvDurasi.visibility = visibility
+            icLokasi.visibility = visibility
+            icPerson.visibility = visibility
+            icTime.visibility = visibility
+            vLine1.visibility = visibility
+            vLine2.visibility = visibility
+            vLine3.visibility = visibility
+            tvMessageLocation.visibility = visibility
+            tvKondisiLingkungan.visibility = visibility
+            rvKondisiLingkungan.visibility = visibility
         }
     }
 
@@ -43,16 +87,23 @@ class DetailFragment : Fragment() {
             it?.let { result ->
                 when (result) {
                     is ApiResponse.Loading -> {
-                        binding.swipeRefresh.isRefreshing = true
+                        setLoadingState(true)
                     }
 
                     is ApiResponse.Success -> {
-                        binding.swipeRefresh.isRefreshing = false
-                        binding.tvProbability.text = result.data.data?.probability.toString()
+                        with(binding) {
+                            val resultData = result.data.data
+                            setLoadingState(false)
+                            tvProbability.text = resultData?.probability.toString()
+                            Glide.with(requireContext())
+                                .asBitmap()
+                                .load(resultData?.imageUrl)
+                                .into(ivTanamanDetail)
+                        }
                     }
 
                     else -> {
-                        binding.swipeRefresh.isRefreshing = false
+                        setLoadingState(false)
                         Toast.makeText(
                             requireContext(),
                             "Terdapat kesalahan saat menghubungkan ke server",
