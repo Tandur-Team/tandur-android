@@ -5,8 +5,10 @@ import com.tandurteam.tandur.core.helper.SharedPreferences
 import com.tandurteam.tandur.core.model.network.ApiResponse
 import com.tandurteam.tandur.core.model.network.ApiService
 import com.tandurteam.tandur.core.model.network.plantdetail.response.PlantDetailResponse
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.flowOn
 
 class PlantDetailRepository(
     private val apiService: ApiService,
@@ -37,6 +39,6 @@ class PlantDetailRepository(
             } catch (e: Exception) {
                 emit(ApiResponse.Error(e.toString()))
             }
-        }
+        }.flowOn(Dispatchers.IO)
     }
 }

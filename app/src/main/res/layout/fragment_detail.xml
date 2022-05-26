@@ -1,295 +1,302 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.swiperefreshlayout.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/swipeRefresh"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:fillViewport="true"
-    tools:context=".plant.detail.DetailFragment">
+    android:layout_height="match_parent">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingBottom="36dp">
+        android:fillViewport="true"
+        tools:context=".plant.detail.DetailFragment">
 
-        <ImageView
-            android:id="@+id/iv_tanaman_detail"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="211dp"
-            android:contentDescription="@string/gambar_tanaman_yang_dipilih"
-            android:scaleType="centerCrop"
-            android:src="@drawable/padi_dummy"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:layout_height="match_parent"
+            android:paddingBottom="36dp">
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:background="@drawable/bg_gradient_top"
-            app:layout_constraintBottom_toBottomOf="@id/iv_tanaman_detail"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            <ImageView
+                android:id="@+id/iv_tanaman_detail"
+                android:layout_width="match_parent"
+                android:layout_height="211dp"
+                android:contentDescription="@string/gambar_tanaman_yang_dipilih"
+                android:scaleType="centerCrop"
+                android:src="@drawable/padi_dummy"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageView
-            android:id="@+id/iv_back"
-            android:layout_width="21dp"
-            android:layout_height="18dp"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="45dp"
-            android:contentDescription="@string/icon_back"
-            android:src="@drawable/ic_back"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:background="@drawable/bg_gradient_top"
+                app:layout_constraintBottom_toBottomOf="@id/iv_tanaman_detail"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/tv_nama_tanaman_detail"
-            style="@style/SemiBold24Sp"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="30dp"
-            android:text="@string/padi"
-            android:textColor="@color/light_primary"
-            app:layout_constraintBottom_toBottomOf="@id/iv_back"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/iv_back"
-            app:layout_constraintTop_toTopOf="@id/iv_back" />
+            <ImageView
+                android:id="@+id/iv_back"
+                android:layout_width="21dp"
+                android:layout_height="18dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="45dp"
+                android:contentDescription="@string/icon_back"
+                android:src="@drawable/ic_back"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/tv_status_detail"
-            android:layout_width="55dp"
-            android:layout_height="55dp"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="183dp"
-            android:text="@string/tingkat_keberhasilan_detail"
-            android:gravity="center"
-            style="@style/Medium18Sp"
-            android:textColor="@color/light_primary"
-            android:background="@drawable/bg_circle_green"
-            android:contentDescription="@string/icon_status_tanamannya"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            <TextView
+                android:id="@+id/tv_nama_tanaman_detail"
+                style="@style/SemiBold24Sp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="30dp"
+                android:text="@string/padi"
+                android:textColor="@color/light_primary"
+                app:layout_constraintBottom_toBottomOf="@id/iv_back"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/iv_back"
+                app:layout_constraintTop_toTopOf="@id/iv_back" />
 
-        <TextView
-            android:id="@+id/tv_informasi_terkait"
-            style="@style/Medium16Sp"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="24dp"
-            android:layout_marginEnd="30dp"
-            android:text="@string/informasi_terkait"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_status_detail" />
+            <TextView
+                android:id="@+id/tv_probability"
+                style="@style/Medium18Sp"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="183dp"
+                android:background="@drawable/bg_circle_green"
+                android:contentDescription="@string/icon_status_tanamannya"
+                android:gravity="center"
+                android:text="@string/tingkat_keberhasilan_detail"
+                android:textColor="@color/light_primary"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageView
-            android:id="@+id/ic_lokasi"
-            android:layout_width="18dp"
-            android:layout_height="18dp"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="20dp"
-            android:contentDescription="@string/icon_location"
-            android:src="@drawable/ic_location"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_informasi_terkait"
-            app:tint="@color/dark_accent" />
+            <TextView
+                android:id="@+id/tv_informasi_terkait"
+                style="@style/Medium16Sp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="30dp"
+                android:text="@string/informasi_terkait"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_probability" />
 
-        <TextView
-            android:id="@+id/tv_location"
-            style="@style/Medium14Sp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:text="@string/lokasi_anda"
-            app:layout_constraintBottom_toTopOf="@id/tv_user_location"
-            app:layout_constraintStart_toEndOf="@id/ic_lokasi"
-            app:layout_constraintTop_toTopOf="@id/ic_lokasi" />
+            <ImageView
+                android:id="@+id/ic_lokasi"
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="20dp"
+                android:contentDescription="@string/icon_location"
+                android:src="@drawable/ic_location"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_informasi_terkait"
+                app:tint="@color/dark_accent" />
 
-        <TextView
-            style="@style/Regular12Sp"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
-            android:layout_marginEnd="30dp"
-            android:text="@string/klick_untuk_pindah_lokasi"
-            android:textColor="@color/light_green_accent"
-            app:layout_constraintBottom_toBottomOf="@id/tv_location"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/tv_location"
-            app:layout_constraintTop_toTopOf="@id/tv_location" />
+            <TextView
+                android:id="@+id/tv_location"
+                style="@style/Medium14Sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:text="@string/lokasi_anda"
+                app:layout_constraintBottom_toTopOf="@id/tv_user_location"
+                app:layout_constraintStart_toEndOf="@id/ic_lokasi"
+                app:layout_constraintTop_toTopOf="@id/ic_lokasi" />
 
-        <TextView
-            android:id="@+id/tv_user_location"
-            style="@style/Regular12Sp"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="30dp"
-            android:text="@string/dummy_location_detail"
-            app:layout_constraintBottom_toBottomOf="@id/ic_lokasi"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/ic_lokasi"
-            app:layout_constraintTop_toBottomOf="@id/tv_location" />
+            <TextView
+                style="@style/Regular12Sp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginEnd="30dp"
+                android:text="@string/klick_untuk_pindah_lokasi"
+                android:textColor="@color/light_green_accent"
+                app:layout_constraintBottom_toBottomOf="@id/tv_location"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/tv_location"
+                app:layout_constraintTop_toTopOf="@id/tv_location" />
 
-        <View
-            android:id="@+id/v_line1"
-            android:layout_width="match_parent"
-            android:layout_height="3dp"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="30dp"
-            android:background="@drawable/bg_radius_8dp"
-            android:backgroundTint="@color/light_secondary"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_user_location" />
+            <TextView
+                android:id="@+id/tv_user_location"
+                style="@style/Regular12Sp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="30dp"
+                android:text="@string/dummy_location_detail"
+                app:layout_constraintBottom_toBottomOf="@id/ic_lokasi"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/ic_lokasi"
+                app:layout_constraintTop_toBottomOf="@id/tv_location" />
 
-        <ImageView
-            android:id="@+id/ic_person"
-            android:layout_width="18dp"
-            android:layout_height="18dp"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="20dp"
-            android:contentDescription="@string/icon_person"
-            android:src="@drawable/ic_person"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/v_line1"
-            app:tint="@color/dark_accent" />
+            <View
+                android:id="@+id/v_line1"
+                android:layout_width="match_parent"
+                android:layout_height="3dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="30dp"
+                android:background="@drawable/bg_radius_8dp"
+                android:backgroundTint="@color/light_secondary"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_user_location" />
 
-        <TextView
-            android:id="@+id/tv_person"
-            style="@style/Medium14Sp"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="30dp"
-            android:text="@string/penanam_di_sekitar_anda"
-            app:layout_constraintBottom_toTopOf="@id/tv_user_person"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/ic_person"
-            app:layout_constraintTop_toTopOf="@id/ic_person" />
+            <ImageView
+                android:id="@+id/ic_person"
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="20dp"
+                android:contentDescription="@string/icon_person"
+                android:src="@drawable/ic_person"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/v_line1"
+                app:tint="@color/dark_accent" />
 
-        <TextView
-            android:id="@+id/tv_user_person"
-            style="@style/Regular12Sp"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="30dp"
-            android:text="@string/jumlah_penanam_dummy"
-            app:layout_constraintBottom_toBottomOf="@id/ic_person"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/ic_person"
-            app:layout_constraintTop_toBottomOf="@id/tv_person" />
+            <TextView
+                android:id="@+id/tv_person"
+                style="@style/Medium14Sp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="30dp"
+                android:text="@string/penanam_di_sekitar_anda"
+                app:layout_constraintBottom_toTopOf="@id/tv_user_person"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/ic_person"
+                app:layout_constraintTop_toTopOf="@id/ic_person" />
 
-        <View
-            android:id="@+id/v_line2"
-            android:layout_width="match_parent"
-            android:layout_height="3dp"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="30dp"
-            android:background="@drawable/bg_radius_8dp"
-            android:backgroundTint="@color/light_secondary"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_user_person" />
+            <TextView
+                android:id="@+id/tv_user_person"
+                style="@style/Regular12Sp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="30dp"
+                android:text="@string/jumlah_penanam_dummy"
+                app:layout_constraintBottom_toBottomOf="@id/ic_person"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/ic_person"
+                app:layout_constraintTop_toBottomOf="@id/tv_person" />
 
-        <ImageView
-            android:id="@+id/ic_time"
-            android:layout_width="18dp"
-            android:layout_height="18dp"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="20dp"
-            android:contentDescription="@string/icon_waktu"
-            android:src="@drawable/ic_time"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/v_line2"
-            app:tint="@color/dark_accent" />
+            <View
+                android:id="@+id/v_line2"
+                android:layout_width="match_parent"
+                android:layout_height="3dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="30dp"
+                android:background="@drawable/bg_radius_8dp"
+                android:backgroundTint="@color/light_secondary"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_user_person" />
 
-        <TextView
-            android:id="@+id/tv_durasi"
-            style="@style/Medium14Sp"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="30dp"
-            android:text="@string/durasi_panen"
-            app:layout_constraintBottom_toTopOf="@id/tv_user_durasi"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/ic_time"
-            app:layout_constraintTop_toTopOf="@id/ic_time" />
+            <ImageView
+                android:id="@+id/ic_time"
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="20dp"
+                android:contentDescription="@string/icon_waktu"
+                android:src="@drawable/ic_time"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/v_line2"
+                app:tint="@color/dark_accent" />
 
-        <TextView
-            android:id="@+id/tv_user_durasi"
-            style="@style/Regular12Sp"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="30dp"
-            android:text="@string/estimasi"
-            app:layout_constraintBottom_toBottomOf="@id/ic_time"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/ic_time"
-            app:layout_constraintTop_toBottomOf="@id/tv_durasi" />
+            <TextView
+                android:id="@+id/tv_durasi"
+                style="@style/Medium14Sp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="30dp"
+                android:text="@string/durasi_panen"
+                app:layout_constraintBottom_toTopOf="@id/tv_user_durasi"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/ic_time"
+                app:layout_constraintTop_toTopOf="@id/ic_time" />
 
-        <View
-            android:id="@+id/v_line3"
-            android:layout_width="match_parent"
-            android:layout_height="3dp"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="30dp"
-            android:background="@drawable/bg_radius_8dp"
-            android:backgroundTint="@color/light_secondary"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_user_durasi" />
+            <TextView
+                android:id="@+id/tv_user_durasi"
+                style="@style/Regular12Sp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="30dp"
+                android:text="@string/estimasi"
+                app:layout_constraintBottom_toBottomOf="@id/ic_time"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/ic_time"
+                app:layout_constraintTop_toBottomOf="@id/tv_durasi" />
 
-        <TextView
-            android:id="@+id/tv_kondisi_lingkungan"
-            style="@style/Medium16Sp"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="24dp"
-            android:layout_marginEnd="30dp"
-            android:text="@string/kondisi_lingkungan_anda"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/v_line3" />
+            <View
+                android:id="@+id/v_line3"
+                android:layout_width="match_parent"
+                android:layout_height="3dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="30dp"
+                android:background="@drawable/bg_radius_8dp"
+                android:backgroundTint="@color/light_secondary"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_user_durasi" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_kondisi_lingkungan"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            tools:listitem="@layout/item_condition_detail"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_kondisi_lingkungan"/>
+            <TextView
+                android:id="@+id/tv_kondisi_lingkungan"
+                style="@style/Medium16Sp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="30dp"
+                android:text="@string/kondisi_lingkungan_anda"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/v_line3" />
 
-        <Button
-            android:id="@+id/btn_tanam_baru"
-            style="@style/Medium16Sp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="36dp"
-            android:layout_marginEnd="30dp"
-            android:layout_marginBottom="20dp"
-            android:background="@drawable/bg_radius_8dp"
-            android:backgroundTint="@color/green_accent"
-            android:drawableStart="@drawable/ic_tanam"
-            android:drawablePadding="6dp"
-            android:paddingStart="12dp"
-            android:paddingEnd="12dp"
-            android:text="@string/btn_tanam"
-            android:textAllCaps="false"
-            android:textColor="@color/white"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/rv_kondisi_lingkungan" />
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_kondisi_lingkungan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_kondisi_lingkungan"
+                tools:listitem="@layout/item_condition_detail" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <Button
+                android:id="@+id/btn_tanam_baru"
+                style="@style/Medium16Sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="36dp"
+                android:layout_marginEnd="30dp"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/bg_radius_8dp"
+                android:backgroundTint="@color/green_accent"
+                android:drawableStart="@drawable/ic_tanam"
+                android:drawablePadding="6dp"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                android:text="@string/btn_tanam"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/rv_kondisi_lingkungan" />
 
-</androidx.core.widget.NestedScrollView>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

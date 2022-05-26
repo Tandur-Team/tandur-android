@@ -52,6 +52,9 @@
         <action
             android:id="@+id/navigateToCreateFragmentFromDetailFragment"
             app:destination="@id/createFragment" />
+        <argument
+            android:name="plantName"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/choosePlantFragment"

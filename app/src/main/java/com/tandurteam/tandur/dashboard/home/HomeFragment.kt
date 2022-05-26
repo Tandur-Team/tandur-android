@@ -60,7 +60,6 @@ class HomeFragment : Fragment() {
         viewModel.getAllFixedPlant().observe(viewLifecycleOwner) {
             it?.let { fixedPlant ->
                 when (fixedPlant) {
-
                     is ApiResponse.Success -> {
                         fixPlantAdapter.setData(fixedPlant.data.data)
                         binding.rvApaYangMerekaTanam.apply {
