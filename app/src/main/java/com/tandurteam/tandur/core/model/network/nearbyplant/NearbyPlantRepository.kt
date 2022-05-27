@@ -12,6 +12,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.firstOrNull
 import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.withContext
 
 class NearbyPlantRepository(
@@ -43,9 +44,9 @@ class NearbyPlantRepository(
 
                 emit(UserLocation(latitude, longitude, subZone, city))
             } catch (e: Exception) {
-                emit(UserLocation(0.0, 0.0, "", ""))
+                emit(UserLocation())
             }
-        }
+        }.flowOn(Dispatchers.IO)
     }
 
     fun getNearbyPlant(): Flow<ApiResponse<NearbyPlantResponse>> {

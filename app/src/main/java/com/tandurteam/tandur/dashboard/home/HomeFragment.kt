@@ -1,11 +1,15 @@
 package com.tandurteam.tandur.dashboard.home
 
+import android.app.Dialog
 import android.content.Intent
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.Window
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
 import com.tandurteam.tandur.R
@@ -13,6 +17,7 @@ import com.tandurteam.tandur.core.adapter.FixedPlantAdapter
 import com.tandurteam.tandur.core.adapter.NearbyPlantAdapter
 import com.tandurteam.tandur.core.model.network.ApiResponse
 import com.tandurteam.tandur.dashboard.DashboardActivity
+import com.tandurteam.tandur.databinding.DialogLocationNotFoundBinding
 import com.tandurteam.tandur.databinding.FragmentHomeBinding
 import com.tandurteam.tandur.maps.MapsActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -24,6 +29,8 @@ class HomeFragment : Fragment() {
     private val binding get() = _binding!!
     private lateinit var fixPlantAdapter: FixedPlantAdapter
     private lateinit var nearbyPlantAdapter: NearbyPlantAdapter
+    private var dialogLocation: Dialog? = null
+    private var isDialogOpened: Boolean = false
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -66,17 +73,53 @@ class HomeFragment : Fragment() {
         viewModel.getUserLocation().observe(viewLifecycleOwner) {
             it?.let { userLocation ->
                 if (userLocation.latitude == 0.0 || userLocation.longitude == 0.0) {
+                    // set location info text
                     binding.tvLocation.text = requireContext().getString(
                         R.string.click_to_get_your_location
                     )
+
+                    Log.d(TAG, "getUserLocation: Still Null")
+
+                    // show set location info dialog
+                    if (!isDialogOpened) {
+                        showSetLocationDialog()
+                    }
+                    Log.d(TAG, "getUserLocation: $dialogLocation")
                 } else {
                     binding.tvLocation.text = requireContext().getString(
                         R.string.location_info,
                         userLocation.subZone,
                         userLocation.city
                     )
+
+                    Log.d(TAG, "getUserLocation: $dialogLocation")
+                    Log.d(TAG, "getUserLocation: Not Null")
                 }
             }
+        }
+    }
+
+    private fun showSetLocationDialog() {
+        isDialogOpened = true
+        dialogLocation = Dialog(requireContext())
+        dialogLocation?.apply {
+            requestWindowFeature(Window.FEATURE_NO_TITLE)
+            window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+            setCancelable(false)
+            val dialogBinding = DialogLocationNotFoundBinding.inflate(
+                LayoutInflater.from(requireContext())
+            )
+            setContentView(dialogBinding.root)
+
+            dialogBinding.btnSetMyLocation.setOnClickListener {
+                Intent(requireActivity(), MapsActivity::class.java).apply {
+                    startActivity(this)
+                }
+                isDialogOpened = false
+                this.dismiss()
+            }
+
+            this.show()
         }
     }
 
@@ -85,6 +128,9 @@ class HomeFragment : Fragment() {
 
         // show bottom nav
         (requireActivity() as DashboardActivity).setBottomNavVisibility(true)
+
+        // get user location info
+        getUserLocation()
     }
 
     private fun navigateToDetail(plantName: String) {

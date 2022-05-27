@@ -49,7 +49,7 @@ class MyPlantDetailFragment : Fragment() {
         val dialog = Dialog(requireContext())
         dialog.apply {
             requestWindowFeature(Window.FEATURE_NO_TITLE)
-            dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+            window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
             setCancelable(true)
             val dialogBinding = DialogHarvestingBinding.inflate(
                 LayoutInflater.from(requireContext())

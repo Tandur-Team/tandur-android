@@ -123,6 +123,9 @@
     <string name="panen">Panen</string>
     <string name="puas">Puas</string>
     <string name="biasa">Biasa</string>
-    <string name="click_to_get_your_location">Klik di sini untuk mendapatkan lokasi anda</string>
+    <string name="click_to_get_your_location">Lokasi belum diatur</string>
     <string name="pilih_salah_satu_dari_tiga_pilihan_di_atas">Pilih salah satu dari tiga pilihan di atas</string>
+    <string name="pilih_lokasi_saya">Pilih Lokasi Saya</string>
+    <string name="location_predict_message">Kami akan memprediksi tanaman yang tepat untuk ditanam pada lokasi anda</string>
+    <string name="hai_aplikasi_tandur_membutuhkan_lokasimu">Hai, aplikasi Tandur membutuhkan lokasimu</string>
 </resources>
