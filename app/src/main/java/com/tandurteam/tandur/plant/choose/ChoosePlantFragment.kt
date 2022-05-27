@@ -6,8 +6,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.Navigation
 import com.tandurteam.tandur.core.adapter.NearbyPlantAdapter
 import com.tandurteam.tandur.core.model.network.ApiResponse
+import com.tandurteam.tandur.dashboard.DashboardActivity
 import com.tandurteam.tandur.databinding.FragmentChoosePlantBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -30,15 +32,29 @@ class ChoosePlantFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        // hide bottom nav
+        (requireActivity() as DashboardActivity).setBottomNavVisibility(false)
+
         // init adapter for nearby plant
         adapter = NearbyPlantAdapter()
-        adapter.onItemClick = { choosePlant ->
-            // Masih kosong
+        adapter.onItemClick = {
+            navigateToCreate()
         }
 
         // observe live data
         observeLiveData()
+
+        with(binding) {
+            // on back pressed
+            ivBack.setOnClickListener { requireActivity().onBackPressed() }
+        }
     }
+
+    private fun navigateToCreate() {
+        val action = ChoosePlantFragmentDirections.navigateToCreateFragmentFromChooseFragment()
+        Navigation.findNavController(binding.root).navigate(action)
+    }
+
 
     private fun observeLiveData() {
         viewModel.getChoosePlant().observe(viewLifecycleOwner) {
