@@ -33,7 +33,7 @@ val networkModule = module {
     }
     single {
         val retrofit = Retrofit.Builder()
-            .baseUrl("https://tandur-backend-j4rjxcgo5a-et.a.run.app/")
+            .baseUrl("https://tandur-deploy-sfcizhzcmq-as.a.run.app/")
             .addConverterFactory(GsonConverterFactory.create())
             .client(get())
             .build()
