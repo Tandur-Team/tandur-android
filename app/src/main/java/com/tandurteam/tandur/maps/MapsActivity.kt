@@ -13,6 +13,7 @@ import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import androidx.lifecycle.lifecycleScope
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import com.google.android.gms.maps.CameraUpdateFactory
@@ -24,12 +25,16 @@ import com.google.android.gms.maps.model.MapStyleOptions
 import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
 import com.tandurteam.tandur.R
+import com.tandurteam.tandur.core.constant.DataStoreConstant
 import com.tandurteam.tandur.dashboard.DashboardActivity
 import com.tandurteam.tandur.databinding.ActivityMapsBinding
+import kotlinx.coroutines.launch
+import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.util.*
 
 class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
+    private val viewModel: MapsViewModel by viewModel()
     private lateinit var mMap: GoogleMap
     private lateinit var binding: ActivityMapsBinding
     private lateinit var fusedLocationClient: FusedLocationProviderClient
@@ -37,6 +42,8 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     private var locationFromIntent: LatLng? = null
     private var marker: Marker? = null
     private var selectedLocation: LatLng? = null
+    private var city = ""
+    private var subZone = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -66,11 +73,16 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
             btnAdd.setOnClickListener {
                 selectedLocation?.let { latLng ->
                     Log.d(TAG, "onCreate: $latLng")
-                    Intent(this@MapsActivity, DashboardActivity::class.java).apply {
-                        putExtra(SET_LOCATION_DATA, latLng)
-                        setResult(resultCode, this)
+                    lifecycleScope.launch {
+                        viewModel.setUserLocation(city, DataStoreConstant.CITY)
+                        viewModel.setUserLocation(subZone, DataStoreConstant.SUB_ZONE)
+                        viewModel.setUserLatLng(latLng.latitude, DataStoreConstant.LATITUDE)
+                        viewModel.setUserLatLng(latLng.longitude, DataStoreConstant.LONGITUDE)
+                        Intent(this@MapsActivity, DashboardActivity::class.java).apply {
+                            setResult(resultCode, this)
+                        }
+                        finish()
                     }
-                    finish()
                 }
             }
         }
@@ -124,6 +136,8 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
             1
         ).firstOrNull()
         address?.let {
+            city = it.subAdminArea
+            subZone = it.locality
             binding.tvLocationInfo.text =
                 getString(R.string.location_info, it.locality, it.subAdminArea)
         }

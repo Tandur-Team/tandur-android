@@ -3,6 +3,7 @@ package com.tandurteam.tandur.core.helper
 import android.content.Context
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
+import androidx.datastore.preferences.core.doublePreferencesKey
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
@@ -20,10 +21,10 @@ class SharedPreferences(private val context: Context) {
         }
     }
 
-    suspend fun saveStringData(userToken: String, key: String) {
+    suspend fun saveStringData(stringValue: String, key: String) {
         val prefKey = stringPreferencesKey(key)
         context.dataStore.edit { preferences ->
-            preferences[prefKey] = userToken
+            preferences[prefKey] = stringValue
         }
     }
 
@@ -31,6 +32,27 @@ class SharedPreferences(private val context: Context) {
         val prefKey = stringPreferencesKey(key)
         context.dataStore.edit { preferences ->
             preferences[prefKey] = ""
+        }
+    }
+
+    fun getDoubleData(key: String): Flow<Double> {
+        val prefKey = doublePreferencesKey(key)
+        return context.dataStore.data.map { preferences ->
+            preferences[prefKey] ?: 0.0
+        }
+    }
+
+    suspend fun saveDoubleData(doubleValue: Double, key: String) {
+        val prefKey = doublePreferencesKey(key)
+        context.dataStore.edit { preferences ->
+            preferences[prefKey] = doubleValue
+        }
+    }
+
+    suspend fun clearDoubleData(key: String) {
+        val prefKey = doublePreferencesKey(key)
+        context.dataStore.edit { preferences ->
+            preferences[prefKey] = 0.0
         }
     }
 }
