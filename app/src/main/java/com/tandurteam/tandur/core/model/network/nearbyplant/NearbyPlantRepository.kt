@@ -26,10 +26,24 @@ class NearbyPlantRepository(
                 val token = withContext(Dispatchers.IO) {
                     dataStore.getStringData(DataStoreConstant.TOKEN).firstOrNull()
                 }
+                // get token
+                val city = withContext(Dispatchers.IO) {
+                    dataStore.getStringData(DataStoreConstant.CITY).firstOrNull()
+                }
+                // get token
+                val subZone = withContext(Dispatchers.IO) {
+                    dataStore.getStringData(DataStoreConstant.SUB_ZONE).firstOrNull()
+                }
                 Log.d(TAG, "getNearbyPlant: $token")
+                Log.d(TAG, "getNearbyPlant: $city")
+                Log.d(TAG, "getNearbyPlant: $subZone")
 
-                val response =
-                    apiService.getNearbyPlant("Bearer $token", DUMMY_ZONE_LOCAL, DUMMY_ZONE_CITY)
+                val response = apiService.getNearbyPlant(
+                    "Bearer $token",
+                    DUMMY_ZONE_LOCAL,
+                    DUMMY_ZONE_CITY
+                )
+
                 when (response.status) {
                     HttpConstant.STATUS_OK -> {
                         Log.d(TAG, "getNearbyPlant: Success")

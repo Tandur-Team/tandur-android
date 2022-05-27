@@ -13,6 +13,7 @@ import com.tandurteam.tandur.core.model.network.plantdetail.PlantDetailRepositor
 import com.tandurteam.tandur.dashboard.home.HomeViewModel
 import com.tandurteam.tandur.dashboard.myplantlist.MyPlantViewModel
 import com.tandurteam.tandur.dashboard.profile.ProfileViewModel
+import com.tandurteam.tandur.maps.MapsViewModel
 import com.tandurteam.tandur.plant.choose.ChoosePlantViewModel
 import com.tandurteam.tandur.plant.detail.PlantDetailViewModel
 import okhttp3.OkHttpClient
@@ -65,4 +66,5 @@ val viewModelModule = module {
     viewModel { PlantDetailViewModel(get()) }
     viewModel { HomeViewModel(get(), get()) }
     viewModel { ChoosePlantViewModel(get()) }
+    viewModel { MapsViewModel(get()) }
 }
