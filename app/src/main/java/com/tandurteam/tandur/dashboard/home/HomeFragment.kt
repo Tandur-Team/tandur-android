@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
+import com.tandurteam.tandur.R
 import com.tandurteam.tandur.core.adapter.FixedPlantAdapter
 import com.tandurteam.tandur.core.adapter.NearbyPlantAdapter
 import com.tandurteam.tandur.core.model.network.ApiResponse
@@ -36,6 +37,9 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        // get user location
+        getUserLocation()
+
         binding.tvLocation.setOnClickListener {
             Intent(requireActivity(), MapsActivity::class.java).apply {
                 requireActivity().startActivity(this)
@@ -56,6 +60,24 @@ class HomeFragment : Fragment() {
 
         // observe live data
         observeLiveData()
+    }
+
+    private fun getUserLocation() {
+        viewModel.getUserLocation().observe(viewLifecycleOwner) {
+            it?.let { userLocation ->
+                if (userLocation.latitude == 0.0 || userLocation.longitude == 0.0) {
+                    binding.tvLocation.text = requireContext().getString(
+                        R.string.click_to_get_your_location
+                    )
+                } else {
+                    binding.tvLocation.text = requireContext().getString(
+                        R.string.location_info,
+                        userLocation.subZone,
+                        userLocation.city
+                    )
+                }
+            }
+        }
     }
 
     override fun onResume() {

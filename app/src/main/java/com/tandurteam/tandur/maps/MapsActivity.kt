@@ -130,19 +130,23 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         }
 
         // Get location info
-        val address = geocoder.getFromLocation(
-            location.latitude,
-            location.longitude,
-            1
-        ).firstOrNull()
-        address?.let {
-            city = it.subAdminArea
-            subZone = it.locality
-            binding.tvLocationInfo.text =
-                getString(R.string.location_info, it.locality, it.subAdminArea)
-        }
+        try {
+            val address = geocoder.getFromLocation(
+                location.latitude,
+                location.longitude,
+                1
+            ).firstOrNull()
+            address?.let {
+                city = it.subAdminArea
+                subZone = it.locality
+                binding.tvLocationInfo.text =
+                    getString(R.string.location_info, it.locality, it.subAdminArea)
+            }
 
-        selectedLocation = location
+            selectedLocation = location
+        } catch (e: Exception) {
+            Toast.makeText(this, "Coba pilih lokasi sekali lagi", Toast.LENGTH_SHORT).show()
+        }
     }
 
     private fun setMapStyle() {

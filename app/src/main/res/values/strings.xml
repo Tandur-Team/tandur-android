@@ -123,5 +123,6 @@
     <string name="panen">Panen</string>
     <string name="puas">Puas</string>
     <string name="biasa">Biasa</string>
+    <string name="click_to_get_your_location">Klik di sini untuk mendapatkan lokasi anda</string>
     <string name="pilih_salah_satu_dari_tiga_pilihan_di_atas">Pilih salah satu dari tiga pilihan di atas</string>
 </resources>
