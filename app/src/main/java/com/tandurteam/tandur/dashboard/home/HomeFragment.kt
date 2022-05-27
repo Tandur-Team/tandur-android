@@ -11,6 +11,7 @@ import androidx.navigation.Navigation
 import com.tandurteam.tandur.core.adapter.FixedPlantAdapter
 import com.tandurteam.tandur.core.adapter.NearbyPlantAdapter
 import com.tandurteam.tandur.core.model.network.ApiResponse
+import com.tandurteam.tandur.dashboard.DashboardActivity
 import com.tandurteam.tandur.databinding.FragmentHomeBinding
 import com.tandurteam.tandur.maps.MapsActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -55,6 +56,13 @@ class HomeFragment : Fragment() {
 
         // observe live data
         observeLiveData()
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+        // show bottom nav
+        (requireActivity() as DashboardActivity).setBottomNavVisibility(true)
     }
 
     private fun navigateToDetail(plantName: String) {
