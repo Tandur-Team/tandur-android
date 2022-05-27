@@ -31,28 +31,16 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:text="Cabai" />
 
-    <TextView
-        android:id="@+id/tvStatus"
-        style="@style/Medium16Sp"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="30dp"
-        android:layout_marginTop="24dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvPlantName"
-        tools:text="Status (1 Peringatan)" />
-
     <androidx.core.widget.NestedScrollView
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginHorizontal="30dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="24dp"
         android:fillViewport="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvStatus">
+        app:layout_constraintTop_toBottomOf="@id/tvPlantName">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -61,171 +49,12 @@
             android:orientation="vertical"
             android:paddingBottom="124dp">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp">
-
-                <ImageView
-                    android:id="@+id/ivRain"
-                    android:layout_width="18dp"
-                    android:layout_height="18dp"
-                    android:contentDescription="@string/condition_icon"
-                    android:src="@drawable/ic_rain"
-                    app:layout_constraintBottom_toBottomOf="@+id/tvRainStatus"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="@id/tvLabelRain"
-                    app:tint="@color/green_accent" />
-
-                <TextView
-                    android:id="@+id/tvLabelRain"
-                    style="@style/Regular14Sp"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="18dp"
-                    android:text="@string/curah_hujan"
-                    android:textColor="@color/green_accent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@id/ivRain"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    android:id="@+id/tvRainStatus"
-                    style="@style/Regular12Sp"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="18dp"
-                    android:layout_marginTop="4dp"
-                    android:textColor="@color/green_accent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@id/ivRain"
-                    app:layout_constraintTop_toBottomOf="@id/tvLabelRain"
-                    tools:text="Tinggi" />
-
-                <View
-                    android:layout_width="0dp"
-                    android:layout_height="2dp"
-                    android:layout_marginVertical="8dp"
-                    android:background="@drawable/bg_radius_8dp"
-                    android:backgroundTint="?colorSecondary"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/tvRainStatus" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp">
-
-                <ImageView
-                    android:id="@+id/ivTemperature"
-                    android:layout_width="18dp"
-                    android:layout_height="18dp"
-                    android:contentDescription="@string/condition_icon"
-                    android:src="@drawable/ic_temperature"
-                    app:layout_constraintBottom_toBottomOf="@+id/tvTemperatureStatus"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="@id/tvLabelTemperature"
-                    app:tint="@color/green_accent" />
-
-                <TextView
-                    android:id="@+id/tvLabelTemperature"
-                    style="@style/Regular14Sp"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="18dp"
-                    android:text="@string/temperatur_suhu"
-                    android:textColor="@color/green_accent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@id/ivTemperature"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    android:id="@+id/tvTemperatureStatus"
-                    style="@style/Regular12Sp"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="18dp"
-                    android:layout_marginTop="4dp"
-                    android:textColor="@color/green_accent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@id/ivTemperature"
-                    app:layout_constraintTop_toBottomOf="@id/tvLabelTemperature"
-                    tools:text="Tinggi" />
-
-                <View
-                    android:layout_width="0dp"
-                    android:layout_height="2dp"
-                    android:layout_marginVertical="8dp"
-                    android:background="@drawable/bg_radius_8dp"
-                    android:backgroundTint="?colorSecondary"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/tvTemperatureStatus" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <ImageView
-                    android:id="@+id/ivSoil"
-                    android:layout_width="18dp"
-                    android:layout_height="18dp"
-                    android:contentDescription="@string/condition_icon"
-                    android:src="@drawable/ic_soil"
-                    app:layout_constraintBottom_toBottomOf="@+id/tvSoilStatus"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="@id/tvLabelSoil"
-                    app:tint="@color/green_accent" />
-
-                <TextView
-                    android:id="@+id/tvLabelSoil"
-                    style="@style/Regular14Sp"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="18dp"
-                    android:text="@string/ph_tanah"
-                    android:textColor="@color/green_accent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@id/ivSoil"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    android:id="@+id/tvSoilStatus"
-                    style="@style/Regular12Sp"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="18dp"
-                    android:layout_marginTop="4dp"
-                    android:textColor="@color/green_accent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@id/ivSoil"
-                    app:layout_constraintTop_toBottomOf="@id/tvLabelSoil"
-                    tools:text="Tinggi" />
-
-                <View
-                    android:layout_width="0dp"
-                    android:layout_height="2dp"
-                    android:layout_marginVertical="8dp"
-                    android:background="@drawable/bg_radius_8dp"
-                    android:backgroundTint="?colorSecondary"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/tvSoilStatus" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
             <!--Plant Time (Waktu Tanam) Form-->
 
             <TextView
                 style="@style/Medium14Sp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
                 android:text="@string/waktu_tanam" />
 
             <EditText
@@ -235,9 +64,13 @@
                 android:layout_height="52dp"
                 android:layout_marginTop="8dp"
                 android:background="@drawable/bg_radius_8dp"
+                android:clickable="false"
+                android:cursorVisible="false"
                 android:drawableStart="@drawable/ic_date"
                 android:drawablePadding="18dp"
                 android:drawableTint="?colorOnPrimary"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
                 android:hint="@string/klik_untuk_memilih_waktu_tanam"
                 android:importantForAutofill="no"
                 android:inputType="date"
@@ -260,10 +93,15 @@
                 android:layout_height="52dp"
                 android:layout_marginTop="8dp"
                 android:background="@drawable/bg_radius_8dp"
+                android:clickable="false"
+                android:cursorVisible="false"
                 android:drawableStart="@drawable/ic_time"
                 android:drawablePadding="18dp"
                 android:drawableTint="?colorOnPrimary"
-                android:hint="@string/klik_untuk_mengganti_estimasi_panen"
+                android:enabled="false"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:hint="@string/estimated_harvest_time_message"
                 android:importantForAutofill="no"
                 android:inputType="date"
                 android:paddingHorizontal="20dp"
@@ -293,6 +131,29 @@
                 android:inputType="text"
                 android:paddingHorizontal="20dp"
                 tools:targetApi="m" />
+
+            <TextView
+                android:id="@+id/tvStatus"
+                style="@style/Medium16Sp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="@string/status_peringatan"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvPlantName" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvMonthlyCondition"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="-30dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="-30dp"
+                android:orientation="vertical"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:itemCount="5"
+                tools:listitem="@layout/item_condition_detail" />
 
         </LinearLayout>
 

@@ -92,7 +92,7 @@
     <string name="ph_tanah">PH Tanah</string>
     <string name="klik_untuk_memilih_waktu_tanam">Klik untuk memilih waktu tanam</string>
     <string name="waktu_tanam">Waktu Tanam</string>
-    <string name="klik_untuk_mengganti_estimasi_panen">Klik untuk mengganti estimasi panen</string>
+    <string name="estimated_harvest_time_message">Estimasi panen akan ditampilkan di sini</string>
     <string name="perkiraan_waktu_panen">Perkiraan Waktu Panen</string>
     <string name="lokasi_penanaman">Lokasi Penanaman</string>
     <string name="klik_untuk_memilih_lokasi">Klik untuk memilih lokasi</string>
