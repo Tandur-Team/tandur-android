@@ -151,6 +151,11 @@ class CreateFragment : Fragment() {
         binding.etEstimatedHarvestTime.setText(date)
     }
 
+    override fun onResume() {
+        super.onResume()
+        getUserLocation()
+    }
+
     companion object {
         private val TAG = CreateFragment::class.java.simpleName
     }

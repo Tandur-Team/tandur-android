@@ -2,7 +2,6 @@ package com.tandurteam.tandur.maps
 
 import android.Manifest
 import android.annotation.SuppressLint
-import android.content.Intent
 import android.content.pm.PackageManager
 import android.content.res.Resources
 import android.location.Geocoder
@@ -26,7 +25,6 @@ import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
 import com.tandurteam.tandur.R
 import com.tandurteam.tandur.core.constant.DataStoreConstant
-import com.tandurteam.tandur.dashboard.DashboardActivity
 import com.tandurteam.tandur.databinding.ActivityMapsBinding
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -78,9 +76,6 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                         viewModel.setUserLocation(subZone, DataStoreConstant.SUB_ZONE)
                         viewModel.setUserLatLng(latLng.latitude, DataStoreConstant.LATITUDE)
                         viewModel.setUserLatLng(latLng.longitude, DataStoreConstant.LONGITUDE)
-                        Intent(this@MapsActivity, DashboardActivity::class.java).apply {
-                            setResult(resultCode, this)
-                        }
                         finish()
                     }
                 }
