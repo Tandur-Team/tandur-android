@@ -19,7 +19,7 @@
             android:layout_height="199dp"
             android:layout_gravity="center_horizontal"
             android:contentDescription="@string/tandur_logo"
-            android:src="@drawable/ic_tandur_logo" />
+            android:src="@drawable/ic_email_submit_logo" />
 
         <TextView
             android:id="@+id/tvJoinUs"

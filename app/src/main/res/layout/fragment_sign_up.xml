@@ -31,7 +31,7 @@
             android:layout_marginTop="75dp"
             android:layout_marginEnd="30dp"
             android:contentDescription="@string/tandur_logo"
-            android:src="@drawable/ic_tandur_logo"
+            android:src="@drawable/ic_sign_up_logo"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
