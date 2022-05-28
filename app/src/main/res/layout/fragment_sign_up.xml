@@ -26,8 +26,8 @@
 
         <ImageView
             android:id="@+id/ivHumanSitDown"
-            android:layout_width="91dp"
-            android:layout_height="100dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginTop="75dp"
             android:layout_marginEnd="30dp"
             android:contentDescription="@string/tandur_logo"
