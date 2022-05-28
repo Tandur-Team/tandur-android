@@ -4,6 +4,7 @@ import android.util.Log
 import com.tandurteam.tandur.core.constant.DataStoreConstant
 import com.tandurteam.tandur.core.constant.HttpConstant
 import com.tandurteam.tandur.core.helper.SharedPreferences
+import com.tandurteam.tandur.core.model.local.maps.UserLocation
 import com.tandurteam.tandur.core.model.network.ApiResponse
 import com.tandurteam.tandur.core.model.network.ApiService
 import com.tandurteam.tandur.core.model.network.createplant.request.CreatePlantRequest
@@ -19,6 +20,36 @@ class CreatePlantRepository(
     private val apiService: ApiService,
     private val dataStore: SharedPreferences
 ) {
+    fun getUserLocation(): Flow<UserLocation> {
+        return flow {
+            try {
+                // get city
+                val city = withContext(Dispatchers.IO) {
+                    dataStore.getStringData(DataStoreConstant.CITY).firstOrNull()
+                }
+
+                // get sub zone
+                val subZone = withContext(Dispatchers.IO) {
+                    dataStore.getStringData(DataStoreConstant.SUB_ZONE).firstOrNull()
+                }
+
+                // get latitude
+                val latitude = withContext(Dispatchers.IO) {
+                    dataStore.getDoubleData(DataStoreConstant.LATITUDE).firstOrNull()
+                }
+
+                // get longitude
+                val longitude = withContext(Dispatchers.IO) {
+                    dataStore.getDoubleData(DataStoreConstant.LONGITUDE).firstOrNull()
+                }
+
+                emit(UserLocation(latitude, longitude, subZone, city))
+            } catch (e: Exception) {
+                emit(UserLocation())
+            }
+        }.flowOn(Dispatchers.IO)
+    }
+
     fun createPlant(plantName: String): Flow<ApiResponse<CreatePlantResponse>> {
         return flow {
             try {

@@ -38,7 +38,7 @@ class ChoosePlantFragment : Fragment() {
         // init adapter for nearby plant
         adapter = NearbyPlantAdapter()
         adapter.onItemClick = {
-            navigateToCreate()
+            navigateToCreate(it.plantName)
         }
 
         // observe live data
@@ -50,8 +50,10 @@ class ChoosePlantFragment : Fragment() {
         }
     }
 
-    private fun navigateToCreate() {
-        val action = ChoosePlantFragmentDirections.navigateToCreateFragmentFromChooseFragment()
+    private fun navigateToCreate(plantName: String) {
+        val action = ChoosePlantFragmentDirections.navigateToCreateFragmentFromChooseFragment(
+            plantName
+        )
         Navigation.findNavController(binding.root).navigate(action)
     }
 

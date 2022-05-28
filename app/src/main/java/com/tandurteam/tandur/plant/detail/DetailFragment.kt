@@ -54,7 +54,9 @@ class DetailFragment : Fragment() {
 
         // on create plant clicked
         binding.btnTanamBaru.setOnClickListener {
-            val action = DetailFragmentDirections.navigateToCreateFragmentFromDetailFragment()
+            val plantName = binding.tvNamaTanamanDetail.text.toString()
+            val action =
+                DetailFragmentDirections.navigateToCreateFragmentFromDetailFragment(plantName)
             Navigation.findNavController(binding.root).navigate(action)
         }
 

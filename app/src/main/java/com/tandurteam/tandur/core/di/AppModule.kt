@@ -6,6 +6,7 @@ import com.tandurteam.tandur.authentication.signup.SignUpViewModel
 import com.tandurteam.tandur.core.helper.SharedPreferences
 import com.tandurteam.tandur.core.model.network.ApiService
 import com.tandurteam.tandur.core.model.network.authentication.AuthRepository
+import com.tandurteam.tandur.core.model.network.createplant.CreatePlantRepository
 import com.tandurteam.tandur.core.model.network.fixedplant.FixedPlantRepository
 import com.tandurteam.tandur.core.model.network.myplant.MyPlantRepository
 import com.tandurteam.tandur.core.model.network.nearbyplant.NearbyPlantRepository
@@ -15,6 +16,7 @@ import com.tandurteam.tandur.dashboard.myplantlist.MyPlantViewModel
 import com.tandurteam.tandur.dashboard.profile.ProfileViewModel
 import com.tandurteam.tandur.maps.MapsViewModel
 import com.tandurteam.tandur.plant.choose.ChoosePlantViewModel
+import com.tandurteam.tandur.plant.create.CreateViewModel
 import com.tandurteam.tandur.plant.detail.PlantDetailViewModel
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -55,6 +57,7 @@ val repositoryModule = module {
     factory { FixedPlantRepository(get()) }
     factory { NearbyPlantRepository(get(), get()) }
     factory { PlantDetailRepository(get(), get()) }
+    factory { CreatePlantRepository(get(), get()) }
 }
 
 val viewModelModule = module {
@@ -67,4 +70,5 @@ val viewModelModule = module {
     viewModel { HomeViewModel(get(), get()) }
     viewModel { ChoosePlantViewModel(get()) }
     viewModel { MapsViewModel(get()) }
+    viewModel { CreateViewModel(get()) }
 }
