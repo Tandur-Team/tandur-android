@@ -49,6 +49,25 @@ class NearbyPlantRepository(
         }.flowOn(Dispatchers.IO)
     }
 
+    fun getUserFullName(): Flow<String> {
+        return flow {
+            try {
+                // get city
+                val fullName = withContext(Dispatchers.IO) {
+                    dataStore.getStringData(DataStoreConstant.FULL_NAME).firstOrNull()
+                }
+
+                fullName?.let {
+                    emit(it)
+                }
+            } catch (e: Exception) {
+                e.message?.let {
+                    emit(it)
+                }
+            }
+        }.flowOn(Dispatchers.IO)
+    }
+
     fun getNearbyPlant(): Flow<ApiResponse<NearbyPlantResponse>> {
         return flow {
             try {

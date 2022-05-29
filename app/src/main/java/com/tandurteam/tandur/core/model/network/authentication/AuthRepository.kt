@@ -59,6 +59,11 @@ class AuthRepository(
                             dataStore.saveStringData(it, DataStoreConstant.TOKEN)
                         }
 
+                        // save full name to datastore
+                        response.fullName?.let {
+                            dataStore.saveStringData(it, DataStoreConstant.FULL_NAME)
+                        }
+
                         // save userId to datastore
                         response.userId?.let {
                             dataStore.saveStringData(it, DataStoreConstant.USER_ID)

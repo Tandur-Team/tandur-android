@@ -15,6 +15,9 @@ class HomeViewModel(
     private val nearbyPlantRepository: NearbyPlantRepository
 ) : ViewModel() {
 
+    fun getUserFullName(): LiveData<String> =
+        nearbyPlantRepository.getUserFullName().asLiveData()
+
     fun getAllFixedPlant(): LiveData<ApiResponse<FixedPlantResponse>> =
         fixedPlantRepository.getAllFixedPlants().asLiveData()
 

@@ -44,6 +44,9 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        // get user full name
+        getUserFullName()
+
         // get user location
         getUserLocation()
 
@@ -67,6 +70,17 @@ class HomeFragment : Fragment() {
 
         // observe live data
         observeLiveData()
+    }
+
+    private fun getUserFullName() {
+        viewModel.getUserFullName().observe(viewLifecycleOwner) {
+            it?.let { fullName ->
+                binding.tvWelcome.text = requireContext().getString(
+                    R.string.welcome,
+                    fullName
+                )
+            }
+        }
     }
 
     private fun getUserLocation() {

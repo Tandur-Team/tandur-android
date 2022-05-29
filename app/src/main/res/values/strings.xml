@@ -2,7 +2,7 @@
     <string name="app_name">Tandur</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="welcome">Hai, Pak Ryan!</string>
+    <string name="welcome">Hai, %1s!</string>
     <string name="tvLocation">Semampir, Kota Kediri</string>
     <string name="apa_yang_mereka_tanam">Apa yang Mereka Tanam?</string>
     <string name="icon_location">icon_location</string>
