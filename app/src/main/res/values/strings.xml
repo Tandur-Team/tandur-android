@@ -129,4 +129,8 @@
     <string name="pilih_lokasi_saya">Pilih Lokasi Saya</string>
     <string name="location_predict_message">Kami akan memprediksi tanaman yang tepat untuk ditanam pada lokasi anda</string>
     <string name="hai_aplikasi_tandur_membutuhkan_lokasimu">Hai, aplikasi Tandur membutuhkan lokasimu</string>
+    <string name="kembali">Kembali</string>
+    <string name="dialog_geospatial_info_title">Bagaimana Kami Mendapatkan Data Kondisi Lingkungan Anda?</string>
+    <string name="dialog_geospatial_info_message">Data didapatkan dengan mengambil rata-rata pada setiap bulan.</string>
+    <string name="info_icon">info icon</string>
 </resources>

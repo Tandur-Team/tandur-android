@@ -1,11 +1,15 @@
 package com.tandurteam.tandur.plant.detail
 
+import android.app.Dialog
 import android.content.Intent
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.Window
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
@@ -15,6 +19,7 @@ import com.tandurteam.tandur.R
 import com.tandurteam.tandur.core.adapter.MonthlyLocationConditionAdapter
 import com.tandurteam.tandur.core.model.network.ApiResponse
 import com.tandurteam.tandur.dashboard.DashboardActivity
+import com.tandurteam.tandur.databinding.DialogGeospatialInfoBinding
 import com.tandurteam.tandur.databinding.FragmentDetailBinding
 import com.tandurteam.tandur.maps.MapsActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -76,6 +81,29 @@ class DetailFragment : Fragment() {
 
         // on back pressed
         binding.ivBack.setOnClickListener { requireActivity().onBackPressed() }
+
+        // on info clicked
+        binding.ivInfo.setOnClickListener { showInfoDialog() }
+    }
+
+    private fun showInfoDialog() {
+        val dialog = Dialog(requireContext())
+        dialog.apply {
+            requestWindowFeature(Window.FEATURE_NO_TITLE)
+            window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+            setCancelable(true)
+            val dialogBinding = DialogGeospatialInfoBinding.inflate(
+                LayoutInflater.from(requireContext())
+            )
+            setContentView(dialogBinding.root)
+
+            // set view
+            with(dialogBinding) {
+                btnBack.setOnClickListener { dismiss() }
+            }
+
+            show()
+        }
     }
 
     private fun getUserLocation() {
