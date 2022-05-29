@@ -31,7 +31,7 @@ class MonthlyLocationConditionAdapter :
             with(binding) {
                 tvBulan.text = itemView.context.getString(
                     R.string.month,
-                    (adapterPosition + 1).toString()
+                    (absoluteAdapterPosition + 1).toString()
                 )
 
                 // set geospatial data
