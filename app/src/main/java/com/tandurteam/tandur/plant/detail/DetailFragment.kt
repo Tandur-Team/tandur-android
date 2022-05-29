@@ -130,6 +130,15 @@ class DetailFragment : Fragment() {
 
                             // set views
                             tvProbability.text = resultData?.probability.toString()
+                            tvUserPerson.text = requireContext().getString(
+                                R.string.nearby_farmer,
+                                resultData?.nearby.toString()
+                            )
+                            tvUserDurasi.text = requireContext().getString(
+                                R.string.estimasi,
+                                resultData?.duration.toString()
+                            )
+
                             Glide.with(requireContext())
                                 .asBitmap()
                                 .load(resultData?.imageUrl)

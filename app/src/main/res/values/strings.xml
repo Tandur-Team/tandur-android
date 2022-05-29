@@ -33,7 +33,8 @@
     <string name="icon_person">Icon Person</string>
     <string name="dummy_jumlah_user">20</string>
     <string name="tingkat_keberhasilan">90%</string>
-    <string name="estimasi">4 – 5 Bulan</string>
+    <string name="estimasi">%1s Bulan</string>
+    <string name="nearby_farmer">%1s Petani</string>
     <string name="let_s_join_us">Mari Bertani!</string>
     <string name="register_jargon">Sekarang anda dapat menanam di tempat anda tanpa takut gagal panen lagi</string>
     <string name="tandur_logo">tandur logo</string>
