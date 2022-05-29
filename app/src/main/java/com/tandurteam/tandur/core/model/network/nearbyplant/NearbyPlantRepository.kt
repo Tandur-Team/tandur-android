@@ -77,10 +77,12 @@ class NearbyPlantRepository(
                 val token = withContext(Dispatchers.IO) {
                     dataStore.getStringData(DataStoreConstant.TOKEN).firstOrNull()
                 }
+
                 // get city
                 val city = withContext(Dispatchers.IO) {
                     dataStore.getStringData(DataStoreConstant.CITY).firstOrNull()
                 }
+
                 // get sub zone
                 val subZone = withContext(Dispatchers.IO) {
                     dataStore.getStringData(DataStoreConstant.SUB_ZONE).firstOrNull()

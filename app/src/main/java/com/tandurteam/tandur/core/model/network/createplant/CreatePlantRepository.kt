@@ -9,6 +9,7 @@ import com.tandurteam.tandur.core.model.network.ApiResponse
 import com.tandurteam.tandur.core.model.network.ApiService
 import com.tandurteam.tandur.core.model.network.createplant.request.CreatePlantRequest
 import com.tandurteam.tandur.core.model.network.createplant.response.CreatePlantResponse
+import com.tandurteam.tandur.core.model.network.plantdetail.response.PlantDetailResponse
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.firstOrNull
@@ -97,6 +98,56 @@ class CreatePlantRepository(
                     emit(ApiResponse.Error(it))
                     Log.d(TAG, "createPlant: ${e.message}")
                 }
+            }
+        }.flowOn(Dispatchers.IO)
+    }
+
+    fun getPlantDetail(plantName: String): Flow<ApiResponse<PlantDetailResponse>> {
+        return flow {
+            try {
+                emit(ApiResponse.Loading())
+
+                // get city
+                val city = withContext(Dispatchers.IO) {
+                    dataStore.getStringData(DataStoreConstant.CITY).firstOrNull()
+                }
+
+                // get sub zone
+                val subZone = withContext(Dispatchers.IO) {
+                    dataStore.getStringData(DataStoreConstant.SUB_ZONE).firstOrNull()
+                }
+
+                // get latitude
+                val latitude = withContext(Dispatchers.IO) {
+                    dataStore.getDoubleData(DataStoreConstant.LATITUDE).firstOrNull()
+                }
+
+                // get longitude
+                val longitude = withContext(Dispatchers.IO) {
+                    dataStore.getDoubleData(DataStoreConstant.LONGITUDE).firstOrNull()
+                }
+
+                if (latitude != null && longitude != null && city != null && subZone != null) {
+                    val response = apiService.getPlantDetail(
+                        plantName,
+                        subZone,
+                        city,
+                        latitude,
+                        longitude
+                    )
+
+                    when (response.status) {
+                        HttpConstant.STATUS_OK -> {
+                            emit(ApiResponse.Success(response))
+                        }
+
+                        else -> {
+                            emit(ApiResponse.Error(response.message.toString()))
+                        }
+                    }
+                }
+            } catch (e: Exception) {
+                emit(ApiResponse.Error(e.toString()))
             }
         }.flowOn(Dispatchers.IO)
     }

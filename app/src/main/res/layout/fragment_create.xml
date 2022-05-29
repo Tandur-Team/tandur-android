@@ -147,6 +147,14 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tvPlantName" />
 
+            <ProgressBar
+                android:id="@+id/progressLoadingStatus"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="16dp"
+                android:visibility="gone" />
+
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvMonthlyCondition"
                 android:layout_width="match_parent"

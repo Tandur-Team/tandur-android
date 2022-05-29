@@ -53,6 +53,16 @@ class PlantDetailRepository(
             try {
                 emit(ApiResponse.Loading())
 
+                // get city
+                val city = withContext(Dispatchers.IO) {
+                    dataStore.getStringData(DataStoreConstant.CITY).firstOrNull()
+                }
+
+                // get sub zone
+                val subZone = withContext(Dispatchers.IO) {
+                    dataStore.getStringData(DataStoreConstant.SUB_ZONE).firstOrNull()
+                }
+
                 // get latitude
                 val latitude = withContext(Dispatchers.IO) {
                     dataStore.getDoubleData(DataStoreConstant.LATITUDE).firstOrNull()
@@ -63,11 +73,11 @@ class PlantDetailRepository(
                     dataStore.getDoubleData(DataStoreConstant.LONGITUDE).firstOrNull()
                 }
 
-                if (latitude != null && longitude != null) {
+                if (latitude != null && longitude != null && city != null && subZone != null) {
                     val response = apiService.getPlantDetail(
                         plantName,
-                        "Sekardangan",
-                        "Sidoarjo",
+                        subZone,
+                        city,
                         latitude,
                         longitude
                     )

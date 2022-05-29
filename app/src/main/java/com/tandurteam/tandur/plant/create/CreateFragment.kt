@@ -14,6 +14,7 @@ import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
 import com.tandurteam.tandur.R
+import com.tandurteam.tandur.core.adapter.MonthlyLocationConditionAdapter
 import com.tandurteam.tandur.core.model.network.ApiResponse
 import com.tandurteam.tandur.dashboard.DashboardActivity
 import com.tandurteam.tandur.databinding.FragmentCreateBinding
@@ -29,6 +30,7 @@ class CreateFragment : Fragment() {
     private var _binding: FragmentCreateBinding? = null
     private val binding get() = _binding!!
     private lateinit var calendar: Calendar
+    private lateinit var adapter: MonthlyLocationConditionAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -45,6 +47,12 @@ class CreateFragment : Fragment() {
 
         // get user location
         getUserLocation()
+
+        // init adapter
+        adapter = MonthlyLocationConditionAdapter()
+
+        // get plant detail
+        getPlantDetail()
 
         calendar = Calendar.getInstance()
         binding.etPlantDate.setOnClickListener {
@@ -137,6 +145,41 @@ class CreateFragment : Fragment() {
         }
     }
 
+    private fun getPlantDetail() {
+        viewModel.getPlantDetail(args.plantName).observe(viewLifecycleOwner) {
+            it?.let { result ->
+                when (result) {
+                    is ApiResponse.Loading -> {
+                        binding.progressLoadingStatus.visibility = View.VISIBLE
+                        binding.rvMonthlyCondition.visibility = View.GONE
+                    }
+
+                    is ApiResponse.Success -> {
+                        with(binding) {
+                            val resultData = result.data.data
+                            progressLoadingStatus.visibility = View.GONE
+                            rvMonthlyCondition.visibility = View.VISIBLE
+
+                            // set adapter data
+                            Log.d(TAG, "getPlantDetail: ${resultData?.monthlyData}")
+                            adapter.setData(resultData?.monthlyData)
+                            rvMonthlyCondition.adapter = adapter
+                        }
+                    }
+
+                    else -> {
+                        binding.progressLoadingStatus.visibility = View.GONE
+                        Toast.makeText(
+                            requireContext(),
+                            "Terdapat kesalahan saat menghubungkan ke server",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
+                }
+            }
+        }
+    }
+
     @RequiresApi(Build.VERSION_CODES.N)
     private fun updateLabel() {
         val date = SimpleDateFormat("dd MMMM yyyy", Locale.getDefault()).format(calendar.time)
@@ -154,6 +197,7 @@ class CreateFragment : Fragment() {
     override fun onResume() {
         super.onResume()
         getUserLocation()
+        getPlantDetail()
     }
 
     companion object {
