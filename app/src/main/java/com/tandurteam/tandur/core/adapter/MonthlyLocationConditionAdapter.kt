@@ -1,5 +1,6 @@
 package com.tandurteam.tandur.core.adapter
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -19,6 +20,7 @@ class MonthlyLocationConditionAdapter :
         if (newListData == null) return
         listData.clear()
         listData.addAll(newListData)
+        Log.d(TAG, "setData: $newListData")
         listData.forEachIndexed { index, _ -> notifyItemChanged(index) }
     }
 
@@ -51,8 +53,13 @@ class MonthlyLocationConditionAdapter :
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val condition = listData[position]
+        Log.d(TAG, "onBindViewHolder: $condition")
         holder.bind(condition)
     }
 
     override fun getItemCount(): Int = listData.size
+
+    companion object {
+        private val TAG = MonthlyLocationConditionAdapter::class.java.simpleName
+    }
 }

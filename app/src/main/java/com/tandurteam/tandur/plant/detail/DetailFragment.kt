@@ -1,6 +1,7 @@
 package com.tandurteam.tandur.plant.detail
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -110,7 +111,9 @@ class DetailFragment : Fragment() {
                                 .into(ivTanamanDetail)
 
                             // set adapter data
+                            Log.d(TAG, "getPlantDetail: ${resultData?.monthlyData}")
                             adapter.setData(resultData?.monthlyData)
+                            rvKondisiLingkungan.adapter = adapter
                         }
                     }
 
@@ -125,5 +128,9 @@ class DetailFragment : Fragment() {
                 }
             }
         }
+    }
+
+    companion object {
+        private val TAG = DetailFragment::class.java.simpleName
     }
 }
