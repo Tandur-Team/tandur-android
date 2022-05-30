@@ -13,7 +13,6 @@ import android.view.Window
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
 import com.tandurteam.tandur.R
-import com.tandurteam.tandur.core.adapter.FixedPlantAdapter
 import com.tandurteam.tandur.core.adapter.NearbyPlantAdapter
 import com.tandurteam.tandur.core.model.network.ApiResponse
 import com.tandurteam.tandur.dashboard.DashboardActivity
@@ -27,7 +26,6 @@ class HomeFragment : Fragment() {
     private val viewModel: HomeViewModel by viewModel()
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
-    private lateinit var fixPlantAdapter: FixedPlantAdapter
     private lateinit var nearbyPlantAdapter: NearbyPlantAdapter
     private var dialogLocation: Dialog? = null
     private var isDialogOpened: Boolean = false
@@ -61,12 +59,6 @@ class HomeFragment : Fragment() {
             }
         }
 
-        // init adapter for fixed plant
-        fixPlantAdapter = FixedPlantAdapter()
-        fixPlantAdapter.onItemClick = { fixedPlant ->
-            navigateToDetail(fixedPlant.plantName)
-        }
-
         // init adapter for nearby plant
         nearbyPlantAdapter = NearbyPlantAdapter()
         nearbyPlantAdapter.onItemClick = { nearbyPlant ->
@@ -75,6 +67,19 @@ class HomeFragment : Fragment() {
 
         // observe live data
         observeLiveData()
+
+        // set temperature views
+        with(binding.itemTemp) {
+            ivCondition.setImageResource(R.drawable.ic_temperature)
+            tvCoditionTitle.text = requireContext().getString(R.string.suhu_udara)
+        }
+
+        // set humidity views
+        with(binding.itemHumidity) {
+            ivCondition.setImageResource(R.drawable.ic_humidity)
+            tvCoditionTitle.text = requireContext().getString(R.string.humiditas)
+            tvCoditionTitle.maxLines = 1
+        }
     }
 
     private fun getUserFullName() {
@@ -164,7 +169,9 @@ class HomeFragment : Fragment() {
             val visibility = if (isLoading) View.GONE else View.VISIBLE
             val progressVisibility = if (!isLoading) View.INVISIBLE else View.VISIBLE
             progressBarHorizontal.visibility = progressVisibility
-            rvApaYangMerekaTanam.visibility = visibility
+            itemRainfall.cardCondition.visibility = visibility
+            itemTemp.cardCondition.visibility = visibility
+            itemHumidity.cardCondition.visibility = visibility
             rvSaran.visibility = visibility
         }
     }
@@ -178,13 +185,8 @@ class HomeFragment : Fragment() {
                     }
 
                     is ApiResponse.Success -> {
-                        fixPlantAdapter.setData(fixedPlant.data.data)
+                        // TODO: Waiting backend API
                         setLoadingState(false)
-
-                        binding.rvApaYangMerekaTanam.apply {
-                            setHasFixedSize(true)
-                            adapter = this@HomeFragment.fixPlantAdapter
-                        }
                     }
                     else -> {
                         setLoadingState(false)

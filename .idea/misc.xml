@@ -11,7 +11,7 @@
         <entry key="..\:/Users/ACER/AndroidStudioProjects/tandur-android/app/src/main/res/layout/dialog_location_not_found.xml" value="0.264" />
         <entry key="..\:/Users/ACER/AndroidStudioProjects/tandur-android/app/src/main/res/layout/fragment_create.xml" value="0.2" />
         <entry key="..\:/Users/ACER/AndroidStudioProjects/tandur-android/app/src/main/res/layout/fragment_detail.xml" value="0.264" />
-        <entry key="..\:/Users/ACER/AndroidStudioProjects/tandur-android/app/src/main/res/layout/fragment_home.xml" value="0.176" />
+        <entry key="..\:/Users/ACER/AndroidStudioProjects/tandur-android/app/src/main/res/layout/fragment_home.xml" value="0.3616636528028933" />
         <entry key="..\:/Users/ACER/AndroidStudioProjects/tandur-android/app/src/main/res/layout/fragment_input_email.xml" value="0.176" />
         <entry key="..\:/Users/ACER/AndroidStudioProjects/tandur-android/app/src/main/res/layout/fragment_login.xml" value="0.25" />
         <entry key="..\:/Users/ACER/AndroidStudioProjects/tandur-android/app/src/main/res/layout/fragment_my_plant.xml" value="0.1925925925925926" />
@@ -20,7 +20,9 @@
         <entry key="..\:/Users/ACER/AndroidStudioProjects/tandur-android/app/src/main/res/layout/item_condition_detail.xml" value="0.264" />
         <entry key="..\:/Users/ACER/AndroidStudioProjects/tandur-android/app/src/main/res/layout/item_home_first.xml" value="0.25" />
         <entry key="..\:/Users/ACER/AndroidStudioProjects/tandur-android/app/src/main/res/layout/item_horizontal_placeholder.xml" value="0.24895833333333334" />
+        <entry key="..\:/Users/ACER/AndroidStudioProjects/tandur-android/app/src/main/res/layout/item_humidity.xml" value="0.10989583333333333" />
         <entry key="..\:/Users/ACER/AndroidStudioProjects/tandur-android/app/src/main/res/layout/item_my_plant_list.xml" value="0.1925925925925926" />
+        <entry key="..\:/Users/ACER/AndroidStudioProjects/tandur-android/app/src/main/res/layout/item_rainfall.xml" value="0.25" />
         <entry key="..\:/Users/bagas/AndroidStudioProjects/Capstone/tandur-android/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.166" />
         <entry key="..\:/Users/bagas/AndroidStudioProjects/Capstone/tandur-android/app/src/main/res/drawable/bg_btn_tanam.xml" value="0.2625" />
         <entry key="..\:/Users/bagas/AndroidStudioProjects/Capstone/tandur-android/app/src/main/res/drawable/bg_circle.xml" value="0.3315" />
@@ -60,24 +62,21 @@
         <entry key="..\:/Users/bagas/AndroidStudioProjects/Capstone/tandur-android/app/src/main/res/layout/activity_authentication.xml" value="0.3625" />
         <entry key="..\:/Users/bagas/AndroidStudioProjects/Capstone/tandur-android/app/src/main/res/layout/activity_main.xml" value="0.3625" />
         <entry key="..\:/Users/bagas/AndroidStudioProjects/Capstone/tandur-android/app/src/main/res/layout/activity_maps.xml" value="0.3625" />
-        <entry key="..\:/Users/bagas/AndroidStudioProjects/Capstone/tandur-android/app/src/main/res/layout/dialog_harvesting.xml" value="0.3625" />
-        <entry key="..\:/Users/bagas/AndroidStudioProjects/Capstone/tandur-android/app/src/main/res/layout/fragment_detail.xml" value="0.3506787330316742" />
+        <entry key="..\:/Users/bagas/AndroidStudioProjects/Capstone/tandur-android/app/src/main/res/layout/fragment_detail.xml" value="0.40965273690406123" />
         <entry key="..\:/Users/bagas/AndroidStudioProjects/Capstone/tandur-android/app/src/main/res/layout/fragment_home.xml" value="0.33" />
         <entry key="..\:/Users/bagas/AndroidStudioProjects/Capstone/tandur-android/app/src/main/res/layout/fragment_input_email.xml" value="0.3625" />
         <entry key="..\:/Users/bagas/AndroidStudioProjects/Capstone/tandur-android/app/src/main/res/layout/fragment_login.xml" value="0.3625" />
         <entry key="..\:/Users/bagas/AndroidStudioProjects/Capstone/tandur-android/app/src/main/res/layout/fragment_my_plant.xml" value="0.33" />
-        <entry key="..\:/Users/bagas/AndroidStudioProjects/Capstone/tandur-android/app/src/main/res/layout/fragment_my_plant_detail.xml" value="0.13478260869565217" />
+        <entry key="..\:/Users/bagas/AndroidStudioProjects/Capstone/tandur-android/app/src/main/res/layout/fragment_my_plant_detail.xml" value="0.25" />
         <entry key="..\:/Users/bagas/AndroidStudioProjects/Capstone/tandur-android/app/src/main/res/layout/fragment_profile.xml" value="0.33" />
         <entry key="..\:/Users/bagas/AndroidStudioProjects/Capstone/tandur-android/app/src/main/res/layout/item_condition_detail.xml" value="0.5" />
-        <entry key="..\:/Users/bagas/AndroidStudioProjects/Capstone/tandur-android/app/src/main/res/layout/item_home_first.xml" value="0.33" />
+        <entry key="..\:/Users/bagas/AndroidStudioProjects/Capstone/tandur-android/app/src/main/res/layout/item_home_first.xml" value="0.3625" />
         <entry key="..\:/Users/bagas/AndroidStudioProjects/Capstone/tandur-android/app/src/main/res/layout/item_home_suggestion.xml" value="0.5" />
-        <entry key="..\:/Users/bagas/AndroidStudioProjects/Capstone/tandur-android/app/src/main/res/layout/item_humidity.xml" value="0.3625" />
         <entry key="..\:/Users/bagas/AndroidStudioProjects/Capstone/tandur-android/app/src/main/res/layout/item_mereka_tanam.xml" value="0.9" />
         <entry key="..\:/Users/bagas/AndroidStudioProjects/Capstone/tandur-android/app/src/main/res/layout/item_my_plant_detail_condition.xml" value="0.3625" />
         <entry key="..\:/Users/bagas/AndroidStudioProjects/Capstone/tandur-android/app/src/main/res/layout/item_my_plant_list.xml" value="0.7849872773536896" />
         <entry key="..\:/Users/bagas/AndroidStudioProjects/Capstone/tandur-android/app/src/main/res/layout/item_my_plat_list.xml" value="0.5" />
         <entry key="..\:/Users/bagas/AndroidStudioProjects/Capstone/tandur-android/app/src/main/res/layout/item_tanamanku.xml" value="1.0" />
-        <entry key="..\:/Users/bagas/AndroidStudioProjects/Capstone/tandur-android/app/src/main/res/layout/item_temprature.xml" value="0.5" />
       </map>
     </option>
   </component>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/cardFixedPlant"
+    android:id="@+id/cardCondition"
     android:layout_width="101dp"
     android:layout_height="120dp"
     android:layout_gravity="center"
@@ -15,7 +15,7 @@
         android:layout_height="match_parent">
 
         <ImageView
-            android:id="@+id/ic_curah_hujan"
+            android:id="@+id/ivCondition"
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:src="@drawable/ic_rain"
@@ -26,32 +26,31 @@
             android:contentDescription="@string/icon_hujan" />
 
         <TextView
-            android:id="@+id/tv_data_curah_hujan"
-            android:layout_width="0dp"
+            android:id="@+id/tvCondition"
+            style="@style/Medium14Sp"
             android:layout_height="wrap_content"
             android:text="@string/curah_hujan_dummy"
-            style="@style/Medium16Sp"
+            android:layout_width="wrap_content"
             android:textColor="@color/light_primary"
-            android:layout_marginStart="24dp"
-            android:layout_marginEnd="14dp"
-            app:layout_constraintStart_toEndOf="@id/ic_curah_hujan"
-            app:layout_constraintTop_toTopOf="@id/ic_curah_hujan"
-            app:layout_constraintBottom_toBottomOf="@id/ic_curah_hujan"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            app:layout_constraintBottom_toBottomOf="@id/ivCondition"
+            app:layout_constraintEnd_toEndOf="@id/tvCoditionTitle"
+            app:layout_constraintTop_toTopOf="@id/ivCondition" />
 
         <TextView
-            android:id="@+id/tv_curah_hujan"
+            android:id="@+id/tvCoditionTitle"
             style="@style/SemiBold14Sp"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
             android:layout_marginStart="12dp"
             android:layout_marginEnd="12dp"
+            android:ellipsize="end"
+            android:maxLines="2"
             android:text="@string/curah_hujan"
             android:textColor="@color/light_primary"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            app:layout_constraintEnd_toEndOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
