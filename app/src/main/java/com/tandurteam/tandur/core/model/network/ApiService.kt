@@ -1,5 +1,6 @@
 package com.tandurteam.tandur.core.model.network
 
+import com.tandurteam.tandur.core.model.network.myplantdetail.response.detailmyplant.MyPlantDetailResponse
 import com.tandurteam.tandur.core.model.network.authentication.request.LoginRequest
 import com.tandurteam.tandur.core.model.network.authentication.request.SignUpRequest
 import com.tandurteam.tandur.core.model.network.authentication.response.LoginResponse
@@ -61,4 +62,11 @@ interface ApiService {
         @Header("Authorization") bearerToken: String,
         @Path("userId") userId: String
     ): DetailUserResponse
+
+    @GET("user/{userId}/plant/{plantId}")
+    suspend fun getMyPlantDetail(
+        @Header("Authorization") bearerToken: String,
+        @Path("userId") userId: String,
+        @Path("plantId") plantId: String,
+    ): MyPlantDetailResponse
 }
