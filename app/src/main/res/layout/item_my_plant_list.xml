@@ -13,8 +13,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:padding="4dp"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:padding="3dp">
 
         <ImageView
             android:id="@+id/iv_tanaman"
@@ -22,10 +22,10 @@
             android:layout_height="match_parent"
             android:contentDescription="@string/gambar_tanaman"
             android:cropToPadding="true"
-            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
             tools:src="@drawable/padi_dummy" />
 
         <View
@@ -35,6 +35,7 @@
             android:backgroundTint="@color/dark_accent_transparent_80"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -52,26 +53,33 @@
 
         <TextView
             android:id="@+id/tv_nama_tanaman"
-            style="@style/Medium16Sp"
+            style="@style/Medium14Sp"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:text="@string/padi"
-            android:textAlignment="center"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="12dp"
+            android:ellipsize="end"
+            android:gravity="center_vertical"
+            android:maxWidth="120dp"
+            android:maxLines="2"
+            android:textAlignment="textStart"
             android:textColor="@color/white"
+            app:layout_constraintEnd_toStartOf="@+id/ic_waktu"
             app:layout_constraintBottom_toBottomOf="@id/ic_tanaman"
             app:layout_constraintStart_toEndOf="@id/ic_tanaman"
-            app:layout_constraintTop_toTopOf="@id/ic_tanaman" />
+            app:layout_constraintTop_toTopOf="@id/ic_tanaman"
+            app:layout_constraintVertical_bias="0.514"
+            tools:text="Kacang Kucing" />
 
         <ImageView
             android:id="@+id/ic_status"
             android:layout_width="14dp"
             android:layout_height="12dp"
-            android:layout_marginStart="24dp"
+            android:layout_marginEnd="12dp"
             android:layout_marginTop="17dp"
             android:contentDescription="@string/icon_status"
             android:src="@drawable/ic_checklist"
-            app:layout_constraintStart_toEndOf="@id/tv_nama_tanaman"
+            app:layout_constraintEnd_toStartOf="@id/tv_status"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
@@ -79,38 +87,38 @@
             style="@style/Regular12Sp"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="18dp"
+            android:ellipsize="end"
+            android:maxLines="1"
             android:text="@string/status_tanaman"
             android:textColor="@color/white"
+            app:layout_constraintEnd_toEndOf="@id/tv_waktu"
             app:layout_constraintBottom_toBottomOf="@id/ic_status"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/ic_status"
+            app:layout_constraintStart_toStartOf="@id/tv_waktu"
             app:layout_constraintTop_toTopOf="@id/ic_status" />
 
         <ImageView
             android:id="@+id/ic_waktu"
             android:layout_width="12dp"
             android:layout_height="12dp"
-            android:layout_marginStart="24dp"
+            android:layout_marginEnd="12dp"
             android:layout_marginBottom="17dp"
             android:contentDescription="@string/icon_waktu"
             android:src="@drawable/ic_time"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@id/tv_nama_tanaman" />
+            app:layout_constraintEnd_toStartOf="@id/tv_waktu" />
 
         <TextView
             android:id="@+id/tv_waktu"
             style="@style/Regular12Sp"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="18dp"
+            android:layout_marginEnd="20dp"
+            android:ellipsize="end"
+            android:maxLines="1"
             android:text="@string/dummy_waktu"
             android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="@id/ic_waktu"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/ic_waktu"
             app:layout_constraintTop_toTopOf="@id/ic_waktu" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

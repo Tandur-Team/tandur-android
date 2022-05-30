@@ -1,6 +1,5 @@
 package com.tandurteam.tandur.core.model.network
 
-import com.tandurteam.tandur.core.model.network.myplantdetail.response.detailmyplant.MyPlantDetailResponse
 import com.tandurteam.tandur.core.model.network.authentication.request.LoginRequest
 import com.tandurteam.tandur.core.model.network.authentication.request.SignUpRequest
 import com.tandurteam.tandur.core.model.network.authentication.response.LoginResponse
@@ -10,6 +9,8 @@ import com.tandurteam.tandur.core.model.network.createplant.response.CreatePlant
 import com.tandurteam.tandur.core.model.network.detailuser.response.userdetail.DetailUserResponse
 import com.tandurteam.tandur.core.model.network.fixedplant.response.fixed.FixedPlantResponse
 import com.tandurteam.tandur.core.model.network.myplant.response.myplantlist.MyPlantListResponse
+import com.tandurteam.tandur.core.model.network.myplantdetail.request.HarvestRequest
+import com.tandurteam.tandur.core.model.network.myplantdetail.response.detailmyplant.MyPlantDetailResponse
 import com.tandurteam.tandur.core.model.network.nearbyplant.response.nearby.NearbyPlantResponse
 import com.tandurteam.tandur.core.model.network.plantdetail.response.PlantDetailResponse
 import retrofit2.http.*
@@ -31,6 +32,14 @@ interface ApiService {
         @Body createPlantRequest: CreatePlantRequest,
         @Path("userId") userId: String
     ): CreatePlantResponse
+
+    @POST("user/{userId}/plant/{plantId}")
+    suspend fun harvestPlant(
+        @Header("Authorization") bearerToken: String,
+        @Body harvestRequest: HarvestRequest,
+        @Path("userId") userId: String,
+        @Path("plantId") plantId: String
+    ): MyPlantDetailResponse
 
     @GET("user/{userId}/plant")
     suspend fun getAllMyPlant(

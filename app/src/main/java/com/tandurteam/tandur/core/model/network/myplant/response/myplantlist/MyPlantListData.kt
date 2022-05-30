@@ -5,7 +5,6 @@ import com.google.gson.annotations.SerializedName
 data class MyPlantListData(
     @SerializedName("_id")
     val id: String?,
-    val createdAt: String?,
     @SerializedName("is_harvested")
     val isHarvested: Int?,
     @SerializedName("plant_harvest_date")
@@ -17,5 +16,6 @@ data class MyPlantListData(
     @SerializedName("satisfaction_rate")
     val satisfactionRate: Int?,
     val userId: String?,
-    val zone: String?
+    @SerializedName("image_url")
+    val imageUrl: String
 )
