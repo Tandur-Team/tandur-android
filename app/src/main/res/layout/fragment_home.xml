@@ -84,6 +84,40 @@
                 app:layout_constraintTop_toBottomOf="@+id/tv_apa_yang_mereka_tanam"
                 tools:listitem="@layout/item_home_first" />
 
+            <com.facebook.shimmer.ShimmerFrameLayout
+                android:id="@+id/progressBarHorizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:clipToPadding="false"
+                android:paddingStart="24dp"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_apa_yang_mereka_tanam"
+                app:shimmer_auto_start="true">
+
+                <HorizontalScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:scrollbars="none">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <include layout="@layout/item_horizontal_placeholder" />
+
+                        <include layout="@layout/item_horizontal_placeholder" />
+
+                        <include layout="@layout/item_horizontal_placeholder" />
+
+                        <include layout="@layout/item_horizontal_placeholder" />
+                    </LinearLayout>
+                </HorizontalScrollView>
+            </com.facebook.shimmer.ShimmerFrameLayout>
+
             <TextView
                 android:id="@+id/tv_saran_untuk_anda"
                 style="@style/Medium16Sp"

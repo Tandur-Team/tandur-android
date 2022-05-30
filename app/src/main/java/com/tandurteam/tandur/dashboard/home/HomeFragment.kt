@@ -162,6 +162,8 @@ class HomeFragment : Fragment() {
             swipeRefresh.isRefreshing = isLoading
 
             val visibility = if (isLoading) View.GONE else View.VISIBLE
+            val progressVisibility = if (!isLoading) View.INVISIBLE else View.VISIBLE
+            progressBarHorizontal.visibility = progressVisibility
             rvApaYangMerekaTanam.visibility = visibility
             rvSaran.visibility = visibility
         }
