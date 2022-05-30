@@ -4,6 +4,7 @@ import com.tandurteam.tandur.MainViewModel
 import com.tandurteam.tandur.authentication.login.LoginViewModel
 import com.tandurteam.tandur.authentication.signup.SignUpViewModel
 import com.tandurteam.tandur.core.helper.SharedPreferences
+import com.tandurteam.tandur.core.model.network.myplantdetail.MyPlantDetailRepository
 import com.tandurteam.tandur.core.model.network.ApiService
 import com.tandurteam.tandur.core.model.network.authentication.AuthRepository
 import com.tandurteam.tandur.core.model.network.createplant.CreatePlantRepository
@@ -19,6 +20,7 @@ import com.tandurteam.tandur.maps.MapsViewModel
 import com.tandurteam.tandur.plant.choose.ChoosePlantViewModel
 import com.tandurteam.tandur.plant.create.CreateViewModel
 import com.tandurteam.tandur.plant.detail.PlantDetailViewModel
+import com.tandurteam.tandur.plant.myplantdetail.MyPlantDetailViewModel
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.android.ext.koin.androidContext
@@ -60,6 +62,7 @@ val repositoryModule = module {
     factory { PlantDetailRepository(get(), get()) }
     factory { CreatePlantRepository(get(), get()) }
     factory { DetailUserRepository(get(), get()) }
+    factory { MyPlantDetailRepository(get(), get()) }
 }
 
 val viewModelModule = module {
@@ -73,4 +76,5 @@ val viewModelModule = module {
     viewModel { MapsViewModel(get()) }
     viewModel { CreateViewModel(get()) }
     viewModel { ProfileViewModel(get()) }
+    viewModel { MyPlantDetailViewModel(get()) }
 }

@@ -34,8 +34,9 @@ class MyPlantFragment : Fragment() {
         // init adapter
         adapter = MyPlantListAdapter()
         adapter.onItemClick = { myPlant ->
-            val action = MyPlantFragmentDirections.navigateToMyDetailPlantFragment()
-            Navigation.findNavController(binding.root).navigate(action)
+            if (myPlant.plantName != null && myPlant.id != null) {
+                navigateToMyPlantDetail(myPlant.plantName, myPlant.id)
+            }
         }
 
         // on swipe refresh
@@ -49,6 +50,11 @@ class MyPlantFragment : Fragment() {
 
         // observe live data
         observeLiveData()
+    }
+
+    private fun navigateToMyPlantDetail(plantName: String, plantId: String) {
+        val action = MyPlantFragmentDirections.navigateToMyDetailPlantFragment(plantName, plantId)
+        Navigation.findNavController(binding.root).navigate(action)
     }
 
     private fun observeLiveData() {

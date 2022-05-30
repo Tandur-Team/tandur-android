@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import com.tandurteam.tandur.MainActivity
 import com.tandurteam.tandur.core.model.network.ApiResponse
+import com.tandurteam.tandur.dashboard.DashboardActivity
 import com.tandurteam.tandur.databinding.FragmentProfileBinding
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -32,6 +33,11 @@ class ProfileFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        // on refresh swiped
+        binding.swipeRefresh.setOnRefreshListener {
+            getUserDetail()
+        }
+
         // set user detail
         getUserDetail()
 
@@ -49,13 +55,30 @@ class ProfileFragment : Fragment() {
         }
     }
 
+    private fun setLoadingState(isLoading: Boolean) {
+        with(binding) {
+            swipeRefresh.isRefreshing = isLoading
+
+            val visibility = if (isLoading) View.GONE else View.VISIBLE
+            tvEmailUser.visibility = visibility
+            tvNamaUser.visibility = visibility
+            tvJumlahTanamanUser.visibility = visibility
+            tvTingkatKepuasanUser.visibility = visibility
+        }
+    }
+
     private fun getUserDetail() {
         viewModel.getDetailUser().observe(viewLifecycleOwner) {
             it?.let { detailUser ->
                 when (detailUser) {
+                    is ApiResponse.Loading -> {
+                        setLoadingState(true)
+                    }
+
                     is ApiResponse.Success -> {
                         with(binding) {
                             val dataDetail = detailUser.data.data
+                            setLoadingState(false)
 
                             // set views
                             tvEmailUser.text = dataDetail.email
@@ -65,6 +88,7 @@ class ProfileFragment : Fragment() {
                         }
                     }
                     else -> {
+                        setLoadingState(false)
                         Log.d(TAG, "$detailUser")
                     }
                 }
@@ -76,6 +100,16 @@ class ProfileFragment : Fragment() {
     override fun onPause() {
         super.onPause()
         _binding = null
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+        // show bottom nav
+        (requireActivity() as DashboardActivity).setBottomNavVisibility(true)
+
+        // get user location info
+        getUserDetail()
     }
 
     companion object {
