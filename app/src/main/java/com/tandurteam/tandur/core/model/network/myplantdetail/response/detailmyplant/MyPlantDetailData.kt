@@ -38,7 +38,7 @@ data class MyPlantDetailData(
     @field:SerializedName("plant_start_date")
     val plantStartDate: String,
 
-    @field:SerializedName("fixedData")
+    @field:SerializedName("fixed_data")
     val fixedData: FixedData,
 
     @field:SerializedName("_id")

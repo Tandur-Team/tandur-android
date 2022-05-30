@@ -135,4 +135,8 @@
     <string name="info_icon">info icon</string>
     
     <string name="harvest_duration">%1s Bulan</string>
+    <string name="curah_hujan_dummy">212</string>
+    <string name="suhu_udara">Suhu\nUdara</string>
+    <string name="humiditas">Humiditas</string>
+    <string name="bagaimana_cuaca_hari_ini">Bagaimana cuaca hari ini?</string>
 </resources>
