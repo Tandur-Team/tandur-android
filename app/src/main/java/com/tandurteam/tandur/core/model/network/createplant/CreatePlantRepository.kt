@@ -9,6 +9,7 @@ import com.tandurteam.tandur.core.model.network.ApiResponse
 import com.tandurteam.tandur.core.model.network.ApiService
 import com.tandurteam.tandur.core.model.network.createplant.request.CreatePlantRequest
 import com.tandurteam.tandur.core.model.network.createplant.response.CreatePlantResponse
+import com.tandurteam.tandur.core.model.network.plantdetail.response.MonthlyData
 import com.tandurteam.tandur.core.model.network.plantdetail.response.PlantDetailResponse
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
@@ -51,7 +52,10 @@ class CreatePlantRepository(
         }.flowOn(Dispatchers.IO)
     }
 
-    fun createPlant(plantName: String): Flow<ApiResponse<CreatePlantResponse>> {
+    fun createPlant(
+        plantName: String,
+        monthlyData: List<MonthlyData>
+    ): Flow<ApiResponse<CreatePlantResponse>> {
         return flow {
             try {
                 emit(ApiResponse.Loading())
@@ -66,16 +70,44 @@ class CreatePlantRepository(
                     dataStore.getStringData(DataStoreConstant.TOKEN).firstOrNull()
                 }
 
-                // get location
+                // get city
                 val city = withContext(Dispatchers.IO) {
                     dataStore.getStringData(DataStoreConstant.CITY).firstOrNull()
                 }
 
+                // get sub zone
+                val subZone = withContext(Dispatchers.IO) {
+                    dataStore.getStringData(DataStoreConstant.SUB_ZONE).firstOrNull()
+                }
+
+                // get latitude
+                val latitude = withContext(Dispatchers.IO) {
+                    dataStore.getDoubleData(DataStoreConstant.LATITUDE).firstOrNull()
+                }
+
+                // get longitude
+                val longitude = withContext(Dispatchers.IO) {
+                    dataStore.getDoubleData(DataStoreConstant.LONGITUDE).firstOrNull()
+                }
+
                 // get response
-                if (userId != null && city != null) {
+                if (
+                    userId != null &&
+                    city != null &&
+                    subZone != null &&
+                    latitude != null &&
+                    longitude != null
+                ) {
                     val response = apiService.createPlant(
                         "Bearer $token",
-                        CreatePlantRequest(plantName, city),
+                        CreatePlantRequest(
+                            plantName,
+                            subZone,
+                            city,
+                            latitude,
+                            longitude,
+                            monthlyData
+                        ),
                         userId
                     )
 

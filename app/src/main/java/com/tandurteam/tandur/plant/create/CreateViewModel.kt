@@ -7,11 +7,15 @@ import com.tandurteam.tandur.core.model.local.maps.UserLocation
 import com.tandurteam.tandur.core.model.network.ApiResponse
 import com.tandurteam.tandur.core.model.network.createplant.CreatePlantRepository
 import com.tandurteam.tandur.core.model.network.createplant.response.CreatePlantResponse
+import com.tandurteam.tandur.core.model.network.plantdetail.response.MonthlyData
 import com.tandurteam.tandur.core.model.network.plantdetail.response.PlantDetailResponse
 
 class CreateViewModel(private val createPlantRepository: CreatePlantRepository) : ViewModel() {
-    fun createPlant(plantName: String): LiveData<ApiResponse<CreatePlantResponse>> =
-        createPlantRepository.createPlant(plantName).asLiveData()
+    fun createPlant(
+        plantName: String,
+        monthlyData: List<MonthlyData>
+    ): LiveData<ApiResponse<CreatePlantResponse>> =
+        createPlantRepository.createPlant(plantName, monthlyData).asLiveData()
 
     fun getUserLocation(): LiveData<UserLocation> =
         createPlantRepository.getUserLocation().asLiveData()

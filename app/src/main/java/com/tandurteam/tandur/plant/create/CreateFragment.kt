@@ -16,6 +16,7 @@ import androidx.navigation.fragment.navArgs
 import com.tandurteam.tandur.R
 import com.tandurteam.tandur.core.adapter.MonthlyLocationConditionAdapter
 import com.tandurteam.tandur.core.model.network.ApiResponse
+import com.tandurteam.tandur.core.model.network.plantdetail.response.MonthlyData
 import com.tandurteam.tandur.dashboard.DashboardActivity
 import com.tandurteam.tandur.databinding.FragmentCreateBinding
 import com.tandurteam.tandur.maps.MapsActivity
@@ -31,6 +32,7 @@ class CreateFragment : Fragment() {
     private val binding get() = _binding!!
     private lateinit var calendar: Calendar
     private lateinit var adapter: MonthlyLocationConditionAdapter
+    private var monthlyData = mutableListOf<MonthlyData>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -85,11 +87,13 @@ class CreateFragment : Fragment() {
 
         binding.ivBack.setOnClickListener { requireActivity().onBackPressed() }
 
-        binding.btnTanam.setOnClickListener { createPlant() }
+        binding.btnTanam.setOnClickListener {
+            if (monthlyData.isNotEmpty()) createPlant()
+        }
     }
 
     private fun createPlant() {
-        viewModel.createPlant(args.plantName).observe(viewLifecycleOwner) {
+        viewModel.createPlant(args.plantName, monthlyData).observe(viewLifecycleOwner) {
             it?.let { plantResponse ->
                 when (plantResponse) {
                     is ApiResponse.Loading -> {
@@ -159,6 +163,11 @@ class CreateFragment : Fragment() {
                             val resultData = result.data.data
                             progressLoadingStatus.visibility = View.GONE
                             rvMonthlyCondition.visibility = View.VISIBLE
+
+                            // get monthly data
+                            resultData?.monthlyData?.let { data ->
+                                monthlyData.addAll(data)
+                            }
 
                             // set adapter data
                             Log.d(TAG, "getPlantDetail: ${resultData?.monthlyData}")
