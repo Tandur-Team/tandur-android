@@ -50,6 +50,11 @@ class HomeFragment : Fragment() {
         // get user location
         getUserLocation()
 
+        // on refresh swiped
+        binding.swipeRefresh.setOnRefreshListener {
+            observeLiveData()
+        }
+
         binding.tvLocation.setOnClickListener {
             Intent(requireActivity(), MapsActivity::class.java).apply {
                 requireActivity().startActivity(this)
@@ -152,18 +157,35 @@ class HomeFragment : Fragment() {
         Navigation.findNavController(binding.root).navigate(action)
     }
 
+    private fun setLoadingState(isLoading: Boolean) {
+        with(binding) {
+            swipeRefresh.isRefreshing = isLoading
+
+            val visibility = if (isLoading) View.GONE else View.VISIBLE
+            rvApaYangMerekaTanam.visibility = visibility
+            rvSaran.visibility = visibility
+        }
+    }
+
     private fun observeLiveData() {
         viewModel.getAllFixedPlant().observe(viewLifecycleOwner) {
             it?.let { fixedPlant ->
                 when (fixedPlant) {
+                    is ApiResponse.Loading -> {
+                        setLoadingState(true)
+                    }
+
                     is ApiResponse.Success -> {
                         fixPlantAdapter.setData(fixedPlant.data.data)
+                        setLoadingState(false)
+
                         binding.rvApaYangMerekaTanam.apply {
                             setHasFixedSize(true)
                             adapter = this@HomeFragment.fixPlantAdapter
                         }
                     }
                     else -> {
+                        setLoadingState(false)
                         Log.d(TAG, "$fixedPlant")
                     }
                 }
@@ -173,8 +195,14 @@ class HomeFragment : Fragment() {
         viewModel.getNearbyPlant().observe(viewLifecycleOwner) {
             it?.let { nearbyPlant ->
                 when (nearbyPlant) {
+                    is ApiResponse.Loading -> {
+                        setLoadingState(true)
+                    }
+
                     is ApiResponse.Success -> {
                         nearbyPlantAdapter.setData(nearbyPlant.data.data)
+                        setLoadingState(false)
+
                         binding.rvSaran.apply {
                             setHasFixedSize(true)
                             adapter = this@HomeFragment.nearbyPlantAdapter
@@ -182,6 +210,7 @@ class HomeFragment : Fragment() {
 
                     }
                     else -> {
+                        setLoadingState(false)
                         Log.d(TAG, "$nearbyPlant")
                     }
                 }
