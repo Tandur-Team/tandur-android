@@ -29,7 +29,7 @@ class FixedPlantAdapter : RecyclerView.Adapter<FixedPlantAdapter.ViewHolder>() {
         private val binding = ItemHomeFirstBinding.bind(itemView)
 
         init {
-            binding.cardFixedPlant.setOnClickListener { onItemClick?.invoke(listData[adapterPosition]) }
+            binding.cardFixedPlant.setOnClickListener { onItemClick?.invoke(listData[absoluteAdapterPosition]) }
         }
 
         fun bind(data: FixedPlantData) {

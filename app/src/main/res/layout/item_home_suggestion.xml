@@ -64,7 +64,7 @@
             android:layout_marginStart="8dp"
             android:text="@string/padi"
             android:textColor="@color/light_primary"
-            android:layout_marginEnd="123.47dp"
+            android:layout_marginEnd="115dp"
             app:layout_constraintBottom_toBottomOf="@id/ic_tanaman"
             app:layout_constraintStart_toEndOf="@id/ic_tanaman"
             app:layout_constraintTop_toTopOf="@id/ic_tanaman"

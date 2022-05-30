@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
+import com.tandurteam.tandur.R
 import com.tandurteam.tandur.core.model.network.nearbyplant.response.nearby.NearbyPlantData
 import com.tandurteam.tandur.databinding.ItemHomeSuggestionBinding
 
@@ -28,21 +29,21 @@ class NearbyPlantAdapter : RecyclerView.Adapter<NearbyPlantAdapter.ViewHolder>()
         private val binding = ItemHomeSuggestionBinding.bind(itemView)
 
         init {
-            binding.cardNearbyPlant.setOnClickListener { onItemClick?.invoke(listData[adapterPosition]) }
+            binding.cardNearbyPlant.setOnClickListener { onItemClick?.invoke(listData[absoluteAdapterPosition]) }
         }
 
         fun bind(data: NearbyPlantData){
             with(binding){
                 Glide.with(itemView.context)
                     .asBitmap()
-                    .load(DUMMY_IMAGE_URL) // TODO
+                    .load(data.imageUrl) // TODO
                     .transform(CenterCrop(), RoundedCorners(24))
                     .into(ivTanaman)
 
                 tvNamaTanaman.text = data.plantName
-                tvJumlahUser.text = data.isHarvested.toString()
-                tvStatus.text = data.satisfactionRate.toString()
-                tvWaktu.text = data.plantHarvestDate
+                tvJumlahUser.text = data.nearby.toString()
+                tvStatus.text = data.avgSatisfactionRate.toString()
+                tvWaktu.text = itemView.context.getString(R.string.harvest_duration, data.harvestDuration.toString())
             }
         }
     }
@@ -63,8 +64,5 @@ class NearbyPlantAdapter : RecyclerView.Adapter<NearbyPlantAdapter.ViewHolder>()
 
     override fun getItemCount(): Int = listData.size
 
-    companion object {
-        private const val DUMMY_IMAGE_URL =
-            "https://images.unsplash.com/photo-1592997572594-34be01bc36c7?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170"
-    }
+
 }

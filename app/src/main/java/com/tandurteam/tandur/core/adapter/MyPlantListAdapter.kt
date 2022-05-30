@@ -28,7 +28,7 @@ class MyPlantListAdapter : RecyclerView.Adapter<MyPlantListAdapter.ViewHolder>()
         private val binding = ItemMyPlantListBinding.bind(itemView)
 
         init {
-            binding.cardMyPlant.setOnClickListener { onItemClick?.invoke(listData[adapterPosition]) }
+            binding.cardMyPlant.setOnClickListener { onItemClick?.invoke(listData[absoluteAdapterPosition]) }
         }
 
         fun bind(data: MyPlantListData) {

@@ -91,23 +91,26 @@ class NearbyPlantRepository(
                 Log.d(TAG, "getNearbyPlant: $city")
                 Log.d(TAG, "getNearbyPlant: $subZone")
 
-                val response = apiService.getNearbyPlant(
-                    "Bearer $token",
-                    DUMMY_ZONE_LOCAL,
-                    DUMMY_ZONE_CITY
-                )
+                if (subZone != null && city != null) {
+                    val response = apiService.getNearbyPlant(
+                        "Bearer $token",
+                        subZone,
+                        city
+                    )
 
-                when (response.status) {
-                    HttpConstant.STATUS_OK -> {
-                        Log.d(TAG, "getNearbyPlant: Success")
+                    when (response.status) {
+                        HttpConstant.STATUS_OK -> {
+                            Log.d(TAG, "getNearbyPlant: Success")
 
-                        emit(ApiResponse.Success(response))
-                    }
-                    else -> {
-                        Log.d(TAG, "Nearby Plant: ${response.message}")
-                        emit(ApiResponse.Error(response.message))
+                            emit(ApiResponse.Success(response))
+                        }
+                        else -> {
+                            Log.d(TAG, "Nearby Plant: ${response.message}")
+                            emit(ApiResponse.Error(response.message))
+                        }
                     }
                 }
+
             } catch (e: Exception) {
                 Log.e(TAG, "$e")
                 emit(ApiResponse.Error(e.toString()))
@@ -117,7 +120,5 @@ class NearbyPlantRepository(
 
     companion object {
         private val TAG = NearbyPlantRepository::class.java.simpleName
-        private const val DUMMY_ZONE_LOCAL = "Sekardangan"
-        private const val DUMMY_ZONE_CITY = "Sidoarjo"
     }
 }

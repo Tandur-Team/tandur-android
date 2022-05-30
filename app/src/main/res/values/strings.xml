@@ -133,4 +133,6 @@
     <string name="dialog_geospatial_info_title">Bagaimana Kami Mendapatkan Data Kondisi Lingkungan Anda?</string>
     <string name="dialog_geospatial_info_message">Data didapatkan dengan mengambil rata-rata pada setiap bulan.</string>
     <string name="info_icon">info icon</string>
+    
+    <string name="harvest_duration">%1s Bulan</string>
 </resources>
