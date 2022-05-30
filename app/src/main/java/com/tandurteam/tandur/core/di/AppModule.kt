@@ -7,6 +7,7 @@ import com.tandurteam.tandur.core.helper.SharedPreferences
 import com.tandurteam.tandur.core.model.network.ApiService
 import com.tandurteam.tandur.core.model.network.authentication.AuthRepository
 import com.tandurteam.tandur.core.model.network.createplant.CreatePlantRepository
+import com.tandurteam.tandur.core.model.network.detailuser.DetailUserRepository
 import com.tandurteam.tandur.core.model.network.fixedplant.FixedPlantRepository
 import com.tandurteam.tandur.core.model.network.myplant.MyPlantRepository
 import com.tandurteam.tandur.core.model.network.nearbyplant.NearbyPlantRepository
@@ -58,17 +59,18 @@ val repositoryModule = module {
     factory { NearbyPlantRepository(get(), get()) }
     factory { PlantDetailRepository(get(), get()) }
     factory { CreatePlantRepository(get(), get()) }
+    factory { DetailUserRepository(get(), get()) }
 }
 
 val viewModelModule = module {
     viewModel { MainViewModel(get()) }
     viewModel { SignUpViewModel(get()) }
     viewModel { LoginViewModel(get()) }
-    viewModel { ProfileViewModel(get()) }
     viewModel { MyPlantViewModel(get()) }
     viewModel { PlantDetailViewModel(get()) }
     viewModel { HomeViewModel(get(), get()) }
     viewModel { ChoosePlantViewModel(get()) }
     viewModel { MapsViewModel(get()) }
     viewModel { CreateViewModel(get()) }
+    viewModel { ProfileViewModel(get()) }
 }

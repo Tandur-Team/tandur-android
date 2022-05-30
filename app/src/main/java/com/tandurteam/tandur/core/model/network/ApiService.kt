@@ -6,6 +6,7 @@ import com.tandurteam.tandur.core.model.network.authentication.response.LoginRes
 import com.tandurteam.tandur.core.model.network.authentication.response.SignUpResponse
 import com.tandurteam.tandur.core.model.network.createplant.request.CreatePlantRequest
 import com.tandurteam.tandur.core.model.network.createplant.response.CreatePlantResponse
+import com.tandurteam.tandur.core.model.network.detailuser.response.userdetail.DetailUserResponse
 import com.tandurteam.tandur.core.model.network.fixedplant.response.fixed.FixedPlantResponse
 import com.tandurteam.tandur.core.model.network.myplant.response.myplantlist.MyPlantListResponse
 import com.tandurteam.tandur.core.model.network.nearbyplant.response.nearby.NearbyPlantResponse
@@ -54,4 +55,10 @@ interface ApiService {
         @Query("lat") lat: Double,
         @Query("long") lng: Double,
     ): PlantDetailResponse
+
+    @GET("user/{userId}")
+    suspend fun getDetailUser(
+        @Header("Authorization") bearerToken: String,
+        @Path("userId") userId: String
+    ): DetailUserResponse
 }
