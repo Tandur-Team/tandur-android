@@ -36,7 +36,7 @@
     <string name="estimasi">%1s Bulan</string>
     <string name="nearby_farmer">%1s Petani</string>
     <string name="let_s_join_us">Mari Bertani!</string>
-    <string name="register_jargon">Sekarang anda dapat menanam di tempat anda tanpa takut gagal panen lagi</string>
+    <string name="register_jargon">Sekarang anda dapat menanam di manapun tanpa takut gagal panen lagi</string>
     <string name="tandur_logo">tandur logo</string>
     <string name="tandur_app">Tandur App</string>
 
@@ -142,4 +142,5 @@
     <string name="satisfaction_icon">satisfaction icon</string>
     <string name="tab_1">Ditanam</string>
     <string name="tab_2">Sudah Panen</string>
+    <string name="please_wait">Harap tunggu …</string>
 </resources>

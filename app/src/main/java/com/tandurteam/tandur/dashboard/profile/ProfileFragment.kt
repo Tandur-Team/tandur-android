@@ -6,9 +6,11 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import com.tandurteam.tandur.MainActivity
+import com.tandurteam.tandur.R
 import com.tandurteam.tandur.core.model.network.ApiResponse
 import com.tandurteam.tandur.dashboard.DashboardActivity
 import com.tandurteam.tandur.databinding.FragmentProfileBinding
@@ -59,11 +61,10 @@ class ProfileFragment : Fragment() {
         with(binding) {
             swipeRefresh.isRefreshing = isLoading
 
-            val visibility = if (isLoading) View.GONE else View.VISIBLE
-            tvEmailUser.visibility = visibility
-            tvNamaUser.visibility = visibility
-            tvJumlahTanamanUser.visibility = visibility
-            tvTingkatKepuasanUser.visibility = visibility
+            tvEmailUser.text = requireContext().getString(R.string.please_wait)
+            tvNamaUser.text = requireContext().getString(R.string.please_wait)
+            tvJumlahTanamanUser.text = requireContext().getString(R.string.please_wait)
+            tvTingkatKepuasanUser.text = requireContext().getString(R.string.please_wait)
         }
     }
 
@@ -89,6 +90,11 @@ class ProfileFragment : Fragment() {
                     }
                     else -> {
                         setLoadingState(false)
+                        Toast.makeText(
+                            requireContext(),
+                            "Terdapat kesalahan saat menghubungkan ke server",
+                            Toast.LENGTH_SHORT
+                        ).show()
                         Log.d(TAG, "$detailUser")
                     }
                 }
