@@ -18,7 +18,10 @@ class MyPlantRepository(
     private val apiService: ApiService,
     private val dataStore: SharedPreferences
 ) {
-    fun getAllMyPlant(isHarvested: Int): Flow<ApiResponse<MyPlantListResponse>> {
+    fun getAllMyPlant(
+        isHarvested: Int,
+        query: String = ""
+    ): Flow<ApiResponse<MyPlantListResponse>> {
         return flow {
             try {
                 emit(ApiResponse.Loading())
@@ -36,7 +39,9 @@ class MyPlantRepository(
                 Log.d(TAG, "getAllMyPlant: $token")
 
                 userId?.let { id ->
-                    val response = apiService.getAllMyPlant("Bearer $token", id)
+                    val response = if (query.isEmpty()) {
+                        apiService.getAllMyPlant("Bearer $token", id)
+                    } else apiService.searchAllMyPlant("Bearer $token", id, query)
                     when (response.status) {
                         HttpConstant.STATUS_OK -> {
                             Log.d(TAG, "getAllMyPlant: ${response.data}")

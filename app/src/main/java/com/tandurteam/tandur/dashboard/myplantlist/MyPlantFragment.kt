@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.StringRes
+import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
 import com.google.android.material.tabs.TabLayoutMediator
@@ -12,11 +13,9 @@ import com.tandurteam.tandur.R
 import com.tandurteam.tandur.core.adapter.SectionPagerAdapter
 import com.tandurteam.tandur.dashboard.DashboardActivity
 import com.tandurteam.tandur.databinding.FragmentMyPlantBinding
-import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MyPlantFragment : Fragment() {
 
-    private val viewModel: MyPlantViewModel by viewModel()
     private var _binding: FragmentMyPlantBinding? = null
     private val binding get() = _binding!!
 
@@ -32,7 +31,7 @@ class MyPlantFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         // set view pager adapter and tab layout
-        val sectionPagerAdapter = SectionPagerAdapter(this)
+        var sectionPagerAdapter = SectionPagerAdapter(this)
         with(binding) {
             viewPager.adapter = sectionPagerAdapter
             TabLayoutMediator(tabs, viewPager) { tab, position ->
@@ -44,6 +43,20 @@ class MyPlantFragment : Fragment() {
         binding.btnTanamBaru.setOnClickListener {
             val action = MyPlantFragmentDirections.navigateToChooseFragment()
             Navigation.findNavController(binding.root).navigate(action)
+        }
+
+        // on search listener
+        with(binding) {
+            etSearchTanamanku.addTextChangedListener {
+                // set view pager adapter and tab layout
+                sectionPagerAdapter = SectionPagerAdapter(this@MyPlantFragment, it.toString())
+                with(binding) {
+                    viewPager.adapter = sectionPagerAdapter
+                    TabLayoutMediator(tabs, viewPager) { tab, position ->
+                        tab.text = resources.getString(TAB_TITLES[position])
+                    }.attach()
+                }
+            }
         }
     }
 

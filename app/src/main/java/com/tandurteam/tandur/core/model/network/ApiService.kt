@@ -48,6 +48,13 @@ interface ApiService {
         @Path("userId") userId: String
     ): MyPlantListResponse
 
+    @GET("user/{userId}/plant/search")
+    suspend fun searchAllMyPlant(
+        @Header("Authorization") bearerToken: String,
+        @Path("userId") userId: String,
+        @Query("search") query: String
+    ): MyPlantListResponse
+
     @GET("fixedplant")
     suspend fun getAllFixedPlant(): FixedPlantResponse
 

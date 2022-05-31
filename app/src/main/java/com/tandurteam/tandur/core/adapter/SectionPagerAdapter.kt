@@ -6,7 +6,8 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.tandurteam.tandur.dashboard.myplantlist.ListFragment
 
 class SectionPagerAdapter(
-    fragment: Fragment
+    fragment: Fragment,
+    val query: String = ""
 ) : FragmentStateAdapter(fragment) {
     override fun getItemCount(): Int = 2
 
@@ -15,6 +16,7 @@ class SectionPagerAdapter(
 
         fragment.arguments = Bundle().apply {
             putInt(ListFragment.ARG_SECTION_NUMBER, position)
+            putString(ListFragment.ARG_QUERY, query)
         }
 
         return fragment

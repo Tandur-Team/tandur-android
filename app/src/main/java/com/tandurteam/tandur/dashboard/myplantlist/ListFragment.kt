@@ -19,6 +19,7 @@ class ListFragment : Fragment() {
     private val binding get() = _binding!!
     private lateinit var adapter: MyPlantListAdapter
     private var index: Int = 0
+    private var query = ""
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -34,6 +35,7 @@ class ListFragment : Fragment() {
 
         // get index from adapter's bundle
         index = arguments?.getInt(ARG_SECTION_NUMBER, 0) ?: 0
+        query = arguments?.getString(ARG_QUERY) ?: ""
 
         // init adapter
         adapter = MyPlantListAdapter()
@@ -58,7 +60,7 @@ class ListFragment : Fragment() {
     }
 
     private fun observeLiveData(isHarvested: Int = 0) {
-        viewModel.getAllMyPlant(isHarvested).observe(viewLifecycleOwner) {
+        viewModel.getAllMyPlant(isHarvested, query).observe(viewLifecycleOwner) {
             it?.let { myPlantList ->
                 when (myPlantList) {
                     is ApiResponse.Loading -> {
@@ -108,5 +110,6 @@ class ListFragment : Fragment() {
     companion object {
         private val TAG = ListFragment::class.java.simpleName
         const val ARG_SECTION_NUMBER = "section_number"
+        const val ARG_QUERY = "query"
     }
 }
