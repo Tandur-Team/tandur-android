@@ -84,6 +84,22 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
+                <ImageView
+                    android:id="@+id/ivSatisfactionFace"
+                    android:layout_width="55dp"
+                    android:layout_height="55dp"
+                    android:layout_marginEnd="30dp"
+                    android:background="@drawable/bg_circle_red"
+                    android:backgroundTint="@color/light_primary"
+                    android:contentDescription="@string/satisfaction_icon"
+                    android:padding="8dp"
+                    android:src="@drawable/ic_happy"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toBottomOf="@id/tv_status_detail"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/tv_status_detail"
+                    app:tint="@color/green_accent" />
+
                 <TextView
                     android:id="@+id/tv_status_peringatan"
                     style="@style/Medium16Sp"

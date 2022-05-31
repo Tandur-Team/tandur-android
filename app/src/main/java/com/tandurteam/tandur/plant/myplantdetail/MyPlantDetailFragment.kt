@@ -60,11 +60,11 @@ class MyPlantDetailFragment : Fragment() {
         }
 
         binding.swipeRefresh.setOnRefreshListener {
-            observeLiveData()
+            observeLiveData(isHarvesting = false)
         }
 
         // observe
-        observeLiveData()
+        observeLiveData(isHarvesting = false)
 
         // on back pressed
         binding.ivBack.setOnClickListener { requireActivity().onBackPressed() }
@@ -74,7 +74,7 @@ class MyPlantDetailFragment : Fragment() {
         with(binding) {
             swipeRefresh.isRefreshing = isLoading
 
-            val visibility = if (isLoading) View.GONE else View.VISIBLE
+            val visibility = if (isLoading) View.INVISIBLE else View.VISIBLE
             tvStatusDetail.visibility = visibility
             tvStatusPeringatan.visibility = visibility
             rvStatus.visibility = visibility
@@ -94,8 +94,14 @@ class MyPlantDetailFragment : Fragment() {
         }
     }
 
-    private fun observeLiveData() {
-        viewModel.getMyPlantDetail(navArg.plantName, navArg.plantId).observe(viewLifecycleOwner) {
+    private fun observeLiveData(satisfactionRate: Int = -1, isHarvesting: Boolean) {
+        val viewModelFunction = if (isHarvesting) {
+            viewModel.harvestPlant(navArg.plantId, satisfactionRate)
+        } else {
+            viewModel.getMyPlantDetail(navArg.plantName, navArg.plantId)
+        }
+
+        viewModelFunction.observe(viewLifecycleOwner) {
             it?.let { result ->
                 when (result) {
                     is ApiResponse.Loading -> {
@@ -116,11 +122,29 @@ class MyPlantDetailFragment : Fragment() {
                                 resultData.zoneLocal,
                                 resultData.zoneCity
                             )
-
                             Glide.with(requireContext())
                                 .asBitmap()
                                 .load(resultData.imageUrl)
                                 .into(ivTanamanDetail)
+
+                            // check is harvested
+                            if (resultData.isHarvested == 1) {
+                                btnHarvest.visibility = View.GONE
+                                ivSatisfactionFace.visibility = View.VISIBLE
+
+                                // check satisfaction rate
+                                if (resultData.satisfactionRate == 0) {
+                                    ivSatisfactionFace.setImageResource(R.drawable.ic_sad)
+                                    ivSatisfactionFace.imageTintList = ColorStateList.valueOf(
+                                        ContextCompat.getColor(requireContext(), R.color.red_accent)
+                                    )
+                                } else if (resultData.satisfactionRate in (1..99)) {
+                                    ivSatisfactionFace.setImageResource(R.drawable.ic_neutral)
+                                    ivSatisfactionFace.imageTintList = ColorStateList.valueOf(
+                                        ContextCompat.getColor(requireContext(), R.color.red_accent)
+                                    )
+                                }
+                            }
 
                             // set adapter
                             Log.d(TAG, "getMyPlantPlantDetail: ${resultData.monthlyData}")
@@ -128,11 +152,20 @@ class MyPlantDetailFragment : Fragment() {
                             rvStatus.adapter = adapter
                         }
                     }
+                    is ApiResponse.Error -> {
+                        setLoadingState(false)
+                        Toast.makeText(
+                            requireContext(),
+                            result.errorMessage,
+                            Toast.LENGTH_SHORT
+                        ).show()
+                        Log.d(TAG, "observeLiveData: ${result.errorMessage}")
+                    }
                     else -> {
                         setLoadingState(false)
                         Toast.makeText(
                             requireContext(),
-                            "Terdapat kesalahan saat menghubungkan ke server",
+                            "Terdapat kesalahan saat menghubungkan ke server.",
                             Toast.LENGTH_SHORT
                         ).show()
                     }
@@ -152,28 +185,36 @@ class MyPlantDetailFragment : Fragment() {
             )
             setContentView(dialogBinding.root)
 
+            // init satisfaction rate
+            var satisfactionRate = -1
+
             // set view
             with(dialogBinding) {
                 ivSadFace.setOnClickListener {
+                    satisfactionRate = 0
                     setEmotionColor(ivSadFace, ivHappyFace, ivNeutralFace)
                     setTextEmotionColor(tvSad, tvHappy, tvNeutral)
                 }
 
                 ivNeutralFace.setOnClickListener {
+                    satisfactionRate = 50
                     setEmotionColor(ivNeutralFace, ivSadFace, ivHappyFace)
                     setTextEmotionColor(tvNeutral, tvSad, tvHappy)
                 }
 
                 ivHappyFace.setOnClickListener {
+                    satisfactionRate = 100
                     setEmotionColor(ivHappyFace, ivSadFace, ivNeutralFace)
                     setTextEmotionColor(tvHappy, tvSad, tvNeutral)
                 }
 
                 tvBack.setOnClickListener { dismiss() }
 
-                // TODO: Should be connect to Patch Harvest Plant API
                 btnConfirmHarvest.setOnClickListener {
-                    Toast.makeText(requireContext(), "Coming Soon!", Toast.LENGTH_SHORT).show()
+                    if (satisfactionRate >= 0) {
+                        dismiss()
+                        observeLiveData(satisfactionRate, true)
+                    }
                 }
             }
 

@@ -139,4 +139,5 @@
     <string name="suhu_udara">Suhu\nUdara</string>
     <string name="humiditas">Humiditas</string>
     <string name="bagaimana_cuaca_hari_ini">Bagaimana cuaca hari ini?</string>
+    <string name="satisfaction_icon">satisfaction icon</string>
 </resources>

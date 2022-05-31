@@ -33,7 +33,7 @@ interface ApiService {
         @Path("userId") userId: String
     ): CreatePlantResponse
 
-    @POST("user/{userId}/plant/{plantId}")
+    @PATCH("user/{userId}/plant/{plantId}")
     suspend fun harvestPlant(
         @Header("Authorization") bearerToken: String,
         @Body harvestRequest: HarvestRequest,
