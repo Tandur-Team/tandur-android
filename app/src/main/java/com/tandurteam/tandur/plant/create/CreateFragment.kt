@@ -16,6 +16,7 @@ import androidx.navigation.fragment.navArgs
 import com.tandurteam.tandur.R
 import com.tandurteam.tandur.core.adapter.MonthlyLocationConditionAdapter
 import com.tandurteam.tandur.core.model.network.ApiResponse
+import com.tandurteam.tandur.core.model.network.myplantdetail.response.detailmyplant.FixedData
 import com.tandurteam.tandur.core.model.network.plantdetail.response.MonthlyData
 import com.tandurteam.tandur.dashboard.DashboardActivity
 import com.tandurteam.tandur.databinding.FragmentCreateBinding
@@ -171,7 +172,7 @@ class CreateFragment : Fragment() {
 
                             // set adapter data
                             Log.d(TAG, "getPlantDetail: ${resultData?.monthlyData}")
-                            adapter.setData(resultData?.monthlyData)
+                            adapter.setData(resultData?.monthlyData, resultData!!.fixedData)
                             rvMonthlyCondition.adapter = adapter
                         }
                     }

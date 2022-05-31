@@ -113,27 +113,18 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/tv_status_detail" />
 
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rv_status"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:orientation="vertical"
-                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/tv_status_peringatan"
-                    tools:listitem="@layout/item_my_plant_detail_condition" />
+
 
                 <ImageView
                     android:id="@+id/ic_date"
                     android:layout_width="18dp"
                     android:layout_height="18dp"
                     android:layout_marginStart="30dp"
-                    android:layout_marginTop="14dp"
+                    android:layout_marginTop="20dp"
                     android:contentDescription="@string/icon_date"
                     android:src="@drawable/ic_date"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/rv_status"
+                    app:layout_constraintTop_toBottomOf="@id/tv_status_peringatan"
                     app:tint="@color/dark_accent" />
 
                 <TextView
@@ -278,6 +269,17 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tv_user_location" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_status"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="14dp"
+                    android:orientation="vertical"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/v_line6"
+                    tools:listitem="@layout/item_my_plant_detail_condition" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

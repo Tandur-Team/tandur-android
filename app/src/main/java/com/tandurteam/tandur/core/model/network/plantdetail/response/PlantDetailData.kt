@@ -1,6 +1,7 @@
 package com.tandurteam.tandur.core.model.network.plantdetail.response
 
 import com.google.gson.annotations.SerializedName
+import com.tandurteam.tandur.core.model.network.myplantdetail.response.detailmyplant.FixedData
 
 data class PlantDetailData(
     val duration: Int?,
@@ -12,5 +13,7 @@ data class PlantDetailData(
     val nearby: Int?,
     @SerializedName("plant_name")
     val plantName: String?,
+    @field:SerializedName("fixed_data")
+    val fixedData: FixedData,
     val probability: Int?
 )

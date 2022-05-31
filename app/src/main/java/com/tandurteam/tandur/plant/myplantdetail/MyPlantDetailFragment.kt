@@ -148,7 +148,7 @@ class MyPlantDetailFragment : Fragment() {
 
                             // set adapter
                             Log.d(TAG, "getMyPlantPlantDetail: ${resultData.monthlyData}")
-                            adapter.setData(resultData.monthlyData)
+                            adapter.setData(resultData.monthlyData, resultData.fixedData)
                             rvStatus.adapter = adapter
                         }
                     }

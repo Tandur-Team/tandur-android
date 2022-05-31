@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="20dp"
         android:text="@string/detail_bulan"
-        android:textColor="@color/red_accent"
+        android:textColor="@color/green_accent"
         app:layout_constraintEnd_toStartOf="@id/ic_rain"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -26,8 +26,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
         android:layout_marginEnd="20dp"
-        android:text="@string/terdapat_peringatan"
-        android:textColor="@color/red_accent"
+        android:text="@string/sesuai"
+        android:textColor="@color/green_accent"
         app:layout_constraintEnd_toStartOf="@id/tv_hujan"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_bulan" />
@@ -42,7 +42,7 @@
         app:layout_constraintEnd_toEndOf="@id/tv_hujan"
         app:layout_constraintStart_toStartOf="@id/tv_hujan"
         app:layout_constraintTop_toTopOf="@+id/tv_bulan"
-        app:tint="@color/red_accent" />
+        app:tint="@color/green_accent" />
 
     <TextView
         android:id="@+id/tv_hujan"
@@ -55,7 +55,7 @@
         android:maxLines="1"
         android:text="@string/tingkat_hujan_detail"
         android:textAlignment="center"
-        android:textColor="@color/red_accent"
+        android:textColor="@color/green_accent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@id/tv_temp"
         app:layout_constraintTop_toBottomOf="@id/ic_rain" />
@@ -70,7 +70,7 @@
         app:layout_constraintEnd_toEndOf="@id/tv_temp"
         app:layout_constraintStart_toStartOf="@id/tv_temp"
         app:layout_constraintTop_toTopOf="@+id/ic_rain"
-        app:tint="@color/red_accent" />
+        app:tint="@color/green_accent" />
 
     <TextView
         android:id="@+id/tv_temp"
@@ -83,7 +83,7 @@
         android:maxLines="1"
         android:text="@string/tingkat_tempratur_detail"
         android:textAlignment="center"
-        android:textColor="@color/red_accent"
+        android:textColor="@color/green_accent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@id/tv_humidity"
         app:layout_constraintTop_toBottomOf="@id/ic_temp" />
@@ -98,7 +98,7 @@
         app:layout_constraintEnd_toEndOf="@id/tv_humidity"
         app:layout_constraintStart_toStartOf="@id/tv_humidity"
         app:layout_constraintTop_toTopOf="@+id/ic_temp"
-        app:tint="@color/red_accent" />
+        app:tint="@color/green_accent" />
 
     <TextView
         android:id="@+id/tv_humidity"
@@ -110,7 +110,7 @@
         android:maxLines="1"
         android:text="@string/tingkat_humidity_detail"
         android:textAlignment="center"
-        android:textColor="@color/red_accent"
+        android:textColor="@color/green_accent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/ic_humidity" />
