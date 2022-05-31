@@ -4,13 +4,13 @@ import com.tandurteam.tandur.MainViewModel
 import com.tandurteam.tandur.authentication.login.LoginViewModel
 import com.tandurteam.tandur.authentication.signup.SignUpViewModel
 import com.tandurteam.tandur.core.helper.SharedPreferences
-import com.tandurteam.tandur.core.model.network.myplantdetail.MyPlantDetailRepository
 import com.tandurteam.tandur.core.model.network.ApiService
 import com.tandurteam.tandur.core.model.network.authentication.AuthRepository
 import com.tandurteam.tandur.core.model.network.createplant.CreatePlantRepository
+import com.tandurteam.tandur.core.model.network.dailyweather.DailyWeatherRepository
 import com.tandurteam.tandur.core.model.network.detailuser.DetailUserRepository
-import com.tandurteam.tandur.core.model.network.fixedplant.FixedPlantRepository
 import com.tandurteam.tandur.core.model.network.myplant.MyPlantRepository
+import com.tandurteam.tandur.core.model.network.myplantdetail.MyPlantDetailRepository
 import com.tandurteam.tandur.core.model.network.nearbyplant.NearbyPlantRepository
 import com.tandurteam.tandur.core.model.network.plantdetail.PlantDetailRepository
 import com.tandurteam.tandur.dashboard.home.HomeViewModel
@@ -57,7 +57,7 @@ val dataStoreModule = module {
 val repositoryModule = module {
     factory { AuthRepository(get(), get()) }
     factory { MyPlantRepository(get(), get()) }
-    factory { FixedPlantRepository(get()) }
+    factory { DailyWeatherRepository(get(), get()) }
     factory { NearbyPlantRepository(get(), get()) }
     factory { PlantDetailRepository(get(), get()) }
     factory { CreatePlantRepository(get(), get()) }

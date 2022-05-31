@@ -6,6 +6,7 @@ import com.tandurteam.tandur.core.model.network.authentication.response.LoginRes
 import com.tandurteam.tandur.core.model.network.authentication.response.SignUpResponse
 import com.tandurteam.tandur.core.model.network.createplant.request.CreatePlantRequest
 import com.tandurteam.tandur.core.model.network.createplant.response.CreatePlantResponse
+import com.tandurteam.tandur.core.model.network.dailyweather.response.DailyWeatherResponse
 import com.tandurteam.tandur.core.model.network.detailuser.response.userdetail.DetailUserResponse
 import com.tandurteam.tandur.core.model.network.fixedplant.response.fixed.FixedPlantResponse
 import com.tandurteam.tandur.core.model.network.myplant.response.myplantlist.MyPlantListResponse
@@ -78,4 +79,11 @@ interface ApiService {
         @Path("userId") userId: String,
         @Path("plantId") plantId: String,
     ): MyPlantDetailResponse
+
+    @GET("weather/")
+    suspend fun getDailyWeather(
+        @Header("Authorization") bearerToken: String,
+        @Query("lat") latitude: Double,
+        @Query("long") longitude: Double,
+    ): DailyWeatherResponse
 }

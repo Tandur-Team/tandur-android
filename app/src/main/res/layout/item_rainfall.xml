@@ -29,7 +29,7 @@
             android:id="@+id/tvCondition"
             style="@style/Medium14Sp"
             android:layout_height="wrap_content"
-            android:text="@string/curah_hujan_dummy"
+            android:text="@string/null_weather"
             android:layout_width="wrap_content"
             android:textColor="@color/light_primary"
             app:layout_constraintBottom_toBottomOf="@id/ivCondition"

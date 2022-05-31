@@ -177,20 +177,27 @@ class HomeFragment : Fragment() {
     }
 
     private fun observeLiveData() {
-        viewModel.getAllFixedPlant().observe(viewLifecycleOwner) {
-            it?.let { fixedPlant ->
-                when (fixedPlant) {
+        viewModel.getDailyWeather().observe(viewLifecycleOwner) {
+            it?.let { dailyWeather ->
+                when (dailyWeather) {
                     is ApiResponse.Loading -> {
                         setLoadingState(true)
                     }
 
                     is ApiResponse.Success -> {
-                        // TODO: Waiting backend API
                         setLoadingState(false)
+
+                        // set view
+                        val resultData = dailyWeather.data.data
+                        with(binding) {
+                            itemRainfall.tvCondition.text = resultData?.rain.toString()
+                            itemTemp.tvCondition.text = resultData?.temperature.toString()
+                            itemHumidity.tvCondition.text = resultData?.humidity.toString()
+                        }
                     }
                     else -> {
                         setLoadingState(false)
-                        Log.d(TAG, "$fixedPlant")
+                        Log.d(TAG, "$dailyWeather")
                     }
                 }
             }
