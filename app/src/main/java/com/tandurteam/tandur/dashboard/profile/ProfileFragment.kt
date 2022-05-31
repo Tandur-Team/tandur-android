@@ -84,9 +84,18 @@ class ProfileFragment : Fragment() {
                             // set views
                             tvEmailUser.text = dataDetail.email
                             tvNamaUser.text = dataDetail.fullName
-                            tvJumlahTanamanUser.text = "Masih Belom Ada"
+                            tvJumlahTanamanUser.text = dataDetail.activePlants.toString()
                             tvTingkatKepuasanUser.text = dataDetail.avgSatisfactionRate.toString()
                         }
+                    }
+                    is ApiResponse.Error -> {
+                        setLoadingState(false)
+                        Toast.makeText(
+                            requireContext(),
+                            detailUser.errorMessage,
+                            Toast.LENGTH_SHORT
+                        ).show()
+                        Log.d(TAG, "$detailUser")
                     }
                     else -> {
                         setLoadingState(false)

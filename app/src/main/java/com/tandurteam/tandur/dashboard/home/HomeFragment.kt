@@ -155,6 +155,9 @@ class HomeFragment : Fragment() {
 
         // get user location info
         getUserLocation()
+
+        // observe live data again
+        observeLiveData()
     }
 
     private fun navigateToDetail(plantName: String) {
