@@ -8,6 +8,6 @@ import com.tandurteam.tandur.core.model.network.myplant.MyPlantRepository
 import com.tandurteam.tandur.core.model.network.myplant.response.myplantlist.MyPlantListResponse
 
 class MyPlantViewModel(private val myPlantRepository: MyPlantRepository) : ViewModel() {
-    fun getAllMyPlant(): LiveData<ApiResponse<MyPlantListResponse>> =
-        myPlantRepository.getAllMyPlant().asLiveData()
+    fun getAllMyPlant(isHarvested: Int): LiveData<ApiResponse<MyPlantListResponse>> =
+        myPlantRepository.getAllMyPlant(isHarvested).asLiveData()
 }

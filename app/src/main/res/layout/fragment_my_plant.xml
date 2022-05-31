@@ -1,96 +1,100 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.swiperefreshlayout.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/swipeRefresh"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context=".dashboard.myplantlist.MyPlantFragment">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".dashboard.myplantlist.MyPlantFragment">
+    <TextView
+        android:id="@+id/tv_tanamanku"
+        style="@style/SemiBold24Sp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="55dp"
+        android:layout_marginEnd="30dp"
+        android:text="@string/tanaman_saya"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/tv_tanamanku"
-            style="@style/SemiBold24Sp"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="55dp"
-            android:layout_marginEnd="30dp"
-            android:text="@string/tanaman_saya"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+    <EditText
+        android:id="@+id/et_search_tanamanku"
+        style="@style/Regular14Sp"
+        android:layout_width="0dp"
+        android:layout_height="52dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="30dp"
+        android:autofillHints="Nama Tanaman Anda"
+        android:background="@drawable/bg_radius_8dp"
+        android:drawableStart="@drawable/ic_baseline_search_24"
+        android:drawablePadding="18dp"
+        android:hint="@string/cari_tanaman_anda_di_sini"
+        android:inputType="text"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_tanamanku" />
 
-        <EditText
-            android:id="@+id/et_search_tanamanku"
-            style="@style/Regular14Sp"
-            android:layout_width="0dp"
-            android:layout_height="52dp"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="30dp"
-            android:autofillHints="Nama Tanaman Anda"
-            android:background="@drawable/bg_radius_8dp"
-            android:drawableStart="@drawable/ic_baseline_search_24"
-            android:drawablePadding="18dp"
-            android:hint="@string/cari_tanaman_anda_di_sini"
-            android:inputType="text"
-            android:paddingStart="20dp"
-            android:paddingEnd="20dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_tanamanku" />
+    <TextView
+        android:id="@+id/tvError"
+        style="@style/Medium14Sp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:textColor="@color/red_accent"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="@id/et_search_tanamanku"
+        app:layout_constraintStart_toStartOf="@id/et_search_tanamanku"
+        app:layout_constraintTop_toBottomOf="@id/et_search_tanamanku"
+        tools:text="Terdapat Kesalahan saat menghubungkan ke server" />
 
-        <TextView
-            android:id="@+id/tvError"
-            style="@style/Medium14Sp"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:textColor="@color/red_accent"
-            android:visibility="gone"
-            app:layout_constraintEnd_toEndOf="@id/et_search_tanamanku"
-            app:layout_constraintStart_toStartOf="@id/et_search_tanamanku"
-            app:layout_constraintTop_toBottomOf="@id/et_search_tanamanku"
-            tools:text="Terdapat Kesalahan saat menghubungkan ke server" />
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tabs"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="?colorPrimary"
+        app:layout_constraintStart_toStartOf="@id/et_search_tanamanku"
+        app:layout_constraintTop_toBottomOf="@id/et_search_tanamanku"
+        app:tabGravity="start"
+        app:tabIndicatorColor="@color/green_accent"
+        app:tabSelectedTextColor="@color/green_accent"
+        app:tabTextAppearance="@style/Medium14Sp"
+        app:tabTextColor="@color/dark_accent" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_tanamanku"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_marginTop="24dp"
-            android:clipToPadding="false"
-            android:orientation="vertical"
-            android:paddingHorizontal="30dp"
-            android:paddingBottom="76dp"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/et_search_tanamanku"
-            tools:listitem="@layout/item_my_plant_list" />
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/viewPager"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="-30dp"
+        android:layout_marginEnd="-30dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/et_search_tanamanku"
+        app:layout_constraintStart_toStartOf="@id/et_search_tanamanku"
+        app:layout_constraintTop_toBottomOf="@id/tabs" />
 
-        <Button
-            android:id="@+id/btn_tanam_baru"
-            style="@style/Medium16Sp"
-            android:layout_width="wrap_content"
-            android:layout_height="52dp"
-            android:layout_marginEnd="30dp"
-            android:layout_marginBottom="20dp"
-            android:background="@drawable/bg_radius_8dp"
-            android:backgroundTint="@color/green_accent"
-            android:drawableStart="@drawable/ic_tanam"
-            android:drawablePadding="6dp"
-            android:paddingStart="12dp"
-            android:paddingEnd="12dp"
-            android:text="@string/btn_tanam"
-            android:textAllCaps="false"
-            android:textColor="@color/white"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+    <Button
+        android:id="@+id/btn_tanam_baru"
+        style="@style/Medium16Sp"
+        android:layout_width="wrap_content"
+        android:layout_height="52dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/bg_radius_8dp"
+        android:backgroundTint="@color/green_accent"
+        android:drawableStart="@drawable/ic_tanam"
+        android:drawablePadding="6dp"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"
+        android:text="@string/btn_tanam"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
 
-</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

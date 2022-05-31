@@ -18,7 +18,7 @@ class MyPlantRepository(
     private val apiService: ApiService,
     private val dataStore: SharedPreferences
 ) {
-    fun getAllMyPlant(): Flow<ApiResponse<MyPlantListResponse>> {
+    fun getAllMyPlant(isHarvested: Int): Flow<ApiResponse<MyPlantListResponse>> {
         return flow {
             try {
                 emit(ApiResponse.Loading())
@@ -42,7 +42,11 @@ class MyPlantRepository(
                             Log.d(TAG, "getAllMyPlant: ${response.data}")
 
                             response.data?.let {
-                                if (it.isNotEmpty()) emit(ApiResponse.Success(response))
+                                val filteredList = it.filter { myPlants ->
+                                    myPlants.isHarvested == isHarvested
+                                }
+                                response.data = filteredList
+                                if (filteredList.isNotEmpty()) emit(ApiResponse.Success(response))
                                 else emit(ApiResponse.Empty)
                             }
                         }

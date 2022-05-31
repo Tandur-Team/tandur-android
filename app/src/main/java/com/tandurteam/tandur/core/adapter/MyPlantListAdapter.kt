@@ -1,5 +1,6 @@
 package com.tandurteam.tandur.core.adapter
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -21,6 +22,7 @@ class MyPlantListAdapter : RecyclerView.Adapter<MyPlantListAdapter.ViewHolder>()
         if (newListData == null) return
         listData.clear()
         listData.addAll(newListData)
+        Log.d(TAG, "setData: $listData")
         listData.forEachIndexed { index, _ -> notifyItemChanged(index) }
     }
 
@@ -59,4 +61,8 @@ class MyPlantListAdapter : RecyclerView.Adapter<MyPlantListAdapter.ViewHolder>()
     }
 
     override fun getItemCount(): Int = listData.size
+
+    companion object {
+        private val TAG = MyPlantListAdapter::class.java.simpleName
+    }
 }
