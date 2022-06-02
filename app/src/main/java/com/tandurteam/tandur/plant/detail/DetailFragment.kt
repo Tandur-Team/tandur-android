@@ -157,7 +157,7 @@ class DetailFragment : Fragment() {
                             setLoadingState(false)
 
                             // set views
-                            tvProbability.text = resultData?.probability.toString()
+                            tvProbability.text = resultData?.probability?.toInt().toString()
                             tvUserPerson.text = requireContext().getString(
                                 R.string.nearby_farmer,
                                 resultData?.nearby.toString()

@@ -16,7 +16,6 @@ import androidx.navigation.fragment.navArgs
 import com.tandurteam.tandur.R
 import com.tandurteam.tandur.core.adapter.MonthlyLocationConditionAdapter
 import com.tandurteam.tandur.core.model.network.ApiResponse
-import com.tandurteam.tandur.core.model.network.myplantdetail.response.detailmyplant.FixedData
 import com.tandurteam.tandur.core.model.network.plantdetail.response.MonthlyData
 import com.tandurteam.tandur.dashboard.DashboardActivity
 import com.tandurteam.tandur.databinding.FragmentCreateBinding
@@ -66,15 +65,17 @@ class CreateFragment : Fragment() {
                     calendar.set(Calendar.MONTH, month)
                     calendar.set(Calendar.DAY_OF_MONTH, day)
                     updateLabel()
-                    calendar.add(Calendar.MONTH, 7)
+                    calendar.add(Calendar.MONTH, 6) // TODO: Waiting fixed data
                     updateHarvestLabel()
                 },
                 calendar.get(Calendar.YEAR),
                 calendar.get(Calendar.MONTH),
                 calendar.get(Calendar.DAY_OF_MONTH)
             )
-
-            datePickerDialog.datePicker.minDate = System.currentTimeMillis()
+            val now = System.currentTimeMillis() - 1000
+            datePickerDialog.datePicker.minDate = now
+            calendar.add(Calendar.MONTH, 2) // TODO: Waiting 6 - fixed data
+            datePickerDialog.datePicker.maxDate = calendar.time.time
             datePickerDialog.show()
         }
 

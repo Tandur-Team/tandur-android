@@ -80,6 +80,7 @@
                     android:background="@drawable/bg_circle_green"
                     android:contentDescription="@string/icon_status_tanamannya"
                     android:gravity="center"
+                    android:maxLength="3"
                     android:text="@string/tingkat_keberhasilan_detail"
                     android:textColor="@color/light_primary"
                     app:layout_constraintStart_toStartOf="parent"

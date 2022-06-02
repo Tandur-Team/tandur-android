@@ -15,5 +15,5 @@ data class PlantDetailData(
     val plantName: String?,
     @field:SerializedName("fixed_data")
     val fixedData: FixedData,
-    val probability: Int?
+    val probability: Double?
 )
