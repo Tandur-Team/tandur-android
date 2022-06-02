@@ -5,15 +5,21 @@ import com.tandurteam.tandur.core.model.network.plantdetail.response.MonthlyData
 
 data class CreatePlantRequest(
     @SerializedName("plant_name")
-    val plantName: String,
+    var plantName: String,
     @SerializedName("zone_local")
-    val zoneLocal: String,
+    var zoneLocal: String,
     @SerializedName("zone_city")
-    val zoneCity: String,
+    var zoneCity: String,
     @SerializedName("lat")
-    val lat: Double,
+    var lat: Double,
     @SerializedName("long")
-    val long: Double,
+    var long: Double,
     @SerializedName("monthly_data")
-    val monthlyData: List<MonthlyData>,
+    var monthlyData: List<MonthlyData>,
+    @SerializedName("probability")
+    var probability: Double,
+    @SerializedName("start_date")
+    var startDate: String,
+    @SerializedName("harvest_date")
+    var harvestDate: String,
 )

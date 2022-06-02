@@ -13,9 +13,18 @@ import com.tandurteam.tandur.core.model.network.plantdetail.response.PlantDetail
 class CreateViewModel(private val createPlantRepository: CreatePlantRepository) : ViewModel() {
     fun createPlant(
         plantName: String,
-        monthlyData: List<MonthlyData>
+        monthlyData: List<MonthlyData>,
+        probability: Double,
+        startDate: String,
+        harvestDate: String
     ): LiveData<ApiResponse<CreatePlantResponse>> =
-        createPlantRepository.createPlant(plantName, monthlyData).asLiveData()
+        createPlantRepository.createPlant(
+            plantName,
+            monthlyData,
+            probability,
+            startDate,
+            harvestDate
+        ).asLiveData()
 
     fun getUserLocation(): LiveData<UserLocation> =
         createPlantRepository.getUserLocation().asLiveData()

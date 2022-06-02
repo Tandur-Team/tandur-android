@@ -54,11 +54,18 @@ class CreatePlantRepository(
 
     fun createPlant(
         plantName: String,
-        monthlyData: List<MonthlyData>
+        monthlyData: List<MonthlyData>,
+        probability: Double,
+        startDate: String,
+        harvestDate: String
     ): Flow<ApiResponse<CreatePlantResponse>> {
         return flow {
             try {
                 emit(ApiResponse.Loading())
+
+                Log.d(TAG, "createPlant: $probability")
+                Log.d(TAG, "createPlant: $startDate")
+                Log.d(TAG, "createPlant: $harvestDate")
 
                 // get user id
                 val userId = withContext(Dispatchers.IO) {
@@ -101,12 +108,10 @@ class CreatePlantRepository(
                     val response = apiService.createPlant(
                         "Bearer $token",
                         CreatePlantRequest(
-                            plantName,
-                            subZone,
-                            city,
-                            latitude,
-                            longitude,
-                            monthlyData
+                            plantName, subZone, city,
+                            latitude, longitude,
+                            monthlyData, probability,
+                            startDate, harvestDate
                         ),
                         userId
                     )
