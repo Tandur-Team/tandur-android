@@ -10,6 +10,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.Window
+import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
 import com.tandurteam.tandur.R
@@ -29,6 +30,7 @@ class HomeFragment : Fragment() {
     private lateinit var nearbyPlantAdapter: NearbyPlantAdapter
     private var dialogLocation: Dialog? = null
     private var isDialogOpened: Boolean = false
+    private var query = ""
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -50,7 +52,8 @@ class HomeFragment : Fragment() {
 
         // on refresh swiped
         binding.swipeRefresh.setOnRefreshListener {
-            observeLiveData()
+            showDailyWeather()
+            showNearbyPlant()
         }
 
         binding.tvLocation.setOnClickListener {
@@ -65,8 +68,17 @@ class HomeFragment : Fragment() {
             navigateToDetail(nearbyPlant.plantName)
         }
 
-        // observe live data
-        observeLiveData()
+        // show daily weather
+        showDailyWeather()
+
+        // search for neaby plant
+        with(binding){
+            etSearch.addTextChangedListener {
+                query = it.toString()
+                // show nearby plant
+                showNearbyPlant()
+            }
+        }
 
         // set temperature views
         with(binding.itemTemp) {
@@ -79,6 +91,34 @@ class HomeFragment : Fragment() {
             ivCondition.setImageResource(R.drawable.ic_humidity)
             tvCoditionTitle.text = requireContext().getString(R.string.humiditas)
             tvCoditionTitle.maxLines = 1
+        }
+    }
+
+    private fun showDailyWeather() {
+        viewModel.getDailyWeather().observe(viewLifecycleOwner) {
+            it?.let { dailyWeather ->
+                when (dailyWeather) {
+                    is ApiResponse.Loading -> {
+                        setLoadingState(true)
+                    }
+
+                    is ApiResponse.Success -> {
+                        setLoadingState(false)
+
+                        // set view
+                        val resultData = dailyWeather.data.data
+                        with(binding) {
+                            itemRainfall.tvCondition.text = resultData?.rain.toString()
+                            itemTemp.tvCondition.text = resultData?.temperature.toString()
+                            itemHumidity.tvCondition.text = resultData?.humidity.toString()
+                        }
+                    }
+                    else -> {
+                        setLoadingState(false)
+                        Log.d(TAG, "$dailyWeather")
+                    }
+                }
+            }
         }
     }
 
@@ -156,8 +196,11 @@ class HomeFragment : Fragment() {
         // get user location info
         getUserLocation()
 
-        // observe live data again
-        observeLiveData()
+        // show daily weather
+        showDailyWeather()
+
+        // show nearby plant data again
+        showNearbyPlant()
     }
 
     private fun navigateToDetail(plantName: String) {
@@ -179,34 +222,8 @@ class HomeFragment : Fragment() {
         }
     }
 
-    private fun observeLiveData() {
-        viewModel.getDailyWeather().observe(viewLifecycleOwner) {
-            it?.let { dailyWeather ->
-                when (dailyWeather) {
-                    is ApiResponse.Loading -> {
-                        setLoadingState(true)
-                    }
-
-                    is ApiResponse.Success -> {
-                        setLoadingState(false)
-
-                        // set view
-                        val resultData = dailyWeather.data.data
-                        with(binding) {
-                            itemRainfall.tvCondition.text = resultData?.rain.toString()
-                            itemTemp.tvCondition.text = resultData?.temperature.toString()
-                            itemHumidity.tvCondition.text = resultData?.humidity.toString()
-                        }
-                    }
-                    else -> {
-                        setLoadingState(false)
-                        Log.d(TAG, "$dailyWeather")
-                    }
-                }
-            }
-        }
-
-        viewModel.getNearbyPlant().observe(viewLifecycleOwner) {
+    private fun showNearbyPlant() {
+        viewModel.getNearbyPlant(query).observe(viewLifecycleOwner) {
             it?.let { nearbyPlant ->
                 when (nearbyPlant) {
                     is ApiResponse.Loading -> {

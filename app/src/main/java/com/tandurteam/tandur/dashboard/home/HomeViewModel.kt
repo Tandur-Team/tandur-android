@@ -24,6 +24,6 @@ class HomeViewModel(
     fun getUserLocation(): LiveData<UserLocation> =
         nearbyPlantRepository.getUserLocation().asLiveData()
 
-    fun getNearbyPlant(): LiveData<ApiResponse<NearbyPlantResponse>> =
-        nearbyPlantRepository.getNearbyPlant().asLiveData()
+    fun getNearbyPlant(query: String): LiveData<ApiResponse<NearbyPlantResponse>> =
+        nearbyPlantRepository.getNearbyPlant(query).asLiveData()
 }

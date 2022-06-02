@@ -68,7 +68,7 @@ class NearbyPlantRepository(
         }.flowOn(Dispatchers.IO)
     }
 
-    fun getNearbyPlant(): Flow<ApiResponse<NearbyPlantResponse>> {
+    fun getNearbyPlant(query: String = ""): Flow<ApiResponse<NearbyPlantResponse>> {
         return flow {
             try {
                 emit(ApiResponse.Loading())
@@ -92,17 +92,21 @@ class NearbyPlantRepository(
                 Log.d(TAG, "getNearbyPlant: $subZone")
 
                 if (subZone != null && city != null) {
-                    val response = apiService.getNearbyPlant(
-                        "Bearer $token",
-                        subZone,
-                        city
-                    )
-
+                    val response = if (query.isEmpty()) {
+                        apiService.getNearbyPlant(
+                            "Bearer $token",
+                            subZone,
+                            city
+                        )
+                    } else apiService.searchNearbyPlant("Bearer $token", query, subZone, city)
                     when (response.status) {
                         HttpConstant.STATUS_OK -> {
                             Log.d(TAG, "getNearbyPlant: Success")
 
                             emit(ApiResponse.Success(response))
+                        }
+                        HttpConstant.STATUS_NOT_FOUND -> {
+                            emit(ApiResponse.Empty)
                         }
                         else -> {
                             Log.d(TAG, "Nearby Plant: ${response.message}")
@@ -110,6 +114,7 @@ class NearbyPlantRepository(
                         }
                     }
                 }
+
 
             } catch (e: Exception) {
                 Log.e(TAG, "$e")

@@ -65,6 +65,14 @@ interface ApiService {
         @Query("zone_city") zoneCity: String
     ): NearbyPlantResponse
 
+    @GET("plant/search")
+    suspend fun searchNearbyPlant(
+        @Header("Authorization") bearerToken: String,
+        @Query("search") search: String,
+        @Query("zone_local") zoneLocal: String,
+        @Query("zone_city") zoneCity: String,
+    ): NearbyPlantResponse
+
     @GET("plant/{plantName}")
     suspend fun getPlantDetail(
         @Path("plantName") plantName: String,
