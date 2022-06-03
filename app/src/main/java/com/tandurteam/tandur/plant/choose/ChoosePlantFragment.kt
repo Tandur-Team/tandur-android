@@ -5,8 +5,10 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
+import com.tandurteam.tandur.R
 import com.tandurteam.tandur.core.adapter.NearbyPlantAdapter
 import com.tandurteam.tandur.core.model.network.ApiResponse
 import com.tandurteam.tandur.dashboard.DashboardActivity
@@ -19,6 +21,7 @@ class ChoosePlantFragment : Fragment() {
     private var _binding: FragmentChoosePlantBinding? = null
     private val binding get() = _binding!!
     private lateinit var adapter: NearbyPlantAdapter
+    private var query = ""
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -41,10 +44,13 @@ class ChoosePlantFragment : Fragment() {
             navigateToCreate(it.plantName)
         }
 
-        // observe live data
-        observeLiveData()
-
         with(binding) {
+            // observe live data
+            etSearch.addTextChangedListener {
+                query = it.toString()
+                observeLiveData()
+            }
+
             // on back pressed
             ivBack.setOnClickListener { requireActivity().onBackPressed() }
         }
@@ -59,22 +65,62 @@ class ChoosePlantFragment : Fragment() {
 
 
     private fun observeLiveData() {
-        viewModel.getChoosePlant().observe(viewLifecycleOwner) {
+        viewModel.getChoosePlant(query).observe(viewLifecycleOwner) {
             it?.let { choosePlant ->
                 when (choosePlant) {
+                    is ApiResponse.Loading -> {
+                        setLoadingState(true)
+
+                        Log.d(TAG, "observe: Loading")
+                    }
+
                     is ApiResponse.Success -> {
+                        binding.tvError.visibility = View.GONE
+
                         adapter.setData(choosePlant.data.data)
+                        setLoadingState(false)
+
                         binding.rvRecommendedPlantList.apply {
                             setHasFixedSize(true)
                             adapter = this@ChoosePlantFragment.adapter
                         }
+
+                        Log.d(TAG, "observe: Success")
                     }
-                    else -> {
-                        Log.d(TAG, "$choosePlant")
+
+                    is ApiResponse.Error -> {
+                        // set visibility
+                        binding.tvError.visibility = View.VISIBLE
+                        binding.rvRecommendedPlantList.visibility = View.GONE
+
+                        binding.tvError.text =
+                            requireContext().getString(R.string.error_connecting_to_api)
+
+                        Log.d(TAG, "observe: Error")
+                    }
+
+                    is ApiResponse.Empty -> {
+                        // set visibility
+                        binding.tvError.visibility = View.VISIBLE
+                        binding.rvRecommendedPlantList.visibility = View.GONE
+
+                        binding.tvError.text =
+                            requireContext().getString(R.string.search_not_found)
+
+                        Log.d(TAG, "observe: empty")
                     }
                 }
             }
         }
+    }
+
+    private fun setLoadingState(isLoading: Boolean) {
+        with(binding) {
+            val visibility = if (isLoading) View.INVISIBLE else View.VISIBLE
+
+            rvRecommendedPlantList.visibility = visibility
+        }
+
     }
 
     companion object {

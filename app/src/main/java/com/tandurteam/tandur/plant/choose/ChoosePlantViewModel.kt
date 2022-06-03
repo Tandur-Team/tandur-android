@@ -8,6 +8,6 @@ import com.tandurteam.tandur.core.model.network.nearbyplant.NearbyPlantRepositor
 import com.tandurteam.tandur.core.model.network.nearbyplant.response.nearby.NearbyPlantResponse
 
 class ChoosePlantViewModel(private val nearbyPlantRepository: NearbyPlantRepository): ViewModel() {
-    fun getChoosePlant(): LiveData<ApiResponse<NearbyPlantResponse>> =
-        nearbyPlantRepository.getNearbyPlant().asLiveData()
+    fun getChoosePlant(query: String): LiveData<ApiResponse<NearbyPlantResponse>> =
+        nearbyPlantRepository.getNearbyPlant(query).asLiveData()
 }
