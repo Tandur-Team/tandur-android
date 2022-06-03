@@ -33,6 +33,9 @@ class CreateFragment : Fragment() {
     private lateinit var calendar: Calendar
     private lateinit var adapter: MonthlyLocationConditionAdapter
     private var monthlyData = mutableListOf<MonthlyData>()
+    private var probability: Double = 0.0
+    private var startDate: String = ""
+    private var harvestDate: String = ""
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -64,9 +67,9 @@ class CreateFragment : Fragment() {
                     calendar.set(Calendar.YEAR, year)
                     calendar.set(Calendar.MONTH, month)
                     calendar.set(Calendar.DAY_OF_MONTH, day)
-                    updateLabel()
+                    setStartDate()
                     calendar.add(Calendar.MONTH, 6) // TODO: Waiting fixed data
-                    updateHarvestLabel()
+                    setHarvestDate()
                 },
                 calendar.get(Calendar.YEAR),
                 calendar.get(Calendar.MONTH),
@@ -95,46 +98,47 @@ class CreateFragment : Fragment() {
     }
 
     private fun createPlant() {
-        viewModel.createPlant(args.plantName, monthlyData).observe(viewLifecycleOwner) {
-            it?.let { plantResponse ->
-                when (plantResponse) {
-                    is ApiResponse.Loading -> {
-                        // set visibility
-                        binding.progressLoading.visibility = View.VISIBLE
-                        binding.btnTanam.visibility = View.GONE
-                    }
-                    is ApiResponse.Success -> {
-                        // set visibility
-                        binding.progressLoading.visibility = View.GONE
-                        binding.btnTanam.visibility = View.VISIBLE
+        viewModel.createPlant(args.plantName, monthlyData, probability, startDate, harvestDate)
+            .observe(viewLifecycleOwner) {
+                it?.let { plantResponse ->
+                    when (plantResponse) {
+                        is ApiResponse.Loading -> {
+                            // set visibility
+                            binding.progressLoading.visibility = View.VISIBLE
+                            binding.btnTanam.visibility = View.GONE
+                        }
+                        is ApiResponse.Success -> {
+                            // set visibility
+                            binding.progressLoading.visibility = View.GONE
+                            binding.btnTanam.visibility = View.VISIBLE
 
-                        Log.d(TAG, "createPlant: ${plantResponse.data.data}")
+                            Log.d(TAG, "createPlant: ${plantResponse.data.data}")
 
-                        // back to dashboard
-                        Intent(requireActivity(), DashboardActivity::class.java).apply {
+                            // back to dashboard
+                            Intent(requireActivity(), DashboardActivity::class.java).apply {
+                                Toast.makeText(
+                                    requireContext(),
+                                    "${args.plantName} berhasil ditanam",
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                                startActivity(this)
+                                requireActivity().finish()
+                            }
+                        }
+                        else -> {
+                            // set visibility
+                            binding.progressLoading.visibility = View.GONE
+                            binding.btnTanam.visibility = View.VISIBLE
+
                             Toast.makeText(
                                 requireContext(),
-                                "${args.plantName} berhasil ditanam",
+                                "Terdapat kesalahan saat menghubungkan ke server",
                                 Toast.LENGTH_SHORT
                             ).show()
-                            startActivity(this)
-                            requireActivity().finish()
                         }
-                    }
-                    else -> {
-                        // set visibility
-                        binding.progressLoading.visibility = View.GONE
-                        binding.btnTanam.visibility = View.VISIBLE
-
-                        Toast.makeText(
-                            requireContext(),
-                            "Terdapat kesalahan saat menghubungkan ke server",
-                            Toast.LENGTH_SHORT
-                        ).show()
                     }
                 }
             }
-        }
     }
 
     private fun getUserLocation() {
@@ -171,6 +175,11 @@ class CreateFragment : Fragment() {
                                 monthlyData.addAll(data)
                             }
 
+                            // get probability
+                            resultData?.probability?.let { plantProbability ->
+                                probability = plantProbability
+                            }
+
                             // set adapter data
                             Log.d(TAG, "getPlantDetail: ${resultData?.monthlyData}")
                             adapter.setData(resultData?.monthlyData, resultData!!.fixedData)
@@ -192,17 +201,19 @@ class CreateFragment : Fragment() {
     }
 
     @RequiresApi(Build.VERSION_CODES.N)
-    private fun updateLabel() {
+    private fun setStartDate() {
         val date = SimpleDateFormat("dd MMMM yyyy", Locale.getDefault()).format(calendar.time)
         Log.d(TAG, "updateLabel: $calendar.time")
         binding.etPlantDate.setText(date)
+        startDate = date
     }
 
     @RequiresApi(Build.VERSION_CODES.N)
-    private fun updateHarvestLabel() {
+    private fun setHarvestDate() {
         val date = SimpleDateFormat("dd MMMM yyyy", Locale.getDefault()).format(calendar.time)
         Log.d(TAG, "updateLabel: $calendar.time")
         binding.etEstimatedHarvestTime.setText(date)
+        harvestDate = date
     }
 
     override fun onResume() {
