@@ -208,6 +208,20 @@
                 app:layout_constraintTop_toBottomOf="@id/et_search"
                 tools:listitem="@layout/item_home_suggestion" />
 
+            <TextView
+                android:id="@+id/tvError"
+                style="@style/Medium14Sp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="30dp"
+                android:layout_marginTop="16dp"
+                android:visibility="gone"
+                android:textColor="@color/red_accent"
+                app:layout_constraintTop_toBottomOf="@id/et_search"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                tools:text="Not Found" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.core.widget.NestedScrollView>

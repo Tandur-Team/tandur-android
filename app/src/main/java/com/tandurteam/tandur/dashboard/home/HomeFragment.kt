@@ -99,10 +99,12 @@ class HomeFragment : Fragment() {
             it?.let { dailyWeather ->
                 when (dailyWeather) {
                     is ApiResponse.Loading -> {
+                        binding.swipeRefresh.isRefreshing = true
                         setLoadingState(true)
                     }
 
                     is ApiResponse.Success -> {
+                        binding.swipeRefresh.isRefreshing = false
                         setLoadingState(false)
 
                         // set view
@@ -227,10 +229,14 @@ class HomeFragment : Fragment() {
             it?.let { nearbyPlant ->
                 when (nearbyPlant) {
                     is ApiResponse.Loading -> {
+                        binding.swipeRefresh.isRefreshing = true
                         setLoadingState(true)
                     }
 
                     is ApiResponse.Success -> {
+                        binding.swipeRefresh.isRefreshing = false
+                        binding.tvError.visibility = View.GONE
+
                         nearbyPlantAdapter.setData(nearbyPlant.data.data)
                         setLoadingState(false)
 
@@ -240,10 +246,29 @@ class HomeFragment : Fragment() {
                         }
 
                     }
-                    else -> {
-                        setLoadingState(false)
-                        Log.d(TAG, "$nearbyPlant")
+
+                    is ApiResponse.Error -> {
+                        binding.swipeRefresh.isRefreshing = false
+
+                        // set visibility
+                        binding.tvError.visibility = View.VISIBLE
+                        binding.rvSaran.visibility = View.GONE
+
+                        binding.tvError.text =
+                            requireContext().getString(R.string.error_connecting_to_api)
                     }
+
+                    is ApiResponse.Empty -> {
+                        binding.swipeRefresh.isRefreshing = false
+
+                        // set visibility
+                        binding.tvError.visibility = View.VISIBLE
+                        binding.rvSaran.visibility = View.GONE
+
+                        binding.tvError.text =
+                            requireContext().getString(R.string.search_not_found)
+                    }
+
                 }
             }
         }

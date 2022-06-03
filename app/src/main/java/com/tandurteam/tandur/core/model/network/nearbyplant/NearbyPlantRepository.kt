@@ -92,6 +92,7 @@ class NearbyPlantRepository(
                 Log.d(TAG, "getNearbyPlant: $subZone")
 
                 if (subZone != null && city != null) {
+                    Log.d(TAG, "query: $query")
                     val response = if (query.isEmpty()) {
                         apiService.getNearbyPlant(
                             "Bearer $token",
@@ -106,6 +107,8 @@ class NearbyPlantRepository(
                             emit(ApiResponse.Success(response))
                         }
                         HttpConstant.STATUS_NOT_FOUND -> {
+                            Log.d(TAG, "getNearbyPlant: Empty")
+
                             emit(ApiResponse.Empty)
                         }
                         else -> {
