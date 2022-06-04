@@ -52,6 +52,7 @@ class HomeFragment : Fragment() {
 
         // on refresh swiped
         binding.swipeRefresh.setOnRefreshListener {
+            binding.etSearch.setText("")
             showDailyWeather()
             showNearbyPlant()
         }
@@ -222,7 +223,9 @@ class HomeFragment : Fragment() {
                 itemTemp.cardCondition.visibility = visibility
                 itemHumidity.cardCondition.visibility = visibility
             }
+            progressBarVertical.visibility = progressVisibility
             rvSaran.visibility = visibility
+            tvError.visibility = View.GONE
         }
     }
 
@@ -236,11 +239,11 @@ class HomeFragment : Fragment() {
                     }
 
                     is ApiResponse.Success -> {
+                        setLoadingState(false, isSearching = true)
                         binding.swipeRefresh.isRefreshing = false
                         binding.tvError.visibility = View.GONE
 
                         nearbyPlantAdapter.setData(nearbyPlant.data.data)
-                        setLoadingState(false, isSearching = true)
 
                         binding.rvSaran.apply {
                             setHasFixedSize(true)
@@ -272,7 +275,6 @@ class HomeFragment : Fragment() {
                         binding.tvError.text =
                             requireContext().getString(R.string.search_not_found)
                     }
-
                 }
             }
         }

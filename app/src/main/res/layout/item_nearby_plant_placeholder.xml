@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cardNearbyPlant"
+    android:layout_width="match_parent"
+    android:layout_height="177dp"
+    android:layout_marginBottom="16dp"
+    android:background="@drawable/bg_radius_8dp"
+    android:backgroundTint="@color/light_disabled"
+    app:cardCornerRadius="8dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/iv_tanaman"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="4dp"
+            android:background="@drawable/bg_radius_8dp"
+            android:backgroundTint="@color/light_primary"
+            android:contentDescription="@string/gambar_tanaman"
+            android:cropToPadding="true"
+            android:scaleType="centerCrop"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/ivBlockTop"
+            android:layout_width="60dp"
+            android:layout_height="21dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginBottom="12dp"
+            android:background="@drawable/bg_radius_8dp"
+            android:backgroundTint="@color/light_disabled"
+            android:contentDescription="@string/tandur_logo"
+            android:gravity="center"
+            app:layout_constraintBottom_toTopOf="@id/ivBlockBottom"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <ImageView
+            android:id="@+id/ivBlockBottom"
+            android:layout_width="220dp"
+            android:layout_height="18dp"
+            android:layout_marginHorizontal="18dp"
+            android:layout_marginBottom="24dp"
+            android:background="@drawable/bg_radius_8dp"
+            android:backgroundTint="@color/light_disabled"
+            android:contentDescription="@string/icon_person"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>
+

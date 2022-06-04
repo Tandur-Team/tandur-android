@@ -53,6 +53,12 @@ class ChoosePlantFragment : Fragment() {
 
             // on back pressed
             ivBack.setOnClickListener { requireActivity().onBackPressed() }
+
+            // on refresh swiped
+            binding.swipeRefresh.setOnRefreshListener {
+                binding.etSearch.setText("")
+                observeLiveData()
+            }
         }
 
         // observe live data
@@ -78,10 +84,10 @@ class ChoosePlantFragment : Fragment() {
                     }
 
                     is ApiResponse.Success -> {
+                        setLoadingState(false)
                         binding.tvError.visibility = View.GONE
 
                         adapter.setData(choosePlant.data.data)
-                        setLoadingState(false)
 
                         binding.rvRecommendedPlantList.apply {
                             setHasFixedSize(true)
@@ -93,6 +99,7 @@ class ChoosePlantFragment : Fragment() {
 
                     is ApiResponse.Error -> {
                         // set visibility
+                        setLoadingState(false)
                         binding.tvError.visibility = View.VISIBLE
                         binding.rvRecommendedPlantList.visibility = View.GONE
 
@@ -104,6 +111,7 @@ class ChoosePlantFragment : Fragment() {
 
                     is ApiResponse.Empty -> {
                         // set visibility
+                        setLoadingState(false)
                         binding.tvError.visibility = View.VISIBLE
                         binding.rvRecommendedPlantList.visibility = View.GONE
 
@@ -119,8 +127,14 @@ class ChoosePlantFragment : Fragment() {
 
     private fun setLoadingState(isLoading: Boolean) {
         with(binding) {
+            swipeRefresh.isRefreshing = isLoading
+
+            val progressVisibility = if (!isLoading) View.INVISIBLE else View.VISIBLE
             val visibility = if (isLoading) View.INVISIBLE else View.VISIBLE
+
+            progressBarVertical.visibility = progressVisibility
             rvRecommendedPlantList.visibility = visibility
+            tvError.visibility = View.GONE
         }
 
     }

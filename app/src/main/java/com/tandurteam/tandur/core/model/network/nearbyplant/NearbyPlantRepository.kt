@@ -103,17 +103,15 @@ class NearbyPlantRepository(
                     when (response.status) {
                         HttpConstant.STATUS_OK -> {
                             Log.d(TAG, "getNearbyPlant: Success")
-
                             emit(ApiResponse.Success(response))
                         }
                         HttpConstant.STATUS_NOT_FOUND -> {
                             Log.d(TAG, "getNearbyPlant: Empty")
-
                             emit(ApiResponse.Empty)
                         }
                         else -> {
                             Log.d(TAG, "Nearby Plant: ${response.message}")
-                            emit(ApiResponse.Error(response.message))
+                            emit(ApiResponse.Error(response.message.toString()))
                         }
                     }
                 }
@@ -121,7 +119,11 @@ class NearbyPlantRepository(
 
             } catch (e: Exception) {
                 Log.e(TAG, "$e")
-                emit(ApiResponse.Error(e.toString()))
+                if (e.message.toString().contains(HttpConstant.STATUS_NOT_FOUND.toString())) {
+                    emit(ApiResponse.Empty)
+                } else {
+                    emit(ApiResponse.Error(e.toString()))
+                }
             }
         }
     }

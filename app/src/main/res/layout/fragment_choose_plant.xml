@@ -1,90 +1,124 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.swiperefreshlayout.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/swipeRefresh"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingTop="55dp"
     tools:context=".plant.choose.ChoosePlantFragment">
 
-    <ImageView
-        android:id="@+id/ivBack"
-        android:layout_width="21dp"
-        android:layout_height="18dp"
-        android:layout_marginStart="30dp"
-        android:contentDescription="@string/back_icon"
-        android:src="@drawable/ic_back"
-        app:layout_constraintBottom_toBottomOf="@id/tvChoosePlant"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/tvChoosePlant"
-        app:tint="?colorOnPrimary" />
-
-    <TextView
-        android:id="@+id/tvChoosePlant"
-        style="@style/SemiBold24Sp"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="18dp"
-        android:layout_marginEnd="30dp"
-        android:text="@string/pilih_tanaman"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/ivBack"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/tvRecommendedList"
-        style="@style/Medium16Sp"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="30dp"
-        android:layout_marginTop="24dp"
-        android:text="@string/tv_saran_untuk_anda"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvChoosePlant" />
-
-    <EditText
-        android:id="@+id/etSearch"
-        style="@style/Regular14Sp"
-        android:layout_width="0dp"
-        android:layout_height="52dp"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="30dp"
-        android:background="@drawable/bg_radius_8dp"
-        android:drawableStart="@drawable/ic_baseline_search_24"
-        android:drawablePadding="8dp"
-        android:hint="@string/hint_search"
-        android:importantForAutofill="no"
-        android:inputType="text"
-        android:paddingHorizontal="20dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvRecommendedList" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvRecommendedPlantList"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginTop="16dp"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/etSearch"
-        tools:listitem="@layout/item_home_suggestion" />
+        android:layout_height="match_parent"
+        android:paddingTop="55dp">
 
-    <TextView
-        android:id="@+id/tvError"
-        style="@style/Medium14Sp"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="30dp"
-        android:layout_marginTop="16dp"
-        android:visibility="gone"
-        android:textColor="@color/red_accent"
-        app:layout_constraintTop_toBottomOf="@id/etSearch"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        tools:text="Not Found" />
+        <ImageView
+            android:id="@+id/ivBack"
+            android:layout_width="21dp"
+            android:layout_height="18dp"
+            android:layout_marginStart="30dp"
+            android:contentDescription="@string/back_icon"
+            android:src="@drawable/ic_back"
+            app:layout_constraintBottom_toBottomOf="@id/tvChoosePlant"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/tvChoosePlant"
+            app:tint="?colorOnPrimary" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/tvChoosePlant"
+            style="@style/SemiBold24Sp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="18dp"
+            android:layout_marginEnd="30dp"
+            android:text="@string/pilih_tanaman"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/ivBack"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvRecommendedList"
+            style="@style/Medium16Sp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="30dp"
+            android:layout_marginTop="24dp"
+            android:text="@string/tv_saran_untuk_anda"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvChoosePlant" />
+
+        <EditText
+            android:id="@+id/etSearch"
+            style="@style/Regular14Sp"
+            android:layout_width="0dp"
+            android:layout_height="52dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="30dp"
+            android:background="@drawable/bg_radius_8dp"
+            android:drawableStart="@drawable/ic_baseline_search_24"
+            android:drawablePadding="8dp"
+            android:hint="@string/hint_search"
+            android:importantForAutofill="no"
+            android:inputType="text"
+            android:paddingHorizontal="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvRecommendedList" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvRecommendedPlantList"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="16dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/etSearch"
+            tools:listitem="@layout/item_home_suggestion" />
+
+        <com.facebook.shimmer.ShimmerFrameLayout
+            android:id="@+id/progressBarVertical"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:clipToPadding="false"
+            android:paddingHorizontal="30dp"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/etSearch"
+            app:shimmer_auto_start="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <include layout="@layout/item_nearby_plant_placeholder" />
+
+                <include layout="@layout/item_nearby_plant_placeholder" />
+
+                <include layout="@layout/item_nearby_plant_placeholder" />
+
+            </LinearLayout>
+        </com.facebook.shimmer.ShimmerFrameLayout>
+
+        <TextView
+            android:id="@+id/tvError"
+            style="@style/Medium14Sp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="30dp"
+            android:layout_marginTop="16dp"
+            android:textColor="@color/red_accent"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/etSearch"
+            tools:text="Not Found" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
