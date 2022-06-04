@@ -210,16 +210,18 @@ class HomeFragment : Fragment() {
         Navigation.findNavController(binding.root).navigate(action)
     }
 
-    private fun setLoadingState(isLoading: Boolean) {
+    private fun setLoadingState(isLoading: Boolean, isSearching: Boolean = false) {
         with(binding) {
             swipeRefresh.isRefreshing = isLoading
 
             val visibility = if (isLoading) View.INVISIBLE else View.VISIBLE
             val progressVisibility = if (!isLoading) View.INVISIBLE else View.VISIBLE
-            progressBarHorizontal.visibility = progressVisibility
-            itemRainfall.cardCondition.visibility = visibility
-            itemTemp.cardCondition.visibility = visibility
-            itemHumidity.cardCondition.visibility = visibility
+            if (!isSearching) {
+                progressBarHorizontal.visibility = progressVisibility
+                itemRainfall.cardCondition.visibility = visibility
+                itemTemp.cardCondition.visibility = visibility
+                itemHumidity.cardCondition.visibility = visibility
+            }
             rvSaran.visibility = visibility
         }
     }
@@ -230,7 +232,7 @@ class HomeFragment : Fragment() {
                 when (nearbyPlant) {
                     is ApiResponse.Loading -> {
                         binding.swipeRefresh.isRefreshing = true
-                        setLoadingState(true)
+                        setLoadingState(true, isSearching = true)
                     }
 
                     is ApiResponse.Success -> {
@@ -238,7 +240,7 @@ class HomeFragment : Fragment() {
                         binding.tvError.visibility = View.GONE
 
                         nearbyPlantAdapter.setData(nearbyPlant.data.data)
-                        setLoadingState(false)
+                        setLoadingState(false, isSearching = true)
 
                         binding.rvSaran.apply {
                             setHasFixedSize(true)
@@ -248,6 +250,7 @@ class HomeFragment : Fragment() {
                     }
 
                     is ApiResponse.Error -> {
+                        setLoadingState(false, isSearching = true)
                         binding.swipeRefresh.isRefreshing = false
 
                         // set visibility
@@ -259,6 +262,7 @@ class HomeFragment : Fragment() {
                     }
 
                     is ApiResponse.Empty -> {
+                        setLoadingState(false, isSearching = true)
                         binding.swipeRefresh.isRefreshing = false
 
                         // set visibility

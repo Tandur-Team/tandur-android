@@ -54,6 +54,9 @@ class ChoosePlantFragment : Fragment() {
             // on back pressed
             ivBack.setOnClickListener { requireActivity().onBackPressed() }
         }
+
+        // observe live data
+        observeLiveData()
     }
 
     private fun navigateToCreate(plantName: String) {
@@ -117,7 +120,6 @@ class ChoosePlantFragment : Fragment() {
     private fun setLoadingState(isLoading: Boolean) {
         with(binding) {
             val visibility = if (isLoading) View.INVISIBLE else View.VISIBLE
-
             rvRecommendedPlantList.visibility = visibility
         }
 
