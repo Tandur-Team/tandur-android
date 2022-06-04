@@ -195,6 +195,8 @@
                     android:layout_marginStart="20dp"
                     android:layout_marginEnd="30dp"
                     android:text="@string/jumlah_penanam_dummy"
+                    android:ellipsize="end"
+                    android:maxLines="1"
                     app:layout_constraintBottom_toBottomOf="@id/ic_person"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@id/ic_person"

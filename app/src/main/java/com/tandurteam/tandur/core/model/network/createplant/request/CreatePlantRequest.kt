@@ -18,8 +18,8 @@ data class CreatePlantRequest(
     var monthlyData: List<MonthlyData>,
     @SerializedName("probability")
     var probability: Double,
-    @SerializedName("start_date")
+    @SerializedName("plant_start_date")
     var startDate: String,
-    @SerializedName("harvest_date")
+    @SerializedName("plant_harvest_date")
     var harvestDate: String,
 )

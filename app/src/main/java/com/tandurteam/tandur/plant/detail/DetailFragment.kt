@@ -171,10 +171,19 @@ class DetailFragment : Fragment() {
 
                             // set views
                             tvProbability.text = resultData?.probability?.toInt().toString()
-                            tvUserPerson.text = requireContext().getString(
-                                R.string.nearby_farmer,
-                                resultData?.nearby.toString()
-                            )
+                            resultData?.nearby?.let { nearbyCount ->
+                                tvUserPerson.text = if (nearbyCount != 0) {
+                                    requireContext().getString(
+                                        R.string.nearby_farmer,
+                                        nearbyCount.toString()
+                                    )
+                                } else {
+                                    requireContext().getString(
+                                        R.string.nearby_farmer_empty,
+                                        resultData.plantName
+                                    )
+                                }
+                            }
                             tvUserDurasi.text = requireContext().getString(
                                 R.string.estimasi,
                                 resultData?.duration.toString()

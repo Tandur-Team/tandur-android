@@ -79,7 +79,7 @@ class PlantDetailRepository(
                         subZone,
                         city,
                         latitude,
-                        longitude
+                        longitude,
                     )
 
                     when (response.status) {

@@ -139,7 +139,11 @@ class CreatePlantRepository(
         }.flowOn(Dispatchers.IO)
     }
 
-    fun getPlantDetail(plantName: String): Flow<ApiResponse<PlantDetailResponse>> {
+    fun getPlantDetail(
+        plantName: String,
+        startDate: String? = null,
+        harvestDate: String? = null
+    ): Flow<ApiResponse<PlantDetailResponse>> {
         return flow {
             try {
                 emit(ApiResponse.Loading())
@@ -170,7 +174,9 @@ class CreatePlantRepository(
                         subZone,
                         city,
                         latitude,
-                        longitude
+                        longitude,
+                        startDate,
+                        harvestDate
                     )
 
                     when (response.status) {

@@ -29,6 +29,10 @@ class CreateViewModel(private val createPlantRepository: CreatePlantRepository) 
     fun getUserLocation(): LiveData<UserLocation> =
         createPlantRepository.getUserLocation().asLiveData()
 
-    fun getPlantDetail(plantName: String): LiveData<ApiResponse<PlantDetailResponse>> =
-        createPlantRepository.getPlantDetail(plantName).asLiveData()
+    fun getPlantDetail(
+        plantName: String,
+        startDate: String? = null,
+        harvestDate: String? = null
+    ): LiveData<ApiResponse<PlantDetailResponse>> =
+        createPlantRepository.getPlantDetail(plantName, startDate, harvestDate).asLiveData()
 }

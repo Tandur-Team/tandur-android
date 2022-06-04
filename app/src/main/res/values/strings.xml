@@ -35,6 +35,7 @@
     <string name="tingkat_keberhasilan">90%</string>
     <string name="estimasi">%1s Bulan</string>
     <string name="nearby_farmer">%1s Petani</string>
+    <string name="nearby_farmer_empty">Belum ada yang menanam %1s di sekitar anda</string>
     <string name="let_s_join_us">Mari Bertani!</string>
     <string name="register_jargon">Sekarang anda dapat menanam di manapun tanpa takut gagal panen lagi</string>
     <string name="tandur_logo">tandur logo</string>

@@ -80,6 +80,8 @@ interface ApiService {
         @Query("zone_city") zoneCity: String,
         @Query("lat") lat: Double,
         @Query("long") lng: Double,
+        @Query("plant_start_date") startDate: String? = null,
+        @Query("plant_harvest_date") harvestDate: String? = null,
     ): PlantDetailResponse
 
     @GET("user/{userId}")
