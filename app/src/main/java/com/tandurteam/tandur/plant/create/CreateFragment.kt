@@ -15,8 +15,10 @@ import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
+import com.google.android.gms.maps.model.LatLng
 import com.tandurteam.tandur.R
 import com.tandurteam.tandur.core.adapter.MonthlyLocationConditionAdapter
+import com.tandurteam.tandur.core.constant.MapsConstant
 import com.tandurteam.tandur.core.model.network.ApiResponse
 import com.tandurteam.tandur.core.model.network.plantdetail.response.MonthlyData
 import com.tandurteam.tandur.dashboard.DashboardActivity
@@ -38,6 +40,8 @@ class CreateFragment : Fragment() {
     private var probability: Double = 0.0
     private var startDate: String = ""
     private var harvestDate: String = ""
+    private var latitude: Double = 0.0
+    private var longitude: Double = 0.0
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -86,6 +90,7 @@ class CreateFragment : Fragment() {
 
         binding.etPlantingLocation.setOnClickListener {
             Intent(requireActivity(), MapsActivity::class.java).apply {
+                putExtra(MapsConstant.LOCATION_DATA, LatLng(latitude, longitude))
                 startActivity(this)
             }
         }
@@ -153,6 +158,12 @@ class CreateFragment : Fragment() {
                         userLocation.city
                     )
                 )
+
+                // assign latitude and longitude global variable
+                if (userLocation.latitude != null && userLocation.longitude != null) {
+                    latitude = userLocation.latitude
+                    longitude = userLocation.longitude
+                }
             }
         }
     }

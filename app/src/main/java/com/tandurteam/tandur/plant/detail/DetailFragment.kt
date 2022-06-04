@@ -17,8 +17,10 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
+import com.google.android.gms.maps.model.LatLng
 import com.tandurteam.tandur.R
 import com.tandurteam.tandur.core.adapter.MonthlyLocationConditionAdapter
+import com.tandurteam.tandur.core.constant.MapsConstant
 import com.tandurteam.tandur.core.model.network.ApiResponse
 import com.tandurteam.tandur.dashboard.DashboardActivity
 import com.tandurteam.tandur.databinding.DialogGeospatialInfoBinding
@@ -33,6 +35,8 @@ class DetailFragment : Fragment() {
     private var _binding: FragmentDetailBinding? = null
     private val binding get() = _binding!!
     private lateinit var adapter: MonthlyLocationConditionAdapter
+    private var latitude: Double = 0.0
+    private var longitude: Double = 0.0
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -77,6 +81,7 @@ class DetailFragment : Fragment() {
         // on change location clicked
         binding.tvMessageLocation.setOnClickListener {
             Intent(requireActivity(), MapsActivity::class.java).apply {
+                putExtra(MapsConstant.LOCATION_DATA, LatLng(latitude, longitude))
                 startActivity(this)
             }
         }
@@ -116,6 +121,12 @@ class DetailFragment : Fragment() {
                     userLocation.subZone,
                     userLocation.city
                 )
+
+                // assign latitude and longitude global variable
+                if (userLocation.latitude != null && userLocation.longitude != null) {
+                    latitude = userLocation.latitude
+                    longitude = userLocation.longitude
+                }
             }
         }
     }

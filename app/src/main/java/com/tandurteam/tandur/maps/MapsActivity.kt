@@ -8,6 +8,7 @@ import android.location.Geocoder
 import android.location.Location
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
@@ -25,6 +26,7 @@ import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
 import com.tandurteam.tandur.R
 import com.tandurteam.tandur.core.constant.DataStoreConstant
+import com.tandurteam.tandur.core.constant.MapsConstant
 import com.tandurteam.tandur.databinding.ActivityMapsBinding
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -36,7 +38,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     private lateinit var mMap: GoogleMap
     private lateinit var binding: ActivityMapsBinding
     private lateinit var fusedLocationClient: FusedLocationProviderClient
-    private var intentData: String? = null
+    private var isReadOnly: Boolean = false
     private var locationFromIntent: LatLng? = null
     private var marker: Marker? = null
     private var selectedLocation: LatLng? = null
@@ -51,8 +53,9 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
 
         // get intent data if exist
-        intentData = intent.getStringExtra(INTENT_DATA)
-        locationFromIntent = intent.getParcelableExtra(LOCATION_DATA)
+        isReadOnly = intent.getBooleanExtra(MapsConstant.IS_READ_ONLY, false)
+        locationFromIntent = intent.getParcelableExtra(MapsConstant.LOCATION_DATA)
+        Log.d(TAG, "onCreate: $locationFromIntent")
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         val mapFragment = supportFragmentManager
@@ -61,22 +64,26 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
         // set other view
         with(binding) {
-            // on back pressed
-            btnBack.setOnClickListener { onBackPressed() }
+            if (isReadOnly) {
+                btnAdd.visibility = View.GONE
+            } else {
+                // on back pressed
+                btnBack.setOnClickListener { onBackPressed() }
 
-            // set my location button on click listener
-            btnMyLocation.setOnClickListener { getMyLastLocation() }
+                // set my location button on click listener
+                btnMyLocation.setOnClickListener { getMyLastLocation() }
 
-            // set add button on click listener
-            btnAdd.setOnClickListener {
-                selectedLocation?.let { latLng ->
-                    Log.d(TAG, "onCreate: $latLng")
-                    lifecycleScope.launch {
-                        viewModel.setUserLocation(city, DataStoreConstant.CITY)
-                        viewModel.setUserLocation(subZone, DataStoreConstant.SUB_ZONE)
-                        viewModel.setUserLatLng(latLng.latitude, DataStoreConstant.LATITUDE)
-                        viewModel.setUserLatLng(latLng.longitude, DataStoreConstant.LONGITUDE)
-                        finish()
+                // set add button on click listener
+                btnAdd.setOnClickListener {
+                    selectedLocation?.let { latLng ->
+                        Log.d(TAG, "onCreate: $latLng")
+                        lifecycleScope.launch {
+                            viewModel.setUserLocation(city, DataStoreConstant.CITY)
+                            viewModel.setUserLocation(subZone, DataStoreConstant.SUB_ZONE)
+                            viewModel.setUserLatLng(latLng.latitude, DataStoreConstant.LATITUDE)
+                            viewModel.setUserLatLng(latLng.longitude, DataStoreConstant.LONGITUDE)
+                            finish()
+                        }
                     }
                 }
             }
@@ -99,14 +106,16 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         setMapStyle()
 
         // mark clicked map
-        mMap.setOnMapClickListener {
-            setMarkerLocation(it)
+        if (!isReadOnly) {
+            mMap.setOnMapClickListener {
+                setMarkerLocation(it)
+            }
         }
 
         // check location intent
         locationFromIntent?.let { latLng ->
             moveAndAnimateCamera(latLng)
-            intentData?.let { setMarkerLocation(latLng) }
+            setMarkerLocation(latLng)
         } ?: run { getMyLastLocation() }
     }
 
@@ -120,7 +129,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
             mMap.addMarker(
                 MarkerOptions()
                     .position(location)
-                    .title("Marked")
+                    .title("${location.latitude}, ${location.longitude}")
             )
         }
 
@@ -172,11 +181,6 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                             location.longitude
                         )
                     )
-
-                    // set marker
-                    if (locationFromIntent != null || intentData != null) {
-                        setMarkerLocation(LatLng(location.latitude, location.longitude))
-                    }
                 } else {
                     Toast.makeText(
                         this@MapsActivity,
@@ -248,9 +252,5 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
     companion object {
         private val TAG = MapsActivity::class.java.simpleName
-        const val INTENT_DATA = "Intent Data"
-        const val LOCATION_DATA = "Location Intent Data"
-        const val SET_LOCATION_DATA = "Set Location Data"
-        const val resultCode = 202
     }
 }

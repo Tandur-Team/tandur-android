@@ -1,6 +1,7 @@
 package com.tandurteam.tandur.plant.myplantdetail
 
 import android.app.Dialog
+import android.content.Intent
 import android.content.res.ColorStateList
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
@@ -17,12 +18,15 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
+import com.google.android.gms.maps.model.LatLng
 import com.tandurteam.tandur.R
 import com.tandurteam.tandur.core.adapter.MonthlyLocationConditionAdapter
+import com.tandurteam.tandur.core.constant.MapsConstant
 import com.tandurteam.tandur.core.model.network.ApiResponse
 import com.tandurteam.tandur.dashboard.DashboardActivity
 import com.tandurteam.tandur.databinding.DialogHarvestingBinding
 import com.tandurteam.tandur.databinding.FragmentMyPlantDetailBinding
+import com.tandurteam.tandur.maps.MapsActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MyPlantDetailFragment : Fragment() {
@@ -32,6 +36,8 @@ class MyPlantDetailFragment : Fragment() {
     private var _binding: FragmentMyPlantDetailBinding? = null
     private val binding get() = _binding!!
     private lateinit var adapter: MonthlyLocationConditionAdapter
+    private var latitude: Double = 0.0
+    private var longitude: Double = 0.0
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -61,6 +67,14 @@ class MyPlantDetailFragment : Fragment() {
 
         binding.swipeRefresh.setOnRefreshListener {
             observeLiveData(isHarvesting = false)
+        }
+
+        binding.tvUserLocation.setOnClickListener {
+            Intent(requireActivity(), MapsActivity::class.java).apply {
+                putExtra(MapsConstant.IS_READ_ONLY, true)
+                putExtra(MapsConstant.LOCATION_DATA, LatLng(latitude, longitude))
+                startActivity(this)
+            }
         }
 
         // observe
@@ -145,6 +159,10 @@ class MyPlantDetailFragment : Fragment() {
                                     )
                                 )
                             }
+
+                            // assign latitude and longitude global variable
+                            latitude = resultData.latitude
+                            longitude = resultData.longitude
 
                             // check is harvested
                             if (resultData.isHarvested == 1) {

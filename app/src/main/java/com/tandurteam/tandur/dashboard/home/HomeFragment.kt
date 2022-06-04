@@ -13,8 +13,10 @@ import android.view.Window
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
+import com.google.android.gms.maps.model.LatLng
 import com.tandurteam.tandur.R
 import com.tandurteam.tandur.core.adapter.NearbyPlantAdapter
+import com.tandurteam.tandur.core.constant.MapsConstant
 import com.tandurteam.tandur.core.model.network.ApiResponse
 import com.tandurteam.tandur.dashboard.DashboardActivity
 import com.tandurteam.tandur.databinding.DialogLocationNotFoundBinding
@@ -31,6 +33,8 @@ class HomeFragment : Fragment() {
     private var dialogLocation: Dialog? = null
     private var isDialogOpened: Boolean = false
     private var query = ""
+    private var latitude: Double = 0.0
+    private var longitude: Double = 0.0
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -59,6 +63,7 @@ class HomeFragment : Fragment() {
 
         binding.tvLocation.setOnClickListener {
             Intent(requireActivity(), MapsActivity::class.java).apply {
+                putExtra(MapsConstant.LOCATION_DATA, LatLng(latitude, longitude))
                 requireActivity().startActivity(this)
             }
         }
@@ -73,7 +78,7 @@ class HomeFragment : Fragment() {
         showDailyWeather()
 
         // search for neaby plant
-        with(binding){
+        with(binding) {
             etSearch.addTextChangedListener {
                 query = it.toString()
                 // show nearby plant
@@ -153,6 +158,13 @@ class HomeFragment : Fragment() {
                     }
                     Log.d(TAG, "getUserLocation: $dialogLocation")
                 } else {
+                    // assign latitude and longitude global variable
+                    if (userLocation.latitude != null && userLocation.longitude != null) {
+                        latitude = userLocation.latitude
+                        longitude = userLocation.longitude
+                    }
+
+                    // set location info text
                     binding.tvLocation.text = requireContext().getString(
                         R.string.location_info,
                         userLocation.subZone,

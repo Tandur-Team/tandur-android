@@ -21,7 +21,7 @@ data class MyPlantDetailData(
     val createdAt: String,
 
     @field:SerializedName("long")
-    val jsonMemberLong: Double,
+    val longitude: Double,
 
     @field:SerializedName("zone_city")
     val zoneCity: String,
@@ -48,7 +48,7 @@ data class MyPlantDetailData(
     val zoneLocal: String,
 
     @field:SerializedName("lat")
-    val lat: Double,
+    val latitude: Double,
 
     @field:SerializedName("plant_name")
     val plantName: String
