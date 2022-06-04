@@ -12,7 +12,7 @@ data class MyPlantDetailData(
     val monthlyData: List<MonthlyData>,
 
     @field:SerializedName("probability")
-    val probability: Int,
+    val probability: Double,
 
     @field:SerializedName("image_url")
     val imageUrl: String,

@@ -145,6 +145,7 @@
     <string name="please_wait">Harap tunggu …</string>
     <string name="sesuai">Sesuai</string>
     <string name="null_weather">--</string>
+    <string name="plant_probability">%1s %%</string>
 
     <string name="search_not_found">Kata kunci tidak ditemukan</string>
 </resources>

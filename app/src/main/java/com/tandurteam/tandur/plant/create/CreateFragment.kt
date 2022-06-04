@@ -2,6 +2,7 @@ package com.tandurteam.tandur.plant.create
 
 import android.app.DatePickerDialog
 import android.content.Intent
+import android.content.res.ColorStateList
 import android.icu.util.Calendar
 import android.os.Build
 import android.os.Bundle
@@ -11,6 +12,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.annotation.RequiresApi
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
 import com.tandurteam.tandur.R
@@ -177,6 +179,32 @@ class CreateFragment : Fragment() {
 
                             // get probability
                             resultData?.probability?.let { plantProbability ->
+                                // set probability text value
+                                tvPlantProbability.text = requireContext().getString(
+                                    R.string.plant_probability,
+                                    plantProbability.toInt().toString()
+                                )
+
+                                // set probability text color
+                                tvPlantProbability.setTextColor(
+                                    if (plantProbability.toInt() <= 50) {
+                                        ColorStateList.valueOf(
+                                            ContextCompat.getColor(
+                                                requireContext(),
+                                                R.color.red_accent
+                                            )
+                                        )
+                                    } else {
+                                        ColorStateList.valueOf(
+                                            ContextCompat.getColor(
+                                                requireContext(),
+                                                R.color.green_accent
+                                            )
+                                        )
+                                    }
+                                )
+
+                                // set probability request body
                                 probability = plantProbability
                             }
 

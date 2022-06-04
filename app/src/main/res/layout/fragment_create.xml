@@ -24,12 +24,25 @@
         style="@style/SemiBold24Sp"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="18dp"
-        android:layout_marginEnd="30dp"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginHorizontal="18dp"
+        android:ellipsize="end"
+        android:maxLines="2"
+        app:layout_constraintEnd_toStartOf="@id/tvPlantProbability"
         app:layout_constraintStart_toEndOf="@id/ivBack"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="Cabai" />
+
+    <TextView
+        android:id="@+id/tvPlantProbability"
+        style="@style/SemiBold24Sp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="18dp"
+        android:layout_marginEnd="30dp"
+        android:textColor="@color/green_accent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="90%" />
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="0dp"

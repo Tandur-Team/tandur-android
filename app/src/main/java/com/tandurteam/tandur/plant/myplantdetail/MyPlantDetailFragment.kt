@@ -114,7 +114,7 @@ class MyPlantDetailFragment : Fragment() {
                             setLoadingState(false)
 
                             // set view
-                            tvStatusDetail.text = resultData.probability.toString()
+                            tvStatusDetail.text = resultData.probability.toInt().toString()
                             tvUserDate.text = resultData.plantStartDate
                             tvUserDurasi.text = resultData.plantHarvestDate
                             tvUserLocation.text = requireContext().getString(
@@ -126,6 +126,25 @@ class MyPlantDetailFragment : Fragment() {
                                 .asBitmap()
                                 .load(resultData.imageUrl)
                                 .into(ivTanamanDetail)
+
+                            // set probability background text color
+                            tvStatusDetail.backgroundTintList = if (
+                                resultData.probability.toInt() <= 50
+                            ) {
+                                ColorStateList.valueOf(
+                                    ContextCompat.getColor(
+                                        requireContext(),
+                                        R.color.red_accent
+                                    )
+                                )
+                            } else {
+                                ColorStateList.valueOf(
+                                    ContextCompat.getColor(
+                                        requireContext(),
+                                        R.color.green_accent
+                                    )
+                                )
+                            }
 
                             // check is harvested
                             if (resultData.isHarvested == 1) {
