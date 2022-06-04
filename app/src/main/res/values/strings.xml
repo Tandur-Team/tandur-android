@@ -29,7 +29,7 @@
     <string name="icon_status">Icon Status</string>
     <string name="status_tanaman">Tanaman Sehat</string>
     <string name="icon_waktu">Icon Waktu</string>
-    <string name="dummy_waktu">2 Bulan Menuju Panen</string>
+    <string name="different_date_time">%1s Bulan Menuju Panen</string>
     <string name="icon_person">Icon Person</string>
     <string name="dummy_jumlah_user">20</string>
     <string name="tingkat_keberhasilan">90%</string>
