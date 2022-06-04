@@ -70,6 +70,7 @@ class CreateFragment : Fragment() {
         binding.etPlantDate.setOnClickListener {
             val datePickerDialog = DatePickerDialog(
                 requireContext(),
+                R.style.DialogTheme,
                 { _, year, month, day ->
                     // set start date time
                     val choosenDate = listOf(year, month, day)
