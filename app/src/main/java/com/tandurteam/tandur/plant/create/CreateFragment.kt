@@ -203,17 +203,21 @@ class CreateFragment : Fragment() {
     @RequiresApi(Build.VERSION_CODES.N)
     private fun setStartDate() {
         val date = SimpleDateFormat("dd MMMM yyyy", Locale.getDefault()).format(calendar.time)
-        Log.d(TAG, "updateLabel: $calendar.time")
         binding.etPlantDate.setText(date)
-        startDate = date
+
+        val requestDate = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(calendar.time)
+        startDate = requestDate
+        Log.d(TAG, "date: setStartDate $startDate")
     }
 
     @RequiresApi(Build.VERSION_CODES.N)
     private fun setHarvestDate() {
         val date = SimpleDateFormat("dd MMMM yyyy", Locale.getDefault()).format(calendar.time)
-        Log.d(TAG, "updateLabel: $calendar.time")
         binding.etEstimatedHarvestTime.setText(date)
-        harvestDate = date
+
+        val requestDate = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(calendar.time)
+        harvestDate = requestDate
+        Log.d(TAG, "date: setHarvestDate $harvestDate")
     }
 
     override fun onResume() {

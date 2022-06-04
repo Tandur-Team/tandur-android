@@ -77,7 +77,7 @@
             android:src="@drawable/ic_happy"
             app:layout_constraintEnd_toEndOf="@id/tvQuestion"
             app:layout_constraintTop_toBottomOf="@id/tvQuestion"
-            app:tint="@color/green_accent" />
+            app:tint="@color/dark_accent" />
 
         <TextView
             android:id="@+id/tvHappy"
@@ -86,7 +86,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:text="@string/puas"
-            android:textColor="@color/green_accent"
+            android:textColor="@color/dark_accent"
             app:layout_constraintEnd_toEndOf="@id/ivHappyFace"
             app:layout_constraintStart_toStartOf="@id/ivHappyFace"
             app:layout_constraintTop_toBottomOf="@id/ivHappyFace" />

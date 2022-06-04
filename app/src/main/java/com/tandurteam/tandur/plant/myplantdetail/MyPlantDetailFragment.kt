@@ -214,6 +214,12 @@ class MyPlantDetailFragment : Fragment() {
                     if (satisfactionRate >= 0) {
                         dismiss()
                         observeLiveData(satisfactionRate, true)
+                    } else {
+                        Toast.makeText(
+                            requireContext(),
+                            "Pilih tingkat kepuasan terlebih dahulu.",
+                            Toast.LENGTH_SHORT
+                        ).show()
                     }
                 }
             }
