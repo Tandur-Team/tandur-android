@@ -137,10 +137,15 @@ class MyPlantDetailFragment : Fragment() {
                                 resultData.zoneLocal,
                                 resultData.zoneCity
                             )
-                            Glide.with(requireContext())
-                                .asBitmap()
-                                .load(resultData.imageUrl)
-                                .into(ivTanamanDetail)
+
+                            try {
+                                Glide.with(requireContext())
+                                    .asBitmap()
+                                    .load(resultData.imageUrl)
+                                    .into(ivTanamanDetail)
+                            } catch (e: Exception) {
+                                Log.d(TAG, "observeLiveData: ${e.message}")
+                            }
 
                             // set date
                             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
