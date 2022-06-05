@@ -18,6 +18,7 @@ import androidx.navigation.Navigation
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.google.android.gms.maps.model.LatLng
+import com.google.android.material.appbar.AppBarLayout
 import com.tandurteam.tandur.R
 import com.tandurteam.tandur.core.adapter.MonthlyLocationConditionAdapter
 import com.tandurteam.tandur.core.constant.MapsConstant
@@ -27,6 +28,7 @@ import com.tandurteam.tandur.databinding.DialogGeospatialInfoBinding
 import com.tandurteam.tandur.databinding.FragmentDetailBinding
 import com.tandurteam.tandur.maps.MapsActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import kotlin.math.abs
 
 class DetailFragment : Fragment() {
 
@@ -49,6 +51,27 @@ class DetailFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        (requireActivity() as DashboardActivity).setSupportActionBar(binding.toolbar)
+
+        // set probability text visibility by app bar
+        binding.appbar.addOnOffsetChangedListener(
+            AppBarLayout.OnOffsetChangedListener { appBarLayout, verticalOffset ->
+                val percentage = (abs(verticalOffset) / appBarLayout.totalScrollRange).toFloat()
+                if (abs(verticalOffset) == appBarLayout.totalScrollRange) {
+                    // when collapsed
+                    binding.tvProbability.visibility = View.GONE
+                } else if (verticalOffset == 0) {
+                    // when expanded
+                    binding.tvProbability.visibility = View.VISIBLE
+                    binding.tvProbability.animate().alpha(1F).duration = 300
+                } else {
+                    // in between
+                    binding.tvProbability.visibility = View.VISIBLE
+                    binding.tvProbability.animate().alpha(percentage).duration = 300
+                }
+                Log.d(TAG, "onViewCreated: $percentage")
+            }
+        )
 
         // get user location
         getUserLocation()
@@ -150,6 +173,8 @@ class DetailFragment : Fragment() {
             vLine1.visibility = visibility
             vLine2.visibility = visibility
             vLine3.visibility = visibility
+            ivInfo.visibility = visibility
+            btnTanamBaru.visibility = visibility
             tvMessageLocation.visibility = visibility
             tvKondisiLingkungan.visibility = visibility
             rvKondisiLingkungan.visibility = visibility
@@ -191,15 +216,39 @@ class DetailFragment : Fragment() {
 
                             // set probability background text color
                             resultData?.probability?.let { probability ->
-                                tvProbability.backgroundTintList = if (probability.toInt() <= 50) {
-                                    ColorStateList.valueOf(
+                                if (probability.toInt() <= 50) {
+                                    tvProbability.backgroundTintList = ColorStateList.valueOf(
+                                        ContextCompat.getColor(
+                                            requireContext(),
+                                            R.color.red_accent
+                                        )
+                                    )
+                                    collapsingToolbar.setContentScrimColor(
+                                        ContextCompat.getColor(
+                                            requireContext(),
+                                            R.color.red_accent
+                                        )
+                                    )
+                                    collapsingToolbar.setStatusBarScrimColor(
                                         ContextCompat.getColor(
                                             requireContext(),
                                             R.color.red_accent
                                         )
                                     )
                                 } else {
-                                    ColorStateList.valueOf(
+                                    tvProbability.backgroundTintList = ColorStateList.valueOf(
+                                        ContextCompat.getColor(
+                                            requireContext(),
+                                            R.color.green_accent
+                                        )
+                                    )
+                                    collapsingToolbar.setContentScrimColor(
+                                        ContextCompat.getColor(
+                                            requireContext(),
+                                            R.color.green_accent
+                                        )
+                                    )
+                                    collapsingToolbar.setStatusBarScrimColor(
                                         ContextCompat.getColor(
                                             requireContext(),
                                             R.color.green_accent

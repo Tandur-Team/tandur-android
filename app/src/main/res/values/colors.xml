@@ -3,6 +3,7 @@
     <color name="light_primary">#FFEEEEEE</color>
     <color name="light_secondary">#FFD6E3E2</color>
     <color name="light_disabled">#FF638787</color>
+    <color name="transparent">#00EEEEEE</color>
     <color name="white">#EEEEEE</color>
     <color name="dark_accent">#FF3A3F47</color>
     <color name="dark_accent_transparent_80">#CC3A3F47</color>
