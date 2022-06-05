@@ -41,30 +41,72 @@ class MonthlyLocationConditionAdapter :
 
                     // set geospatial data
                     tvHumidity.text = data.averageHumidity.toString()
-                    tvHujan.text = data.averageRain.toString()
+                    tvHujan.text = data.rain.toString()
                     tvTemp.text = data.averageTemp.toString()
 
                     if (data.averageHumidity!! > it.maxHumidity || data.averageHumidity < it.minHumidity) {
 
-                        tvBulan.setTextColor(ContextCompat.getColor(itemView.context, R.color.red_accent))
+                        tvBulan.setTextColor(
+                            ContextCompat.getColor(
+                                itemView.context,
+                                R.color.red_accent
+                            )
+                        )
 
-                        tvStatusKeseluruhan.setTextColor(ContextCompat.getColor(itemView.context, R.color.red_accent))
-                        tvStatusKeseluruhan.text = itemView.context.getString(R.string.terdapat_peringatan)
+                        tvStatusKeseluruhan.setTextColor(
+                            ContextCompat.getColor(
+                                itemView.context,
+                                R.color.red_accent
+                            )
+                        )
+                        tvStatusKeseluruhan.text =
+                            itemView.context.getString(R.string.terdapat_peringatan)
 
-                        icHumidity.setColorFilter(ContextCompat.getColor(itemView.context, R.color.red_accent))
-                        tvHumidity.setTextColor(ContextCompat.getColor(itemView.context, R.color.red_accent))
+                        icHumidity.setColorFilter(
+                            ContextCompat.getColor(
+                                itemView.context,
+                                R.color.red_accent
+                            )
+                        )
+                        tvHumidity.setTextColor(
+                            ContextCompat.getColor(
+                                itemView.context,
+                                R.color.red_accent
+                            )
+                        )
 
-                    } else if (data.averageRain!! > it.maxRain || data.averageRain < it.minRain) {
+                    } else if (data.rain!! > it.maxRain || data.rain < it.minRain) {
 
-                        tvBulan.setTextColor(ContextCompat.getColor(itemView.context, R.color.red_accent))
+                        tvBulan.setTextColor(
+                            ContextCompat.getColor(
+                                itemView.context,
+                                R.color.red_accent
+                            )
+                        )
 
-                        tvStatusKeseluruhan.setTextColor(ContextCompat.getColor(itemView.context, R.color.red_accent))
-                        tvStatusKeseluruhan.text = itemView.context.getString(R.string.terdapat_peringatan)
+                        tvStatusKeseluruhan.setTextColor(
+                            ContextCompat.getColor(
+                                itemView.context,
+                                R.color.red_accent
+                            )
+                        )
+                        tvStatusKeseluruhan.text =
+                            itemView.context.getString(R.string.terdapat_peringatan)
 
-                        icRain.setColorFilter(ContextCompat.getColor(itemView.context, R.color.red_accent))
-                        tvHujan.setTextColor(ContextCompat.getColor(itemView.context, R.color.red_accent))
+                        icRain.setColorFilter(
+                            ContextCompat.getColor(
+                                itemView.context,
+                                R.color.red_accent
+                            )
+                        )
+                        tvHujan.setTextColor(
+                            ContextCompat.getColor(
+                                itemView.context,
+                                R.color.red_accent
+                            )
+                        )
 
-                    } else if (data.averageTemp!! > it.maxTemp || data.averageTemp < it.minTemp){
+                    } else if (data.averageTemp!! > it.maxTemp || data.averageTemp < it.minTemp) {
 
                         tvBulan.setTextColor(ContextCompat.getColor(itemView.context, R.color.red_accent))
 
