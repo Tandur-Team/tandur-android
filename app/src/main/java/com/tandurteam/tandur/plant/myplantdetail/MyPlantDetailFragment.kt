@@ -5,6 +5,7 @@ import android.content.Intent
 import android.content.res.ColorStateList
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -28,6 +29,8 @@ import com.tandurteam.tandur.databinding.DialogHarvestingBinding
 import com.tandurteam.tandur.databinding.FragmentMyPlantDetailBinding
 import com.tandurteam.tandur.maps.MapsActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
 
 class MyPlantDetailFragment : Fragment() {
 
@@ -129,8 +132,6 @@ class MyPlantDetailFragment : Fragment() {
 
                             // set view
                             tvStatusDetail.text = resultData.probability.toInt().toString()
-                            tvUserDate.text = resultData.plantStartDate
-                            tvUserDurasi.text = resultData.plantHarvestDate
                             tvUserLocation.text = requireContext().getString(
                                 R.string.location_info,
                                 resultData.zoneLocal,
@@ -140,6 +141,25 @@ class MyPlantDetailFragment : Fragment() {
                                 .asBitmap()
                                 .load(resultData.imageUrl)
                                 .into(ivTanamanDetail)
+
+                            // set date
+                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                                val pattern = DateTimeFormatter.ofPattern("yyyy-MM-dd")
+                                val newPattern = DateTimeFormatter.ofPattern("dd MMMM yyyy")
+                                val startDate = LocalDate.parse(
+                                    resultData.plantStartDate,
+                                    pattern
+                                ).format(newPattern)
+                                val harvestDate = LocalDate.parse(
+                                    resultData.plantHarvestDate,
+                                    pattern
+                                ).format(newPattern)
+                                tvUserDate.text = startDate
+                                tvUserDurasi.text = harvestDate
+                            } else {
+                                tvUserDate.text = resultData.plantStartDate
+                                tvUserDurasi.text = resultData.plantHarvestDate
+                            }
 
                             // set probability background text color
                             tvStatusDetail.backgroundTintList = if (

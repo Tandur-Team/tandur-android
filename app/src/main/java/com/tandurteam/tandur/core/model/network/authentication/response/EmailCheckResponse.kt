@@ -1,4 +1,4 @@
-package com.tandurteam.tandur.core.model.network.emailcheck.response
+package com.tandurteam.tandur.core.model.network.authentication.response
 
 data class EmailCheckResponse(
     val message: String?,

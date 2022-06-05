@@ -6,8 +6,10 @@ import com.tandurteam.tandur.core.constant.HttpConstant
 import com.tandurteam.tandur.core.helper.SharedPreferences
 import com.tandurteam.tandur.core.model.network.ApiResponse
 import com.tandurteam.tandur.core.model.network.ApiService
+import com.tandurteam.tandur.core.model.network.authentication.request.EmailCheckRequest
 import com.tandurteam.tandur.core.model.network.authentication.request.LoginRequest
 import com.tandurteam.tandur.core.model.network.authentication.request.SignUpRequest
+import com.tandurteam.tandur.core.model.network.authentication.response.EmailCheckResponse
 import com.tandurteam.tandur.core.model.network.authentication.response.LoginResponse
 import com.tandurteam.tandur.core.model.network.authentication.response.SignUpResponse
 import kotlinx.coroutines.Dispatchers
@@ -19,6 +21,42 @@ class AuthRepository(
     private val apiService: ApiService,
     private val dataStore: SharedPreferences
 ) {
+    fun checkUserEmail(emailCheckRequest: EmailCheckRequest): Flow<ApiResponse<EmailCheckResponse>> {
+        return flow {
+            try {
+                emit(ApiResponse.Loading())
+
+                val response = apiService.checkUserEmail(emailCheckRequest)
+
+                when (response.status) {
+                    HttpConstant.STATUS_OK -> {
+                        Log.d(TAG, "signUpUser: Success")
+                        emit(ApiResponse.Success(response))
+                    }
+                    HttpConstant.STATUS_USER_DUPLICATE -> {
+                        Log.d(TAG, "signUpUser: Fail ${response.message}")
+                        response.message?.let {
+                            emit(ApiResponse.Error("Email sudah terdaftar sebelumnya"))
+                        }
+                    }
+                    else -> {
+                        Log.d(TAG, "signUpUser: Fail ${response.message}")
+                        response.message?.let {
+                            emit(ApiResponse.Error(it))
+                        }
+                    }
+                }
+            } catch (e: Exception) {
+                Log.e(TAG, "signUpUser: $e")
+                if (e.toString().contains(HttpConstant.STATUS_USER_DUPLICATE.toString())) {
+                    emit(ApiResponse.Error("Email sudah terdaftar sebelumnya"))
+                } else {
+                    emit(ApiResponse.Error(e.toString()))
+                }
+            }
+        }.flowOn(Dispatchers.IO)
+    }
+
     fun signUpUser(signUpRequest: SignUpRequest): Flow<ApiResponse<SignUpResponse>> {
         return flow {
             try {

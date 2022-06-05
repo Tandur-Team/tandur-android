@@ -114,8 +114,6 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/tv_status_detail" />
 
-
-
                 <ImageView
                     android:id="@+id/ic_date"
                     android:layout_width="18dp"

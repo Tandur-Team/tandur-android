@@ -1,7 +1,9 @@
 package com.tandurteam.tandur.core.model.network
 
+import com.tandurteam.tandur.core.model.network.authentication.request.EmailCheckRequest
 import com.tandurteam.tandur.core.model.network.authentication.request.LoginRequest
 import com.tandurteam.tandur.core.model.network.authentication.request.SignUpRequest
+import com.tandurteam.tandur.core.model.network.authentication.response.EmailCheckResponse
 import com.tandurteam.tandur.core.model.network.authentication.response.LoginResponse
 import com.tandurteam.tandur.core.model.network.authentication.response.SignUpResponse
 import com.tandurteam.tandur.core.model.network.createplant.request.CreatePlantRequest
@@ -17,6 +19,11 @@ import com.tandurteam.tandur.core.model.network.plantdetail.response.PlantDetail
 import retrofit2.http.*
 
 interface ApiService {
+    @POST("user/email_check")
+    suspend fun checkUserEmail(
+        @Body emailCheckRequest: EmailCheckRequest
+    ): EmailCheckResponse
+
     @POST("user/signup")
     suspend fun signUpUser(
         @Body signUpRequest: SignUpRequest

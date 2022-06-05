@@ -80,7 +80,7 @@
     <string name="tempratur_suhu">Tempratur Suhu</string>
     <string name="rendah">Rendah</string>
     <string name="icon_soil">Icon Soil</string>
-    <string name="status_peringatan">Status (1 Peringatan)</string>
+    <string name="status_peringatan">Status Tanaman Anda</string>
     <string name="icon_date">Icon Date</string>
     <string name="waktu_menanam">Waktu Menanam</string>
     <string name="tv_date">02 April 2022</string>
