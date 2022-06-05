@@ -242,6 +242,7 @@ class CreateFragment : Fragment() {
 
                                 // get monthly data
                                 resultData?.monthlyData?.let { data ->
+                                    monthlyData.clear()
                                     monthlyData.addAll(data)
                                 }
 
