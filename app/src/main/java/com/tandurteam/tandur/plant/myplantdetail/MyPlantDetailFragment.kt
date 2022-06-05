@@ -20,6 +20,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.google.android.gms.maps.model.LatLng
+import com.google.android.material.appbar.AppBarLayout
 import com.tandurteam.tandur.R
 import com.tandurteam.tandur.core.adapter.MonthlyLocationConditionAdapter
 import com.tandurteam.tandur.core.constant.MapsConstant
@@ -31,6 +32,7 @@ import com.tandurteam.tandur.maps.MapsActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
+import kotlin.math.abs
 
 class MyPlantDetailFragment : Fragment() {
 
@@ -41,6 +43,7 @@ class MyPlantDetailFragment : Fragment() {
     private lateinit var adapter: MonthlyLocationConditionAdapter
     private var latitude: Double = 0.0
     private var longitude: Double = 0.0
+    private var isHarvested: Int = 0
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -53,6 +56,41 @@ class MyPlantDetailFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        (requireActivity() as DashboardActivity).setSupportActionBar(binding.toolbar)
+
+        // set probability text visibility by app bar
+        binding.appbar.addOnOffsetChangedListener(
+            AppBarLayout.OnOffsetChangedListener { appBarLayout, verticalOffset ->
+                val percentage = (abs(verticalOffset) / appBarLayout.totalScrollRange).toFloat()
+                if (abs(verticalOffset) == appBarLayout.totalScrollRange) {
+                    // when collapsed
+                    binding.tvStatusDetail.visibility = View.GONE
+
+                    if (isHarvested == 1) {
+                        binding.ivSatisfactionFace.visibility = View.GONE
+                    }
+                } else if (verticalOffset == 0) {
+                    // when expanded
+                    binding.tvStatusDetail.visibility = View.VISIBLE
+                    binding.tvStatusDetail.animate().alpha(1F).duration = 300
+
+                    if (isHarvested == 1) {
+                        binding.ivSatisfactionFace.visibility = View.VISIBLE
+                        binding.ivSatisfactionFace.animate().alpha(1F).duration = 300
+                    }
+                } else {
+                    // in between
+                    binding.tvStatusDetail.visibility = View.VISIBLE
+                    binding.tvStatusDetail.animate().alpha(percentage).duration = 300
+
+                    if (isHarvested == 1) {
+                        binding.ivSatisfactionFace.visibility = View.VISIBLE
+                        binding.ivSatisfactionFace.animate().alpha(percentage).duration = 300
+                    }
+                }
+                Log.d(TAG, "onViewCreated: $percentage")
+            }
+        )
 
         // hide bottom nav
         (requireActivity() as DashboardActivity).setBottomNavVisibility(false)
@@ -166,18 +204,46 @@ class MyPlantDetailFragment : Fragment() {
                                 tvUserDurasi.text = resultData.plantHarvestDate
                             }
 
+                            // set harvested
+                            isHarvested = resultData.isHarvested
+
                             // set probability background text color
-                            tvStatusDetail.backgroundTintList = if (
+                            if (
                                 resultData.probability.toInt() <= 50
                             ) {
-                                ColorStateList.valueOf(
+                                tvStatusDetail.backgroundTintList = ColorStateList.valueOf(
+                                    ContextCompat.getColor(
+                                        requireContext(),
+                                        R.color.red_accent
+                                    )
+                                )
+                                collapsingToolbar.setContentScrimColor(
+                                    ContextCompat.getColor(
+                                        requireContext(),
+                                        R.color.red_accent
+                                    )
+                                )
+                                collapsingToolbar.setStatusBarScrimColor(
                                     ContextCompat.getColor(
                                         requireContext(),
                                         R.color.red_accent
                                     )
                                 )
                             } else {
-                                ColorStateList.valueOf(
+                                tvStatusDetail.backgroundTintList = ColorStateList.valueOf(
+                                    ContextCompat.getColor(
+                                        requireContext(),
+                                        R.color.green_accent
+                                    )
+                                )
+
+                                collapsingToolbar.setContentScrimColor(
+                                    ContextCompat.getColor(
+                                        requireContext(),
+                                        R.color.green_accent
+                                    )
+                                )
+                                collapsingToolbar.setStatusBarScrimColor(
                                     ContextCompat.getColor(
                                         requireContext(),
                                         R.color.green_accent
