@@ -40,8 +40,11 @@ android {
 
 dependencies {
 
+    // Sticky Scroll View
+    implementation 'com.github.amarjain07:StickyScrollView:1.0.3'
+
     // Viewpager2
-    implementation 'com.google.android.material:material:1.6.0'
+    implementation 'com.google.android.material:material:1.6.1'
     implementation "androidx.viewpager2:viewpager2:1.0.0"
 
     // Shimmer Loading Layout

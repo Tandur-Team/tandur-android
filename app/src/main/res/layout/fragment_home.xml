@@ -51,11 +51,12 @@
             app:layout_constraintStart_toEndOf="@+id/iv_location"
             app:layout_constraintTop_toTopOf="@+id/iv_location" />
 
-        <androidx.core.widget.NestedScrollView
+        <com.amar.library.ui.StickyScrollView
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginTop="24dp"
             android:fillViewport="true"
+            app:stickyHeader="@+id/llHeader"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/iv_location"
             tools:context="dashboard.home.HomeFragment">
@@ -169,49 +170,53 @@
                     </LinearLayout>
                 </com.facebook.shimmer.ShimmerFrameLayout>
 
-                <TextView
-                    android:id="@+id/tv_saran_untuk_anda"
-                    style="@style/Medium16Sp"
-                    android:layout_width="0dp"
+                <LinearLayout
+                    android:id="@+id/llHeader"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="30dp"
+                    android:background="@color/light_primary"
+                    android:clipToPadding="false"
+                    android:orientation="vertical"
+                    android:paddingHorizontal="30dp"
+                    android:paddingBottom="16dp"
                     android:layout_marginTop="24dp"
-                    android:layout_marginEnd="30dp"
-                    android:text="@string/tv_saran_untuk_anda"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/llCondition" />
+                    app:layout_constraintTop_toBottomOf="@id/llCondition">
 
-                <EditText
-                    android:id="@+id/et_search"
-                    style="@style/Regular14Sp"
-                    android:layout_width="0dp"
-                    android:layout_height="52dp"
-                    android:layout_marginStart="30dp"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginEnd="30dp"
-                    android:autofillHints="Nama Tanaman"
-                    android:background="@drawable/bg_radius_8dp"
-                    android:drawableStart="@drawable/ic_baseline_search_24"
-                    android:drawablePadding="8dp"
-                    android:hint="@string/hint_search"
-                    android:inputType="text"
-                    android:paddingStart="8dp"
-                    android:paddingEnd="8dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_saran_untuk_anda" />
+                    <TextView
+                        android:id="@+id/tv_saran_untuk_anda"
+                        style="@style/Medium16Sp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/tv_saran_untuk_anda" />
+
+                    <EditText
+                        android:id="@+id/et_search"
+                        style="@style/Regular14Sp"
+                        android:layout_width="match_parent"
+                        android:layout_height="52dp"
+                        android:layout_marginTop="16dp"
+                        android:autofillHints="Nama Tanaman"
+                        android:background="@drawable/bg_radius_8dp"
+                        android:drawableStart="@drawable/ic_baseline_search_24"
+                        android:drawablePadding="8dp"
+                        android:hint="@string/hint_search"
+                        android:inputType="text"
+                        android:paddingStart="8dp"
+                        android:paddingEnd="8dp" />
+
+                </LinearLayout>
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rv_saran"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
                     android:visibility="visible"
+                    app:layout_constraintTop_toBottomOf="@id/llHeader"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/et_search"
+                    tools:itemCount="1"
                     tools:listitem="@layout/item_home_suggestion" />
 
                 <com.facebook.shimmer.ShimmerFrameLayout
@@ -224,7 +229,7 @@
                     android:visibility="gone"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/et_search"
+                    app:layout_constraintTop_toBottomOf="@id/llHeader"
                     app:shimmer_auto_start="true">
 
                     <LinearLayout
@@ -252,12 +257,12 @@
                     android:visibility="gone"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/et_search"
+                    app:layout_constraintTop_toBottomOf="@id/llHeader"
                     tools:text="Not Found" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-        </androidx.core.widget.NestedScrollView>
+        </com.amar.library.ui.StickyScrollView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -5,7 +5,6 @@
     android:id="@+id/cardNearbyPlant"
     android:layout_width="match_parent"
     android:layout_height="177dp"
-    android:layout_gravity="center"
     android:layout_marginHorizontal="30dp"
     android:layout_marginBottom="16dp"
     android:background="@drawable/bg_radius_8dp"

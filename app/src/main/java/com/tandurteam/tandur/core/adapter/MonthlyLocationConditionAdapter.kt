@@ -45,7 +45,6 @@ class MonthlyLocationConditionAdapter :
                     tvTemp.text = data.averageTemp.toString()
 
                     if (data.averageHumidity!! > it.maxHumidity || data.averageHumidity < it.minHumidity) {
-
                         tvBulan.setTextColor(
                             ContextCompat.getColor(
                                 itemView.context,
@@ -75,7 +74,9 @@ class MonthlyLocationConditionAdapter :
                             )
                         )
 
-                    } else if (data.rain!! > it.maxRain || data.rain < it.minRain) {
+                    }
+
+                    if (data.rain!! > it.maxRain || data.rain < it.minRain) {
 
                         tvBulan.setTextColor(
                             ContextCompat.getColor(
@@ -106,16 +107,37 @@ class MonthlyLocationConditionAdapter :
                             )
                         )
 
-                    } else if (data.averageTemp!! > it.maxTemp || data.averageTemp < it.minTemp) {
+                    }
 
-                        tvBulan.setTextColor(ContextCompat.getColor(itemView.context, R.color.red_accent))
+                    if (data.averageTemp!! > it.maxTemp || data.averageTemp < it.minTemp) {
+                        tvBulan.setTextColor(
+                            ContextCompat.getColor(
+                                itemView.context,
+                                R.color.red_accent
+                            )
+                        )
 
-                        tvStatusKeseluruhan.setTextColor(ContextCompat.getColor(itemView.context, R.color.red_accent))
-                        tvStatusKeseluruhan.text = itemView.context.getString(R.string.terdapat_peringatan)
+                        tvStatusKeseluruhan.setTextColor(
+                            ContextCompat.getColor(
+                                itemView.context,
+                                R.color.red_accent
+                            )
+                        )
+                        tvStatusKeseluruhan.text =
+                            itemView.context.getString(R.string.terdapat_peringatan)
 
-                        icTemp.setColorFilter(ContextCompat.getColor(itemView.context, R.color.red_accent))
-                        tvTemp.setTextColor(ContextCompat.getColor(itemView.context, R.color.red_accent))
-
+                        icTemp.setColorFilter(
+                            ContextCompat.getColor(
+                                itemView.context,
+                                R.color.red_accent
+                            )
+                        )
+                        tvTemp.setTextColor(
+                            ContextCompat.getColor(
+                                itemView.context,
+                                R.color.red_accent
+                            )
+                        )
                     }
                 }
             }
