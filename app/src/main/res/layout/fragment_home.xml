@@ -8,249 +8,257 @@
     android:fillViewport="true"
     tools:context="dashboard.home.HomeFragment">
 
-    <androidx.core.widget.NestedScrollView
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:fillViewport="true"
-        tools:context="dashboard.home.HomeFragment">
+        android:layout_height="match_parent">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <TextView
+            android:id="@+id/tv_welcome"
+            style="@style/SemiBold24Sp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="55dp"
+            android:layout_marginEnd="30dp"
+            android:text="@string/welcome"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/iv_location"
+            android:layout_width="11dp"
+            android:layout_height="14dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="12dp"
+            android:contentDescription="@string/icon_location"
+            android:src="@drawable/ic_location"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_welcome"
+            app:tint="@color/green_accent" />
+
+        <TextView
+            android:id="@+id/tv_location"
+            style="@style/Medium14Sp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="30dp"
+            android:text="@string/tvLocation"
+            android:textColor="@color/green_accent"
+            app:layout_constraintBottom_toBottomOf="@id/iv_location"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/iv_location"
+            app:layout_constraintTop_toTopOf="@+id/iv_location" />
+
+        <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="0dp"
+            android:layout_marginTop="24dp"
+            android:fillViewport="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/iv_location"
+            tools:context="dashboard.home.HomeFragment">
 
-            <TextView
-                android:id="@+id/tv_welcome"
-                style="@style/SemiBold24Sp"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="30dp"
-                android:layout_marginTop="55dp"
-                android:layout_marginEnd="30dp"
-                android:text="@string/welcome"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <ImageView
-                android:id="@+id/iv_location"
-                android:layout_width="11dp"
-                android:layout_height="14dp"
-                android:layout_marginStart="30dp"
-                android:layout_marginTop="12dp"
-                android:contentDescription="@string/icon_location"
-                android:src="@drawable/ic_location"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_welcome"
-                app:tint="@color/green_accent" />
-
-            <TextView
-                android:id="@+id/tv_location"
-                style="@style/Medium14Sp"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="12dp"
-                android:layout_marginEnd="30dp"
-                android:text="@string/tvLocation"
-                android:textColor="@color/green_accent"
-                app:layout_constraintBottom_toBottomOf="@id/iv_location"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/iv_location"
-                app:layout_constraintTop_toTopOf="@+id/iv_location" />
-
-            <TextView
-                android:id="@+id/tv_cuaca_hari_ini"
-                style="@style/Medium16Sp"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="30dp"
-                android:layout_marginTop="24dp"
-                android:layout_marginEnd="30dp"
-                android:text="@string/bagaimana_cuaca_hari_ini"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/iv_location" />
-
-            <LinearLayout
-                android:id="@+id/llCondition"
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:baselineAligned="false"
-                android:clipToPadding="false"
-                android:orientation="horizontal"
-                android:layout_marginTop="16dp"
-                android:paddingHorizontal="30dp"
-                android:paddingBottom="5dp"
-                android:visibility="visible"
-                android:weightSum="3"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_cuaca_hari_ini">
+                android:layout_height="match_parent">
 
-                <include
-                    android:id="@+id/item_rainfall"
-                    layout="@layout/item_rainfall"
+                <TextView
+                    android:id="@+id/tv_cuaca_hari_ini"
+                    style="@style/Medium16Sp"
                     android:layout_width="0dp"
-                    android:layout_height="120dp"
-                    android:layout_weight="1"
-                    android:visibility="visible"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/tv_cuaca_hari_ini" />
-
-                <include
-                    android:id="@+id/item_temp"
-                    layout="@layout/item_rainfall"
-                    android:layout_width="0dp"
-                    android:layout_height="120dp"
-                    android:layout_marginHorizontal="8dp"
-                    android:layout_weight="1"
-                    android:visibility="visible"
-                    app:layout_constraintEnd_toStartOf="@id/item_humidity"
-                    app:layout_constraintStart_toEndOf="@id/item_rainfall"
-                    app:layout_constraintTop_toBottomOf="@id/tv_cuaca_hari_ini" />
-
-                <include
-                    android:id="@+id/item_humidity"
-                    layout="@layout/item_rainfall"
-                    android:layout_width="0dp"
-                    android:layout_height="120dp"
-                    android:layout_weight="1"
-                    android:visibility="visible"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginEnd="30dp"
+                    android:text="@string/bagaimana_cuaca_hari_ini"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/tv_cuaca_hari_ini" />
-
-            </LinearLayout>
-
-            <com.facebook.shimmer.ShimmerFrameLayout
-                android:id="@+id/progressBarHorizontal"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:clipToPadding="false"
-                android:paddingHorizontal="30dp"
-                android:visibility="gone"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_cuaca_hari_ini"
-                app:shimmer_auto_start="true">
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <LinearLayout
+                    android:id="@+id/llCondition"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
                     android:baselineAligned="false"
+                    android:clipToPadding="false"
                     android:orientation="horizontal"
-                    android:weightSum="3">
+                    android:paddingHorizontal="30dp"
+                    android:paddingBottom="5dp"
+                    android:visibility="visible"
+                    android:weightSum="3"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_cuaca_hari_ini">
 
                     <include
-                        android:id="@+id/firstPlaceholder"
-                        layout="@layout/item_horizontal_placeholder"
+                        android:id="@+id/item_rainfall"
+                        layout="@layout/item_rainfall"
                         android:layout_width="0dp"
                         android:layout_height="120dp"
-                        android:layout_weight="1" />
+                        android:layout_weight="1"
+                        android:visibility="visible"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tv_cuaca_hari_ini" />
 
                     <include
-                        android:id="@+id/secondPlaceholder"
-                        layout="@layout/item_horizontal_placeholder"
+                        android:id="@+id/item_temp"
+                        layout="@layout/item_rainfall"
                         android:layout_width="0dp"
                         android:layout_height="120dp"
                         android:layout_marginHorizontal="8dp"
-                        android:layout_weight="1" />
+                        android:layout_weight="1"
+                        android:visibility="visible"
+                        app:layout_constraintEnd_toStartOf="@id/item_humidity"
+                        app:layout_constraintStart_toEndOf="@id/item_rainfall"
+                        app:layout_constraintTop_toBottomOf="@id/tv_cuaca_hari_ini" />
 
                     <include
-                        android:id="@+id/thirdPlaceholder"
-                        layout="@layout/item_horizontal_placeholder"
+                        android:id="@+id/item_humidity"
+                        layout="@layout/item_rainfall"
                         android:layout_width="0dp"
                         android:layout_height="120dp"
-                        android:layout_weight="1" />
+                        android:layout_weight="1"
+                        android:visibility="visible"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tv_cuaca_hari_ini" />
+
                 </LinearLayout>
-            </com.facebook.shimmer.ShimmerFrameLayout>
 
-            <TextView
-                android:id="@+id/tv_saran_untuk_anda"
-                style="@style/Medium16Sp"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="30dp"
-                android:layout_marginTop="24dp"
-                android:layout_marginEnd="30dp"
-                android:text="@string/tv_saran_untuk_anda"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/llCondition" />
+                <com.facebook.shimmer.ShimmerFrameLayout
+                    android:id="@+id/progressBarHorizontal"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:clipToPadding="false"
+                    android:paddingHorizontal="30dp"
+                    android:visibility="gone"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_cuaca_hari_ini"
+                    app:shimmer_auto_start="true">
 
-            <EditText
-                android:id="@+id/et_search"
-                style="@style/Regular14Sp"
-                android:layout_width="0dp"
-                android:layout_height="52dp"
-                android:layout_marginStart="30dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="30dp"
-                android:autofillHints="Nama Tanaman"
-                android:background="@drawable/bg_radius_8dp"
-                android:drawableStart="@drawable/ic_baseline_search_24"
-                android:drawablePadding="8dp"
-                android:hint="@string/hint_search"
-                android:inputType="text"
-                android:paddingStart="8dp"
-                android:paddingEnd="8dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_saran_untuk_anda" />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:baselineAligned="false"
+                        android:orientation="horizontal"
+                        android:weightSum="3">
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv_saran"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:visibility="visible"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/et_search"
-                tools:listitem="@layout/item_home_suggestion" />
+                        <include
+                            android:id="@+id/firstPlaceholder"
+                            layout="@layout/item_horizontal_placeholder"
+                            android:layout_width="0dp"
+                            android:layout_height="120dp"
+                            android:layout_weight="1" />
 
-            <com.facebook.shimmer.ShimmerFrameLayout
-                android:id="@+id/progressBarVertical"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:clipToPadding="false"
-                android:paddingHorizontal="30dp"
-                android:visibility="gone"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/et_search"
-                app:shimmer_auto_start="true">
+                        <include
+                            android:id="@+id/secondPlaceholder"
+                            layout="@layout/item_horizontal_placeholder"
+                            android:layout_width="0dp"
+                            android:layout_height="120dp"
+                            android:layout_marginHorizontal="8dp"
+                            android:layout_weight="1" />
 
-                <LinearLayout
+                        <include
+                            android:id="@+id/thirdPlaceholder"
+                            layout="@layout/item_horizontal_placeholder"
+                            android:layout_width="0dp"
+                            android:layout_height="120dp"
+                            android:layout_weight="1" />
+                    </LinearLayout>
+                </com.facebook.shimmer.ShimmerFrameLayout>
+
+                <TextView
+                    android:id="@+id/tv_saran_untuk_anda"
+                    style="@style/Medium16Sp"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginTop="24dp"
+                    android:layout_marginEnd="30dp"
+                    android:text="@string/tv_saran_untuk_anda"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/llCondition" />
+
+                <EditText
+                    android:id="@+id/et_search"
+                    style="@style/Regular14Sp"
+                    android:layout_width="0dp"
+                    android:layout_height="52dp"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="30dp"
+                    android:autofillHints="Nama Tanaman"
+                    android:background="@drawable/bg_radius_8dp"
+                    android:drawableStart="@drawable/ic_baseline_search_24"
+                    android:drawablePadding="8dp"
+                    android:hint="@string/hint_search"
+                    android:inputType="text"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="8dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_saran_untuk_anda" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_saran"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:visibility="visible"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/et_search"
+                    tools:listitem="@layout/item_home_suggestion" />
 
-                    <include layout="@layout/item_nearby_plant_placeholder" />
+                <com.facebook.shimmer.ShimmerFrameLayout
+                    android:id="@+id/progressBarVertical"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:clipToPadding="false"
+                    android:paddingHorizontal="30dp"
+                    android:visibility="gone"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/et_search"
+                    app:shimmer_auto_start="true">
 
-                    <include layout="@layout/item_nearby_plant_placeholder" />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
 
-                    <include layout="@layout/item_nearby_plant_placeholder" />
+                        <include layout="@layout/item_nearby_plant_placeholder" />
 
-                </LinearLayout>
-            </com.facebook.shimmer.ShimmerFrameLayout>
+                        <include layout="@layout/item_nearby_plant_placeholder" />
 
-            <TextView
-                android:id="@+id/tvError"
-                style="@style/Medium14Sp"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="30dp"
-                android:layout_marginTop="16dp"
-                android:visibility="gone"
-                android:textColor="@color/red_accent"
-                app:layout_constraintTop_toBottomOf="@id/et_search"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                tools:text="Not Found" />
+                        <include layout="@layout/item_nearby_plant_placeholder" />
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </LinearLayout>
+                </com.facebook.shimmer.ShimmerFrameLayout>
 
-    </androidx.core.widget.NestedScrollView>
+                <TextView
+                    android:id="@+id/tvError"
+                    style="@style/Medium14Sp"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="30dp"
+                    android:layout_marginTop="16dp"
+                    android:textColor="@color/red_accent"
+                    android:visibility="gone"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/et_search"
+                    tools:text="Not Found" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
