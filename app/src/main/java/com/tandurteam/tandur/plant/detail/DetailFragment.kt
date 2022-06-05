@@ -2,7 +2,6 @@ package com.tandurteam.tandur.plant.detail
 
 import android.app.Dialog
 import android.content.Intent
-import android.content.res.ColorStateList
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
@@ -60,14 +59,19 @@ class DetailFragment : Fragment() {
                 if (abs(verticalOffset) == appBarLayout.totalScrollRange) {
                     // when collapsed
                     binding.tvProbability.visibility = View.GONE
+                    binding.tvAppbarProbability.visibility = View.VISIBLE
+                    binding.tvAppbarProbability.animate().alpha(1F).duration = 300
                 } else if (verticalOffset == 0) {
                     // when expanded
                     binding.tvProbability.visibility = View.VISIBLE
                     binding.tvProbability.animate().alpha(1F).duration = 300
+                    binding.tvAppbarProbability.visibility = View.GONE
                 } else {
                     // in between
                     binding.tvProbability.visibility = View.VISIBLE
                     binding.tvProbability.animate().alpha(percentage).duration = 300
+                    binding.tvAppbarProbability.visibility = View.VISIBLE
+                    binding.tvAppbarProbability.animate().alpha(percentage).duration = 300
                 }
                 Log.d(TAG, "onViewCreated: $percentage")
             }
@@ -217,12 +221,7 @@ class DetailFragment : Fragment() {
                             // set probability background text color
                             resultData?.probability?.let { probability ->
                                 if (probability.toInt() <= 50) {
-                                    tvProbability.backgroundTintList = ColorStateList.valueOf(
-                                        ContextCompat.getColor(
-                                            requireContext(),
-                                            R.color.red_accent
-                                        )
-                                    )
+                                    tvProbability.setBackgroundResource(R.drawable.bg_circle_red)
                                     collapsingToolbar.setContentScrimColor(
                                         ContextCompat.getColor(
                                             requireContext(),
@@ -236,12 +235,7 @@ class DetailFragment : Fragment() {
                                         )
                                     )
                                 } else {
-                                    tvProbability.backgroundTintList = ColorStateList.valueOf(
-                                        ContextCompat.getColor(
-                                            requireContext(),
-                                            R.color.green_accent
-                                        )
-                                    )
+                                    tvProbability.setBackgroundResource(R.drawable.bg_circle_green)
                                     collapsingToolbar.setContentScrimColor(
                                         ContextCompat.getColor(
                                             requireContext(),

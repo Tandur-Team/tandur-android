@@ -65,6 +65,8 @@ class MyPlantDetailFragment : Fragment() {
                 if (abs(verticalOffset) == appBarLayout.totalScrollRange) {
                     // when collapsed
                     binding.tvStatusDetail.visibility = View.GONE
+                    binding.tvAppbarProbability.visibility = View.VISIBLE
+                    binding.tvAppbarProbability.animate().alpha(1F).duration = 300
 
                     if (isHarvested == 1) {
                         binding.ivSatisfactionFace.visibility = View.GONE
@@ -73,6 +75,7 @@ class MyPlantDetailFragment : Fragment() {
                     // when expanded
                     binding.tvStatusDetail.visibility = View.VISIBLE
                     binding.tvStatusDetail.animate().alpha(1F).duration = 300
+                    binding.tvAppbarProbability.visibility = View.GONE
 
                     if (isHarvested == 1) {
                         binding.ivSatisfactionFace.visibility = View.VISIBLE
@@ -82,6 +85,8 @@ class MyPlantDetailFragment : Fragment() {
                     // in between
                     binding.tvStatusDetail.visibility = View.VISIBLE
                     binding.tvStatusDetail.animate().alpha(percentage).duration = 300
+                    binding.tvAppbarProbability.visibility = View.VISIBLE
+                    binding.tvAppbarProbability.animate().alpha(percentage).duration = 300
 
                     if (isHarvested == 1) {
                         binding.ivSatisfactionFace.visibility = View.VISIBLE
@@ -170,6 +175,7 @@ class MyPlantDetailFragment : Fragment() {
 
                             // set view
                             tvStatusDetail.text = resultData.probability.toInt().toString()
+                            tvAppbarProbability.text = resultData.probability.toInt().toString()
                             tvUserLocation.text = requireContext().getString(
                                 R.string.location_info,
                                 resultData.zoneLocal,
@@ -211,12 +217,7 @@ class MyPlantDetailFragment : Fragment() {
                             if (
                                 resultData.probability.toInt() <= 50
                             ) {
-                                tvStatusDetail.backgroundTintList = ColorStateList.valueOf(
-                                    ContextCompat.getColor(
-                                        requireContext(),
-                                        R.color.red_accent
-                                    )
-                                )
+                                tvStatusDetail.setBackgroundResource(R.drawable.bg_circle_red)
                                 collapsingToolbar.setContentScrimColor(
                                     ContextCompat.getColor(
                                         requireContext(),
@@ -230,12 +231,7 @@ class MyPlantDetailFragment : Fragment() {
                                     )
                                 )
                             } else {
-                                tvStatusDetail.backgroundTintList = ColorStateList.valueOf(
-                                    ContextCompat.getColor(
-                                        requireContext(),
-                                        R.color.green_accent
-                                    )
-                                )
+                                tvStatusDetail.setBackgroundResource(R.drawable.bg_circle_green)
 
                                 collapsingToolbar.setContentScrimColor(
                                     ContextCompat.getColor(
