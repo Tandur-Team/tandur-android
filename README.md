@@ -8,10 +8,17 @@ Then in this project data source is the only layer that connecting response API 
 
 # Tech Stack
 - Kotlin Programming Language
-- Jetpack Libraries
+- Koin Dependency Injection
+- Flow
+- Jetpack Library
+  - Lifecycle
+  - Navigation
+  - UI
+  - Data
 - Retrofit2
 - Glide
-- Koin Dependency Injection
+- Sticky Scroll View
+- Shimmer Loading Layout
 
 # RestAPI
 - Tandur RestAPI
