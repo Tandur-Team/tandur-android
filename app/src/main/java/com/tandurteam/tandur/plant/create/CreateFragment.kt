@@ -42,6 +42,7 @@ class CreateFragment : Fragment() {
     private var harvestDate: String? = null
     private var latitude: Double = 0.0
     private var longitude: Double = 0.0
+    private var harvestTime = 0
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -52,7 +53,6 @@ class CreateFragment : Fragment() {
         return binding.root
     }
 
-    @RequiresApi(Build.VERSION_CODES.N)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -64,65 +64,6 @@ class CreateFragment : Fragment() {
 
         // get plant detail
         getPlantDetail()
-
-        calendar = Calendar.getInstance()
-        val harvestTime = 5 // TODO: Waiting fixed data
-        binding.etPlantDate.setOnClickListener {
-            val datePickerDialog = DatePickerDialog(
-                requireContext(),
-                R.style.DialogTheme,
-                { _, year, month, day ->
-                    // set start date time
-                    val choosenDate = listOf(year, month, day)
-                    calendar.set(Calendar.YEAR, year)
-                    calendar.set(Calendar.MONTH, month)
-                    calendar.set(Calendar.DAY_OF_MONTH, day)
-                    setStartDate()
-
-                    // set harvest date TODO: Waiting fixed data
-                    calendar.add(Calendar.MONTH, harvestTime)
-                    setHarvestDate()
-
-                    // set back calendar
-                    calendar.set(Calendar.YEAR, choosenDate[0])
-                    calendar.set(Calendar.MONTH, choosenDate[1])
-                    calendar.set(Calendar.DAY_OF_MONTH, choosenDate[2])
-                },
-                calendar.get(Calendar.YEAR),
-                calendar.get(Calendar.MONTH),
-                calendar.get(Calendar.DAY_OF_MONTH)
-            )
-
-            // Set min date
-            val now = System.currentTimeMillis() - 1000
-            datePickerDialog.datePicker.minDate = now
-
-            // set max date
-            val nowCalendar = Calendar.getInstance()
-            nowCalendar.set(
-                Calendar.YEAR,
-                SimpleDateFormat("yyyy", Locale.getDefault()).format(
-                    System.currentTimeMillis()
-                ).toInt()
-            )
-            nowCalendar.set(
-                Calendar.MONTH,
-                SimpleDateFormat("MM", Locale.getDefault()).format(
-                    System.currentTimeMillis()
-                ).toInt()
-            )
-            nowCalendar.set(
-                Calendar.DAY_OF_MONTH,
-                SimpleDateFormat("dd", Locale.getDefault()).format(
-                    System.currentTimeMillis()
-                ).toInt()
-            )
-            nowCalendar.add(Calendar.MONTH, 5 - harvestTime) // TODO: Waiting 5 - fixed data
-            datePickerDialog.datePicker.maxDate = nowCalendar.time.time
-
-            // show date picker
-            datePickerDialog.show()
-        }
 
         binding.etPlantingLocation.setOnClickListener {
             Intent(requireActivity(), MapsActivity::class.java).apply {
@@ -138,6 +79,66 @@ class CreateFragment : Fragment() {
         binding.btnTanam.setOnClickListener {
             if (validateCreatePlant()) createPlant()
         }
+    }
+
+    @RequiresApi(Build.VERSION_CODES.N)
+    private fun pickCalendar() {
+        calendar = Calendar.getInstance()
+
+        val datePickerDialog = DatePickerDialog(
+            requireContext(),
+            R.style.DialogTheme,
+            { _, year, month, day ->
+                // set start date time
+                val choosenDate = listOf(year, month, day)
+                calendar.set(Calendar.YEAR, year)
+                calendar.set(Calendar.MONTH, month)
+                calendar.set(Calendar.DAY_OF_MONTH, day)
+                setStartDate()
+
+                // set harvest date TODO: Waiting fixed data
+                calendar.add(Calendar.MONTH, 5)
+                setHarvestDate()
+
+                // set back calendar
+                calendar.set(Calendar.YEAR, choosenDate[0])
+                calendar.set(Calendar.MONTH, choosenDate[1])
+                calendar.set(Calendar.DAY_OF_MONTH, choosenDate[2])
+            },
+            calendar.get(Calendar.YEAR),
+            calendar.get(Calendar.MONTH),
+            calendar.get(Calendar.DAY_OF_MONTH)
+        )
+
+        // Set min date
+        val now = System.currentTimeMillis() - 1000
+        datePickerDialog.datePicker.minDate = now
+
+        // set max date
+        val nowCalendar = Calendar.getInstance()
+        nowCalendar.set(
+            Calendar.YEAR,
+            SimpleDateFormat("yyyy", Locale.getDefault()).format(
+                System.currentTimeMillis()
+            ).toInt()
+        )
+        nowCalendar.set(
+            Calendar.MONTH,
+            SimpleDateFormat("MM", Locale.getDefault()).format(
+                System.currentTimeMillis()
+            ).toInt()
+        )
+        nowCalendar.set(
+            Calendar.DAY_OF_MONTH,
+            SimpleDateFormat("dd", Locale.getDefault()).format(
+                System.currentTimeMillis()
+            ).toInt()
+        )
+        nowCalendar.add(Calendar.MONTH, 5 - harvestTime) // TODO: Waiting 5 - fixed data
+        datePickerDialog.datePicker.maxDate = nowCalendar.time.time
+
+        // show date picker
+        datePickerDialog.show()
     }
 
     private fun validateCreatePlant(): Boolean {
@@ -239,6 +240,14 @@ class CreateFragment : Fragment() {
                                 val resultData = result.data.data
                                 progressLoadingStatus.visibility = View.GONE
                                 rvMonthlyCondition.visibility = View.VISIBLE
+
+                                // get duration and set on calendar click listener
+                                binding.etPlantDate.setOnClickListener {
+                                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                                        harvestTime = resultData?.duration ?: 0
+                                        pickCalendar()
+                                    }
+                                }
 
                                 // get monthly data
                                 resultData?.monthlyData?.let { data ->

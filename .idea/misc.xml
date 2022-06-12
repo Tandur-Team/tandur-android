@@ -3,6 +3,8 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/ACER/AndroidStudioProjects/tandur-android/app/src/main/res/drawable/bg_gradient_top.xml" value="0.1335" />
+        <entry key="..\:/Users/ACER/AndroidStudioProjects/tandur-android/app/src/main/res/drawable/ic_back.xml" value="0.1335" />
         <entry key="..\:/Users/ACER/AndroidStudioProjects/tandur-android/app/src/main/res/layout/activity_dashboard.xml" value="0.264" />
         <entry key="..\:/Users/ACER/AndroidStudioProjects/tandur-android/app/src/main/res/layout/activity_main.xml" value="0.2" />
         <entry key="..\:/Users/ACER/AndroidStudioProjects/tandur-android/app/src/main/res/layout/activity_plant.xml" value="0.25" />
