@@ -96,8 +96,8 @@ class CreateFragment : Fragment() {
                 calendar.set(Calendar.DAY_OF_MONTH, day)
                 setStartDate()
 
-                // set harvest date TODO: Waiting fixed data
-                calendar.add(Calendar.MONTH, 5)
+                // set harvest date
+                calendar.add(Calendar.MONTH, harvestTime)
                 setHarvestDate()
 
                 // set back calendar
